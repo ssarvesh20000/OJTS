@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Services() {
+function Quote() {
   return (
     <section style={{ padding: '20px' }}>
-      <h2>Our Tint</h2>
+      <h2>Our Pricing estimates</h2>
       <ul>
-        <li>Rayno</li>
+        <li>calculate</li>
       </ul>
     </section>
   );
 }
 
-export default Services;
+export default Quote;
