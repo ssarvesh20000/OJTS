@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/logo.webp';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faYelp } from '@fortawesome/free-brands-svg-icons';
@@ -17,7 +18,7 @@ function Header() {
 
   return (
     <header style={headerStyle}>
-      <h1 style={titleStyle}>OJ TINT STUDIO</h1>
+      <img src={logo} alt="OJ TINT STUDIO" style={logoStyle} />
       <nav id="nav" style={navStyle}>
         <HashLink to="/#" style={navLinkStyle}>Home</HashLink>
         <HashLink to="/#services" style={navLinkStyle}>Services</HashLink>
@@ -76,8 +77,9 @@ const headerStyle = {
   zIndex: 1000,
 };
 
-const titleStyle = {
-  marginBottom: '10px',
+const logoStyle = {
+  height: '50px', // Adjust the height to fit your header
+  width: 'auto',
 };
 
 const navStyle = {
