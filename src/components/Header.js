@@ -6,6 +6,8 @@ import { faFacebook, faInstagram, faYelp } from '@fortawesome/free-brands-svg-ic
 
 function Header() {
   const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [hoveredLink, setHoveredLink] = useState(null);
+
 
   // Handlers to apply hover effect
   const handleMouseEnter = (icon) => {
@@ -20,11 +22,51 @@ function Header() {
     <header style={headerStyle}>
       <img src={logo} alt="OJ TINT STUDIO" style={logoStyle} />
       <nav id="nav" style={navStyle}>
-        <HashLink to="/#" style={navLinkStyle}>Home</HashLink>
-        <HashLink to="/#services" style={navLinkStyle}>Services</HashLink>
-        <HashLink to="/#small-gallery" style={navLinkStyle}>Gallery</HashLink>
-        <HashLink to="/#quote" style={navLinkStyle}>Quote</HashLink>
-        <HashLink to="/#contact" style={navLinkStyle}>Contact</HashLink>
+      <HashLink 
+  to="/#" 
+  style={hoveredLink === 'home' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
+  onMouseEnter={() => setHoveredLink('home')} 
+  onMouseLeave={() => setHoveredLink(null)}
+>
+  Home
+</HashLink>
+
+<HashLink 
+  to="/#services" 
+  style={hoveredLink === 'services' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
+  onMouseEnter={() => setHoveredLink('services')} 
+  onMouseLeave={() => setHoveredLink(null)}
+>
+  Services
+</HashLink>
+
+<HashLink 
+  to="/#small-gallery" 
+  style={hoveredLink === 'gallery' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
+  onMouseEnter={() => setHoveredLink('gallery')} 
+  onMouseLeave={() => setHoveredLink(null)}
+>
+  Gallery
+</HashLink>
+
+<HashLink 
+  to="/#quote" 
+  style={hoveredLink === 'quote' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
+  onMouseEnter={() => setHoveredLink('quote')} 
+  onMouseLeave={() => setHoveredLink(null)}
+>
+  Quote
+</HashLink>
+
+<HashLink 
+  to="/#contact" 
+  style={hoveredLink === 'contact' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
+  onMouseEnter={() => setHoveredLink('contact')} 
+  onMouseLeave={() => setHoveredLink(null)}
+>
+  Contact
+</HashLink>
+
       </nav>
 
       <div style={socialIconsStyle}>
@@ -70,11 +112,12 @@ const headerStyle = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  backgroundColor: '#111',
+  backgroundColor: 'rgba(17, 17, 17, 0.2)',
   color: '#fff',
   position: 'sticky',
   top: 0,
   zIndex: 1000,
+  backdropFilter: 'blur(7px)', // Adds a blur effect
 };
 
 const logoStyle = {
@@ -123,5 +166,11 @@ const yelpStyle = {
 const iconHoverStyle = {
   color: 'purple', // Color to change when hovered
 };
+
+const navLinkHoverStyle = {
+  color: '#add8e6', // Light blue color on hover
+  transition: 'color 0.3s ease', // Smooth transition for the color change
+};
+
 
 export default Header;
