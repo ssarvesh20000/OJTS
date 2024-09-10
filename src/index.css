@@ -25,7 +25,7 @@ a:hover {
   color: #0088cc; /* Slightly darker blue for hover state */
 }
 
-/* Remove background, box-shadow, and border-radius from sections */
+/* Global section styles */
 section {
   background-color: transparent; /* Transparent background for content sections */
   padding: 40px;
@@ -33,6 +33,27 @@ section {
   max-width: 800px;
   box-shadow: none; /* Remove box-shadow */
   border-radius: 0; /* Remove border-radius */
+}
+
+/* Override for #home section to take full width and height */
+#home {
+  max-width: 100vw;  /* Full viewport width */
+  width: 100%;       /* Ensure the full width of the screen */
+  height: 100vh;     /* Full viewport height */
+  margin: 0;         /* Remove margin */
+  padding: 0;        /* Remove padding */
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Override to maintain center alignment for the content inside the home section */
+#home h2, #home p {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 
 h1, h2, h3 {

@@ -121,7 +121,7 @@ const headerStyle = {
 };
 
 const logoStyle = {
-  height: '50px', // Adjust the height to fit your header
+  height: '100px', // Adjust the height to fit your header
   width: 'auto',
 };
 

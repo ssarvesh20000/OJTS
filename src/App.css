@@ -29,17 +29,26 @@ section {
   background-color: #111; /* Dark background for content sections */
   padding: 40px;
   margin: 20px auto;
-  max-width: 800px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Apply full-width styles to the home section with the background image */
+#home {
+  max-width: 100vw; /* Full viewport width for the home section */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  border-radius: 0; /* Remove border radius */
+  box-shadow: none; /* Remove box shadow */
+  height: 100vh; /* Ensure full height */
+  position: relative;
+  overflow: hidden;
 }
 
 h1, h2, h3 {
   color: #00aaff; /* Blue color for headings */
   margin-bottom: 20px;
 }
-
-
 
 p {
   font-size: 16px;
