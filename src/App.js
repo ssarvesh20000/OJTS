@@ -74,14 +74,24 @@ function Home() {
   };
 
   const titleStyle = {
-    fontSize: '72px',
+    fontSize: '95px',
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#000',
     position: 'relative',
     zIndex: 2, // Ensure the title appears on top of the image
     animation: 'glow 3s infinite',
+    letterSpacing: '-1.6px',
   };
+
+  const landingParaStyle = {
+    fontSize: '23px',
+    textAlign: 'center',
+    color: '#D3D3D3',
+    lineHeight: '1.2',
+    maxWidth: '750px', margin: '0 auto',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',  // Black shadow with slight blur
+  }
 
   const glowAnimation = `
     @keyframes glow {
@@ -101,20 +111,10 @@ function Home() {
     <section id="home" style={homeStyle}>
       <style>{glowAnimation}</style>
       <h2 style={titleStyle}>OJ TINT STUDIO</h2>
-      <p>
-        OJ Tint Studio has been providing the best Automotive Window Tinting services 
-        to North San Jose, California, and surrounding areas since 2017. Fair prices, 
-        superior quality, and exceptional customer service are guaranteed when you work with us.
-      </p>
-      <p>
-        Over the years, we’ve learned that great service begins and ends with experienced 
-        and friendly professionals. We believe that our team is the best in the business, 
-        and have complete and total confidence in every person providing our services.
-      </p>
-      <p>
-        OJ Tint Studio finishes each project on schedule and with the highest level of quality. 
-        With a focus on personalized service, competitive rates, and customer satisfaction, 
-        we’re always striving to meet and exceed expectations.
+      <p style = {landingParaStyle}>
+      Since 2027, OJ Tint Studio has been providing top-quality
+       automotive window tinting in San Jose, CA. We offer fair pricing and
+      exceptional service, with a focus on personalized care and competitive rates.
       </p>
     </section>
   );

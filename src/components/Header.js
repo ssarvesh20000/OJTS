@@ -74,7 +74,7 @@ function Header() {
           href="https://www.yelp.com/biz/oj-tint-studio-san-jose-2"
           target="_blank"
           rel="noopener noreferrer"
-          style={hoveredIcon === 'yelp' ? { ...yelpStyle, ...iconHoverStyle } : yelpStyle}
+          style={hoveredIcon === 'yelp' ? { ...yelpStyle, ...yelpHoverStyle } : yelpStyle}
           onMouseEnter={() => handleMouseEnter('yelp')}
           onMouseLeave={handleMouseLeave}
         >
@@ -85,7 +85,7 @@ function Header() {
           href="https://www.instagram.com/ojtintstudio/"
           target="_blank"
           rel="noopener noreferrer"
-          style={hoveredIcon === 'instagram' ? { ...instaStyle, ...iconHoverStyle } : instaStyle}
+          style={hoveredIcon === 'instagram' ? { ...instaStyle, ...instaHoverStyle } : instaStyle}
           onMouseEnter={() => handleMouseEnter('instagram')}
           onMouseLeave={handleMouseLeave}
         >
@@ -96,7 +96,7 @@ function Header() {
           href="https://www.facebook.com/ojtintstudio/"
           target="_blank"
           rel="noopener noreferrer"
-          style={hoveredIcon === 'facebook' ? { ...facebookStyle, ...iconHoverStyle } : facebookStyle}
+          style={hoveredIcon === 'facebook' ? { ...facebookStyle, ...fbHoverStyle } : facebookStyle}
           onMouseEnter={() => handleMouseEnter('facebook')}
           onMouseLeave={handleMouseLeave}
         >
@@ -118,6 +118,7 @@ const headerStyle = {
   top: 0,
   zIndex: 1000,
   backdropFilter: 'blur(7px)', // Adds a blur effect
+  height: '45px',
 };
 
 const logoStyle = {
@@ -163,8 +164,27 @@ const yelpStyle = {
   textDecoration: 'none',
 };
 
-const iconHoverStyle = {
-  color: 'purple', // Color to change when hovered
+const baseIconStyle = {
+  transition: 'transform 0.3s ease, color 0.3s ease',
+};
+
+const instaHoverStyle = {
+  ...baseIconStyle,
+  color: '#F77777', // Color to change when hovered
+  transition: 'color 0.3s ease',
+  transform: 'scale(1.1)',
+};
+const fbHoverStyle = {
+  ...baseIconStyle,
+  color: '#6D9DE8', // Color to change when hovered
+  transition: 'color 0.3s ease',
+  transform: 'scale(1.1)',
+};
+const yelpHoverStyle = {
+  ...baseIconStyle,
+  color: '#F56565', // Color to change when hovered
+  transition: 'color 0.3s ease',
+  transform: 'scale(1.1)',
 };
 
 const navLinkHoverStyle = {
