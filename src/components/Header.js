@@ -3,70 +3,20 @@ import logo from '../assets/logo.webp';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faYelp } from '@fortawesome/free-brands-svg-icons';
-
+import './nav-and-icon.css';
 function Header() {
-  const [hoveredIcon, setHoveredIcon] = useState(null);
-  const [hoveredLink, setHoveredLink] = useState(null);
 
-
-  // Handlers to apply hover effect
-  const handleMouseEnter = (icon) => {
-    setHoveredIcon(icon);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIcon(null);
-  };
 
   return (
     <header style={headerStyle}>
       <img src={logo} alt="OJ TINT STUDIO" style={logoStyle} />
       <nav id="nav" style={navStyle}>
-      <HashLink 
-  to="/#" 
-  style={hoveredLink === 'home' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
-  onMouseEnter={() => setHoveredLink('home')} 
-  onMouseLeave={() => setHoveredLink(null)}
->
-  Home
-</HashLink>
-
-<HashLink 
-  to="/#services" 
-  style={hoveredLink === 'services' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
-  onMouseEnter={() => setHoveredLink('services')} 
-  onMouseLeave={() => setHoveredLink(null)}
->
-  Services
-</HashLink>
-
-<HashLink 
-  to="/#small-gallery" 
-  style={hoveredLink === 'gallery' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
-  onMouseEnter={() => setHoveredLink('gallery')} 
-  onMouseLeave={() => setHoveredLink(null)}
->
-  Gallery
-</HashLink>
-
-<HashLink 
-  to="/#quote" 
-  style={hoveredLink === 'quote' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
-  onMouseEnter={() => setHoveredLink('quote')} 
-  onMouseLeave={() => setHoveredLink(null)}
->
-  Quote
-</HashLink>
-
-<HashLink 
-  to="/#contact" 
-  style={hoveredLink === 'contact' ? { ...navLinkStyle, ...navLinkHoverStyle } : navLinkStyle} 
-  onMouseEnter={() => setHoveredLink('contact')} 
-  onMouseLeave={() => setHoveredLink(null)}
->
-  Contact
-</HashLink>
-
+        
+      <HashLink to="/#" className='link'>Home</HashLink>
+      <HashLink to="/#services"  className='link'>Services</HashLink>
+      <HashLink to="/#small-gallery" className='link'>Gallery</HashLink>
+      <HashLink to="/#quote" className='link'>Quote</HashLink>
+      <HashLink to="/#contact" className='link'>Contact</HashLink>
       </nav>
 
       <div style={socialIconsStyle}>
@@ -74,35 +24,25 @@ function Header() {
           href="https://www.yelp.com/biz/oj-tint-studio-san-jose-2"
           target="_blank"
           rel="noopener noreferrer"
-          style={hoveredIcon === 'yelp' ? { ...yelpStyle, ...yelpHoverStyle } : yelpStyle}
-          onMouseEnter={() => handleMouseEnter('yelp')}
-          onMouseLeave={handleMouseLeave}
-        >
-          <FontAwesomeIcon icon={faYelp} />
-        </a>
+          className='icon'
+          id="yelp"
+        ><FontAwesomeIcon icon={faYelp}/></a>
 
         <a
           href="https://www.instagram.com/ojtintstudio/"
           target="_blank"
           rel="noopener noreferrer"
-          style={hoveredIcon === 'instagram' ? { ...instaStyle, ...instaHoverStyle } : instaStyle}
-          onMouseEnter={() => handleMouseEnter('instagram')}
-          onMouseLeave={handleMouseLeave}
-        >
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
+          className='icon'
+          id="ig"
+        ><FontAwesomeIcon icon={faInstagram} /></a>
 
         <a
           href="https://www.facebook.com/ojtintstudio/"
           target="_blank"
           rel="noopener noreferrer"
-          style={hoveredIcon === 'facebook' ? { ...facebookStyle, ...fbHoverStyle } : facebookStyle}
-          onMouseEnter={() => handleMouseEnter('facebook')}
-          onMouseLeave={handleMouseLeave}
-        >
-          <FontAwesomeIcon icon={faFacebook} />
-        </a>
-      </div>
+          className='icon'
+          id="fb"
+        ><FontAwesomeIcon icon={faFacebook} /></a></div>
     </header>
   );
 }
@@ -134,63 +74,13 @@ const navStyle = {
   marginBottom: '0px',
 };
 
-const navLinkStyle = {
-  color: '#00aaff',
-  textDecoration: 'none',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-};
 
 const socialIconsStyle = {
   display: 'flex',
   gap: '20px', // Space between icons
 };
 
-const facebookStyle = {
-  fontSize: '24px',
-  color: '#1877F2',
-  textDecoration: 'none',
-};
 
-const instaStyle = {
-  fontSize: '24px',
-  color: '#E4405F',
-  textDecoration: 'none',
-};
-
-const yelpStyle = {
-  fontSize: '24px',
-  color: '#D32323',
-  textDecoration: 'none',
-};
-
-const baseIconStyle = {
-  transition: 'transform 0.3s ease, color 0.3s ease',
-};
-
-const instaHoverStyle = {
-  ...baseIconStyle,
-  color: '#F77777', // Color to change when hovered
-  transition: 'color 0.3s ease',
-  transform: 'scale(1.1)',
-};
-const fbHoverStyle = {
-  ...baseIconStyle,
-  color: '#6D9DE8', // Color to change when hovered
-  transition: 'color 0.3s ease',
-  transform: 'scale(1.1)',
-};
-const yelpHoverStyle = {
-  ...baseIconStyle,
-  color: '#F56565', // Color to change when hovered
-  transition: 'color 0.3s ease',
-  transform: 'scale(1.1)',
-};
-
-const navLinkHoverStyle = {
-  color: '#add8e6', // Light blue color on hover
-  transition: 'color 0.3s ease', // Smooth transition for the color change
-};
 
 
 export default Header;

@@ -1,0 +1,39 @@
+.link {
+    color: #00aaff;
+    text-decoration: 'none';
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #add8e6; 
+}
+
+.icon#ig {
+    font-size: 24px;
+    color: #E4405F;
+    text-decoration: 'none';
+}
+.icon#fb {
+    font-size: 24px;
+    color: #1877F2;
+    text-decoration: 'none';
+}
+.icon#yelp {
+    font-size: 24px;
+    color: #D32323;
+    text-decoration: 'none';
+}
+
+.icon#ig:hover{
+    color: #F77777;
+    transform: scale(1.05);
+}
+.icon#fb:hover{
+    color: #6D9DE8;
+    transform: scale(1.05);
+}
+.icon#yelp:hover{
+    color: #F56565;
+    transform: scale(1.05);
+}
