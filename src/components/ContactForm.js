@@ -31,6 +31,7 @@ function ContactForm() {
             onChange={handleChange}
           />
         </div>
+        
         <div>
           <label>Email:</label>
           <input
@@ -40,6 +41,37 @@ function ContactForm() {
             onChange={handleChange}
           />
         </div>
+
+        <div>
+          <label>Car Make:</label>
+          <input
+            type="text"
+            name="make"
+            value={formData.make}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Car Model:</label>
+          <input
+            type="text"
+            name="model"
+            value={formData.make}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Year:</label>
+          <input
+            type="text"
+            name="year"
+            value={formData.make}
+            onChange={handleChange}
+          />
+        </div>
+        
         <div>
           <label>Message:</label>
           <textarea

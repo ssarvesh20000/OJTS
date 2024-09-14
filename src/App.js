@@ -19,8 +19,8 @@ function App() {
             element={
               <div>
                 <Home /> {/* Updated Home component with background image and scroll fade */}
-                <Services />
                 <SmallGallery />
+                <Services />
                 <Quote />
                 <ContactForm />
               </div>
@@ -111,6 +111,7 @@ function Home() {
     <section id="home" style={homeStyle}>
       <style>{glowAnimation}</style>
       <h2 style={titleStyle}>OJ TINT STUDIO</h2>
+      <h3 style={landingParaStyle}>Bay Area</h3>
       <p style = {landingParaStyle}>
       Since 2027, OJ Tint Studio has been providing top-quality
        automotive window tinting in San Jose, CA. We offer fair pricing and
