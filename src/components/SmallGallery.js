@@ -3,56 +3,60 @@ import { Link } from 'react-router-dom';
 import { useHover } from './HoverHandler';
 import HoverDetails from './HoverDetails';
 import lebron from '../assets/lebron.png';
+import green from '../assets/green.avif';
+import curry from '../assets/curry.webp';
+import snell from '../assets/blacky.avif';
+import bignig from '../assets/bigboi.jpeg';
 
 function SmallGallery() {
   const { hoveredImageId, handleMouseEnter, handleMouseLeave } = useHover();
   const images = [
     { id: 1, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 2, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 3, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 4, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 5, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 6, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 7, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 8, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 9, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    // Add more photos as needed
+    { id: 2, src: green, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '20% (he black asf)', b_tint: '5%' },
+    { id: 3, src: curry, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '40% (he black asf)', b_tint: '5%' },
+    { id: 4, src: snell, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '60% (he black asf)', b_tint: '5%' },
+    { id: 5, src: bignig, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '100% (he black asf)', b_tint: '5%' },
   ];
+
+  // Duplicate the image array to make the looping seamless
+  const duplicatedImages = [...images, ...images];
 
   return (
     <section id="small-gallery" style={{ padding: '20px', scrollMarginTop: '100px' }}>
       <h2>Gallery</h2>
       <p>Here are a few examples of our recent work.</p>
       <div style={galleryStyle}>
-        {images.map((image) => (
-          <div 
-            key={image.id} 
-            style={imageContainerStyle} 
-            onMouseEnter={() => handleMouseEnter(image.id)} 
-            onMouseLeave={handleMouseLeave}
-          >
-            <img
-              src={image.src}
-              alt={image.model}
-              style={imageStyle}
-            />
-            {hoveredImageId === image.id && (
-              <div style={overlayStyle}>
-                <HoverDetails
-                  image={image.src}
-                  make={image.make}
-                  model={image.model}
-                  f_tint={image.f_tint}
-                  b_tint={image.b_tint}
-                />
-              </div>
-            )}
-          </div>
-        ))}
+        <div style={sliderStyle}>
+          {duplicatedImages.map((image, index) => (
+            <div 
+              key={index} 
+              style={imageContainerStyle} 
+              onMouseEnter={() => handleMouseEnter(image.id)} 
+              onMouseLeave={handleMouseLeave}
+            >
+              <img
+                src={image.src}
+                alt={image.model}
+                style={imageStyle}
+              />
+              {hoveredImageId === image.id && (
+                <div style={overlayStyle}>
+                  <HoverDetails
+                    image={image.src}
+                    make={image.make}
+                    model={image.model}
+                    f_tint={image.f_tint}
+                    b_tint={image.b_tint}
+                  />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       <Link to="/gallery">
-        <button style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#007BFF', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+        <button style={buttonStyle}>
           View Full Gallery
         </button>
       </Link>
@@ -61,14 +65,18 @@ function SmallGallery() {
 }
 
 const galleryStyle = {
+  overflow: 'hidden', // Hide overflow for sliding effect
+  width: '100%',
+};
+
+const sliderStyle = {
   display: 'flex',
-  justifyContent: 'space-around',
-  flexWrap: 'wrap',
+  animation: 'slide 18s linear infinite', // Slide animation with infinite loop
 };
 
 const imageContainerStyle = {
+  minWidth: '25%', // Adjust to fit 5 images on screen
   position: 'relative',
-  width: '30%',
   margin: '10px',
 };
 
@@ -96,5 +104,30 @@ const overlayStyle = {
   boxSizing: 'border-box',
   borderRadius: '8px',
 };
+
+const buttonStyle = {
+  marginTop: '20px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  backgroundColor: '#007BFF',
+  color: '#fff',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
+};
+
+// CSS keyframes for seamless sliding animation
+const styles = `
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-137.5%); /* Move by 50% since we duplicated the images */
+  }
+}
+`;
+
+document.head.insertAdjacentHTML('beforeend', `<style>${styles}</style>`);
 
 export default SmallGallery;
