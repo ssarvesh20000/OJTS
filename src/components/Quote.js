@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
+import carImage from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-black.jpg'; // Base car image
+import tintFront from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-front-05.png'; // Front tint image
+import tintSide from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-sides-05.png';   // Side tint image
+import tintBack from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-back-05.png';   // Back tint image
 
 function Quote() {
   const [formData, setFormData] = useState({
-    type: 'sedan',  // default to 'sedan'
-    make: '',
-    model: '',
-    plate_num: '',
-    front_windshield_tint: 0,
-    front_window_tint: 0,
-    back_windshield_tint: 0,
-    back_window_tint: 0,
-    sunroof_tint: 0
+    type: 'sedan',
+    front_windshield_tint: 70,
+    front_window_tint: 70,
+    back_windshield_tint: 70,
+    back_window_tint: 70,
+    sunroof_tint: 70,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: parseInt(value) });
   };
 
   const handleSubmit = (e) => {
@@ -26,27 +27,71 @@ function Quote() {
   return (
     <section id="quote" style={{ padding: '20px', scrollMarginTop: '100px' }}>
       <h2>Get Pricing</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Car Type Dropdown */}
-        <div>
-          <label>Car Type:</label>
-          <select
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-          >
-            <option value="truck">Truck</option>
-            <option value="sedan">Sedan</option>
-            <option value="SUV">SUV</option>
-          </select>
-        </div>
+      
+      {/* Car Preview */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px', position: 'relative' }}>
+        {/* Base Car Image */}
+        <img 
+          src={carImage} 
+          alt="Car Preview" 
+          style={{
+            width: '500px',
+            height: 'auto',
+          }} 
+        />
+        
+        {/* Front Window Tint */}
+        <img 
+          src={tintFront} 
+          alt="Front Tint" 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '500px',
+            height: 'auto',
+            opacity: formData.front_window_tint / 100,  // Adjust opacity based on tint level
+          }} 
+        />
 
-        {/* Front Windshield Tint Slider */}
+        {/* Side Window Tint */}
+        <img 
+          src={tintSide} 
+          alt="Side Tint" 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '500px',
+            height: 'auto',
+            opacity: formData.front_window_tint / 100,  // Adjust opacity based on tint level
+          }} 
+        />
+
+        {/* Back Window Tint */}
+        <img 
+          src={tintBack} 
+          alt="Back Tint" 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '500px',
+            height: 'auto',
+            opacity: formData.back_window_tint / 100,  // Adjust opacity based on tint level
+          }} 
+        />
+      </div>
+
+      <form onSubmit={handleSubmit}>
+
+
+        {/* Front Windshield Tint */}
         <div>
-          <label>Front Windshield Tint Percentage:</label>
+          <label>Front Windshield Tint:</label>
           <input
             type="range"
-            min="0"
+            min="5"
             max="100"
             step="5"
             name="front_windshield_tint"
@@ -56,12 +101,12 @@ function Quote() {
           <span>{formData.front_windshield_tint}%</span>
         </div>
 
-        {/* Front Window Tint Slider */}
+        {/* Front Window Tint */}
         <div>
-          <label>Front Window Tint Percentage:</label>
+          <label>Front Window Tint:</label>
           <input
             type="range"
-            min="0"
+            min="5"
             max="100"
             step="5"
             name="front_window_tint"
@@ -71,12 +116,12 @@ function Quote() {
           <span>{formData.front_window_tint}%</span>
         </div>
 
-        {/* Back Windshield Tint Slider */}
+        {/* Back Windshield Tint */}
         <div>
-          <label>Back Windshield Tint Percentage:</label>
+          <label>Back Windshield Tint:</label>
           <input
             type="range"
-            min="0"
+            min="5"
             max="100"
             step="5"
             name="back_windshield_tint"
@@ -86,12 +131,12 @@ function Quote() {
           <span>{formData.back_windshield_tint}%</span>
         </div>
 
-        {/* Back Window Tint Slider */}
+        {/* Back Window Tint */}
         <div>
-          <label>Back Window Tint Percentage:</label>
+          <label>Back Window Tint:</label>
           <input
             type="range"
-            min="0"
+            min="5"
             max="100"
             step="5"
             name="back_window_tint"
@@ -101,11 +146,12 @@ function Quote() {
           <span>{formData.back_window_tint}%</span>
         </div>
 
+        {/* Sunroof Tint */}
         <div>
-          <label>Sunroof Tint Percentage:</label>
+          <label>Sunroof Tint:</label>
           <input
             type="range"
-            min="0"
+            min="5"
             max="100"
             step="5"
             name="sunroof_tint"
@@ -115,14 +161,10 @@ function Quote() {
           <span>{formData.sunroof_tint}%</span>
         </div>
 
-
-        <h3 style={{ marginTop: '30px' }}>Calculated Price: </h3>
         <button type="submit">Calculate</button>
       </form>
-
     </section>
   );
 }
 
 export default Quote;
-

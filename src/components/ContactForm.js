@@ -11,7 +11,6 @@ function ContactForm() {
     emailjs.sendForm('service_9v8bv8k', 'template_xp8se1b', form.current, 'iEPd4ZUZDvveGMX7H')
       .then((result) => {
           console.log(result.text);
-          // Show success message using form data
           const name = e.target.name.value;
           const year = e.target.year.value;
           const make = e.target.make.value;
@@ -20,59 +19,127 @@ function ContactForm() {
           e.target.reset();
       }, (error) => {
           console.log(error.text);
-          // Show error message
           setSubmissionMessage('Message submission unsuccessful :(');
       });
-
-    // Optionally reset the form after submission
   };
 
   return (
-    <section id="contact" style={{ padding: '20px', scrollMarginTop: '100px' }}>
-      <h2>Contact Us</h2>
-      <form ref={form} onSubmit={sendEmail}>
-        <div>
-          <label>Name:</label>
-          <input type="text" name="name" required />
+    <section id="contact" style={sectionStyle}>
+      <h2 style={headerStyle}>Contact Us</h2>
+      <form ref={form} onSubmit={sendEmail} style={formStyle}>
+        <div style={inputGroupStyle}>
+          <label style={labelStyle}>Name:</label>
+          <input type="text" name="name" style={inputStyle} required />
         </div>
         
-        <div>
-          <label>Email:</label>
-          <input type="email" name="email" required />
+        <div style={inputGroupStyle}>
+          <label style={labelStyle}>Email:</label>
+          <input type="email" name="email" style={inputStyle} required />
         </div>
 
-        <div>
-          <label>Phone Number:</label>
-          <input type="text" name="number" />
+        <div style={inputGroupStyle}>
+          <label style={labelStyle}>Phone Number:</label>
+          <input type="text" name="number" style={inputStyle} />
         </div>
 
-        <div>
-          <label>Car Make:</label>
-          <input type="text" name="make" required />
+        <div style={inputGroupStyle}>
+          <label style={labelStyle}>Car Make:</label>
+          <input type="text" name="make" style={inputStyle} required />
         </div>
 
-        <div>
-          <label>Car Model:</label>
-          <input type="text" name="model" required />
+        <div style={inputGroupStyle}>
+          <label style={labelStyle}>Car Model:</label>
+          <input type="text" name="model" style={inputStyle} required />
         </div>
 
-        <div>
-          <label>Year:</label>
-          <input type="text" name="year" required />
+        <div style={inputGroupStyle}>
+          <label style={labelStyle}>Year:</label>
+          <input type="text" name="year" style={inputStyle} required />
         </div>
         
-        <div>
-          <label>Message:</label>
-          <textarea name="message" required />
+        <div style={inputGroupStyle}>
+          <label style={labelStyle}>Message:</label>
+          <textarea name="message" style={textareaStyle} required />
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" style={buttonStyle}>Submit</button>
 
-        {/* Show submission message after form is submitted */}
-        {submissionMessage && <p>{submissionMessage}</p>}
+        {submissionMessage && <p style={messageStyle}>{submissionMessage}</p>}
       </form>
     </section>
   );
 }
+
+// Styles
+const sectionStyle = {
+  padding: '20px',
+  maxWidth: '600px', // Set a max width to make the form compact
+  margin: '0 auto',
+  backgroundColor: '#000', // Black background
+  borderRadius: '10px',
+  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)', // Add a subtle shadow for depth
+};
+
+const headerStyle = {
+  color: '#007BFF', // Blue accent for the header
+  textAlign: 'center',
+  marginBottom: '20px',
+};
+
+const formStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '15px', // Add space between the form fields
+};
+
+const inputGroupStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const labelStyle = {
+  marginBottom: '5px',
+  color: '#fff', // White text for labels
+  fontWeight: 'bold',
+};
+
+const inputStyle = {
+  padding: '10px',
+  borderRadius: '5px',
+  border: '1px solid #333', // Darker border for inputs
+  backgroundColor: '#222', // Dark input fields
+  color: '#fff', // White text
+  outline: 'none',
+  fontSize: '14px',
+};
+
+const textareaStyle = {
+  padding: '10px',
+  borderRadius: '5px',
+  border: '1px solid #333',
+  backgroundColor: '#222',
+  color: '#fff',
+  outline: 'none',
+  fontSize: '14px',
+  minHeight: '100px', // Adjust the height for the message textarea
+};
+
+const buttonStyle = {
+  padding: '10px 20px',
+  fontSize: '16px',
+  backgroundColor: '#007BFF', // Blue button background
+  color: '#fff', // White text
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
+  alignSelf: 'center', // Center the button
+  marginTop: '20px',
+};
+
+const messageStyle = {
+  color: '#00FF00', // Success message in green
+  marginTop: '10px',
+  textAlign: 'center',
+};
 
 export default ContactForm;
