@@ -75,7 +75,7 @@ const sliderStyle = {
 };
 
 const imageContainerStyle = {
-  minWidth: '25%', // Adjust to fit 5 images on screen
+  minWidth: '48%', // Adjust to fit 5 images on screen
   position: 'relative',
   margin: '1%',
 };
@@ -123,7 +123,7 @@ const styles = `
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-135%); /* Move by 50% since we duplicated the images */
+    transform: translateX(-250%); /* Move by 50% since we duplicated the images */
   }
 }
 `;
