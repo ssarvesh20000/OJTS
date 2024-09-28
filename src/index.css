@@ -34,6 +34,7 @@ section {
   max-width: 1500px;
   box-shadow: none; /* Remove box-shadow */
   border-radius: 0; /* Remove border-radius */
+  margin-bottom: 250px;
 }
 
 /* Override for #home section to take full width and height */
