@@ -52,25 +52,23 @@ const headerStyle = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  backgroundColor: 'rgba(17, 17, 17, 0.2)',
+  backgroundColor: 'black',
   color: '#fff',
   position: 'sticky',
   top: 0,
   zIndex: 1000,
-  backdropFilter: 'blur(7px)', // Adds a blur effect
   height: '45px',
 };
 
 const logoStyle = {
-  height: '100px', // Adjust the height to fit your header
+  height: '85px', // Adjust the height to fit your header
   width: 'auto',
 };
 
 const navStyle = {
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
-  gap: '20px', // Space between the links
+  alignItems: 'center', // Space between the links
   marginBottom: '0px',
 };
 

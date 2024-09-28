@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useHover } from './HoverHandler';
 import HoverDetails from './HoverDetails';
-import lebron from '../assets/lebron.png';
-import green from '../assets/green.avif';
-import curry from '../assets/curry.webp';
-import snell from '../assets/blacky.avif';
-import bignig from '../assets/bigboi.jpeg';
+import supra from '../assets/1supra.png';
+import rolly from '../assets/2rolly.png';
+import amg from '../assets/3amg.png';
+import ferrari from '../assets/4ferrari.png';
+import tesla from '../assets/5tesla.png';
 
 function SmallGallery() {
   const { hoveredImageId, handleMouseEnter, handleMouseLeave } = useHover();
   const images = [
-    { id: 1, src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { id: 2, src: green, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '20% (he black asf)', b_tint: '5%' },
-    { id: 3, src: curry, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '40% (he black asf)', b_tint: '5%' },
-    { id: 4, src: snell, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '60% (he black asf)', b_tint: '5%' },
-    { id: 5, src: bignig, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '100% (he black asf)', b_tint: '5%' },
+    { id: 1, src: supra, make: 'Toyota', model: 'GR Supra', f_tint: '20%', b_tint: '20%' },
+    { id: 2, src: rolly, make: 'Rolls Royce', model: 'Ghost', f_tint: '20%', b_tint: '5%' },
+    { id: 3, src: amg, make: 'Mercedes Benz', model: 'AMG GTR', f_tint: '15%', b_tint: '15%' },
+    { id: 4, src: ferrari, make: 'Ferrari', model: 'F8 Tributo', f_tint: '??', b_tint: '??' },
+    { id: 5, src: tesla, make: 'Tesla', model: 'Model 3', f_tint: '20%', b_tint: '5%' },
   ];
 
   // Duplicate the image array to make the looping seamless
@@ -71,18 +71,18 @@ const galleryStyle = {
 
 const sliderStyle = {
   display: 'flex',
-  animation: 'slide 18s linear infinite', // Slide animation with infinite loop
+  animation: 'slide 20s linear infinite', // Slide animation with infinite loop
 };
 
 const imageContainerStyle = {
   minWidth: '25%', // Adjust to fit 5 images on screen
   position: 'relative',
-  margin: '10px',
+  margin: '1%',
 };
 
 const imageStyle = {
   width: '100%',
-  borderRadius: '8px',
+  borderRadius: '10%',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
   cursor: 'pointer',
   transition: 'all 0.3s ease',
@@ -123,7 +123,7 @@ const styles = `
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-137.5%); /* Move by 50% since we duplicated the images */
+    transform: translateX(-135%); /* Move by 50% since we duplicated the images */
   }
 }
 `;

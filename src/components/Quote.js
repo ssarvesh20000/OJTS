@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
-import carImage from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-black Background Removed.png'; // Base car image
+import carImage from '../assets/tint images/car-black Background Removed.png'; // Base car image
 
-import tintFront5 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-front-05.png'; // Front tint image
-import tintFront20 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-front-20.avif';
-import tintFront35 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-front-35.png';
-import tintFront50 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-front-50.png';
-import tintFront70 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-front-70.avif';
+import tintFront5 from '../assets/tint images/car-front-05.png'; // Front tint image
+import tintFront20 from '../assets/tint images/car-front-20.avif';
+import tintFront35 from '../assets/tint images/car-front-35.png';
+import tintFront50 from '../assets/tint images/car-front-50.png';
+import tintFront70 from '../assets/tint images/car-front-70.avif';
 
-import tintSide5 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-sides-05.png';   // Side tint image
-import tintSide20 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-sides-20.png';
-import tintSide35 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-sides-35.png';
-import tintSide50 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-sides-50.avif';
-import tintSide70 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-sides-70.avif';   
+import tintSide5 from '../assets/tint images/car-sides-05.png';   // Side tint image
+import tintSide20 from '../assets/tint images/car-sides-20.png';
+import tintSide35 from '../assets/tint images/car-sides-35.png';
+import tintSide50 from '../assets/tint images/car-sides-50.avif';
+import tintSide70 from '../assets/tint images/car-sides-70.avif';   
 
-import tintBack5 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-back-05.png';   // Back tint image
-import tintBack20 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-back-20.avif';
-import tintBack35 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-back-35.png';
-import tintBack50 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-back-50.avif';
-import tintBack70 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-back-70.avif';   
+import tintBack5 from '../assets/tint images/car-back-05.png';   // Back tint image
+import tintBack20 from '../assets/tint images/car-back-20.avif';
+import tintBack35 from '../assets/tint images/car-back-35.png';
+import tintBack50 from '../assets/tint images/car-back-50.avif';
+import tintBack70 from '../assets/tint images/car-back-70.avif';   
 
-import windshield50 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-windshield-50.png'; //windshield
-import windshield70 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-windshield-70.png';
-import windshield80 from '/Users/sarvesh/sarvystuff/portfolio/OJTSreact/OJTS/src/assets/tint images/car-windshield-80.avif';
+import windshield50 from '../assets/tint images/car-windshield-50.png'; //windshield
+import windshield70 from '../assets/tint images/car-windshield-70.png';
+import windshield80 from '../assets/tint images/car-windshield-80.avif';
 
 function Quote() {
   const [formData, setFormData] = useState({

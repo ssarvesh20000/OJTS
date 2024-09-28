@@ -30,6 +30,7 @@ section {
   background-color: transparent; /* Transparent background for content sections */
   padding: 40px;
   margin: 20px auto;
+  width: 75%;
   max-width: 1500px;
   box-shadow: none; /* Remove box-shadow */
   border-radius: 0; /* Remove border-radius */
