@@ -7,6 +7,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import Quote from './components/Quote';
 import Gallery from './components/Gallery'; // Separate Gallery Page
+import './index.css';
 
 function App() {
   return (
@@ -80,9 +81,10 @@ function Home() {
     color: '#000',
     position: 'relative',
     zIndex: 2, // Ensure the title appears on top of the image
-    animation: 'glow 3s infinite',
+    animation: 'glow 3s infinite, tracking-in-expand 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both', // Combine animations
     letterSpacing: '-1.6px',
   };
+  
 
   const landingParaStyle = {
     fontSize: '23px',
@@ -110,7 +112,7 @@ function Home() {
   return (
     <section id="home" style={homeStyle}>
       <style>{glowAnimation}</style>
-      <h2 style={titleStyle}>OJ TINT STUDIO</h2>
+      <h2 style={titleStyle} className="tracking-in-expand">OJ TINT STUDIO</h2>
       <h3 style={landingParaStyle}>Bay Area</h3>
       <p style = {landingParaStyle}>
       Since 2027, OJ Tint Studio has been providing top-quality
