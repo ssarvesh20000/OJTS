@@ -7,6 +7,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import Quote from './components/Quote';
 import Gallery from './components/Gallery'; // Separate Gallery Page
+import './App.css';
 
 function App() {
   return (
@@ -80,7 +81,7 @@ function Home() {
     color: '#000',
     position: 'relative',
     zIndex: 2, // Ensure the title appears on top of the image
-    animation: 'glow 3s infinite',
+    animation: 'glow 3s infinite, tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both', // Combine animations
     letterSpacing: '-1.6px',
   };
 
@@ -92,7 +93,7 @@ function Home() {
     maxWidth: '750px',
     margin: '0 auto',
     textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Black shadow with slight blur
-    animation: 'fadeInFromDarkness 20s ease-out forwards', // Fade-in from darkness for paragraph text
+    animation: 'fadeInFromDarkness 2s ease-out forwards', // Fade-in from darkness for paragraph text
     opacity: 0, // Start invisible
   };
 
