@@ -34,7 +34,7 @@ function Services() {
       <h3>AutoBahn Black</h3>
         <p style={{ color: 'black' }}>Not looking to break the bank, yet, still have the visual and UV benefits of window tints? 
           Autobahn’s Black Film offers privacy, UV protection, and glare reduction, making your car’s 
-          interior more comfortable to drive in. This option is the entry- level window film with an 
+          interior more comfortable to drive in. This option is the entry - level window film with an 
           affordable price.</p>
       </div>
 
