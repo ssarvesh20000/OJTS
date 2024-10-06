@@ -173,8 +173,8 @@ function Quote() {
             alt="Front Windshield Tint" 
             style={{
               position: 'absolute',
-              top: '26.45%', 
-              left: '-0.17%',
+              top: '26.8%', 
+              left: '-0.20%',
               width: '100%', 
               height: 'auto',
             }} 
@@ -186,8 +186,8 @@ function Quote() {
             alt="Front Tint" 
             style={{
               position: 'absolute',
-              top: '26.4%', 
-              left: '-0.05%',
+              top: '26.7%', 
+              left: '-0.0%',
               width: '100%', 
               height: 'auto',
             }} 
@@ -199,8 +199,8 @@ function Quote() {
             alt="Side Tint" 
             style={{
               position: 'absolute',
-              top: '26.5%', 
-              left: '-0.05%',
+              top: '26.7%', 
+              left: '-0.03%',
               width: '100%', 
               height: 'auto',
             }} 
@@ -212,8 +212,8 @@ function Quote() {
             alt="Back Tint" 
             style={{
               position: 'absolute',
-              top: '26.4%', 
-              left: '-0.05%',
+              top: '26.8%', 
+              left: '-0.1%',
               width: '100%', 
               height: 'auto',
             }} 
