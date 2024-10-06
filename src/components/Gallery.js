@@ -1,17 +1,63 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ImageClicked from './ImageClicked';
-import lebron from '../assets/lebron.png';
+import teslaY from '../assets/carGal/tesla-y.png';  // Updated import
+import lexus from '../assets/carGal/lexusRC350.png';
+import honda from '../assets/carGal/hondaR.png';
+import bmw from '../assets/carGal/bmwm3.png';
+import Rivian1 from '../assets/carGal/rivian1.png';
+import vettec8 from '../assets/carGal/vettec8.png';
+import modelX from '../assets/carGal/modelX.png';
+import bentley from '../assets/carGal/bentley.png';
+import cybertruckwhite from '../assets/carGal/cybertruckwhite.png';
+import cybertruckgreen from '../assets/carGal/cybertruckgreen.png';
+import ferrari488 from '../assets/carGal/ferrari488.png';
+import benzgt55 from '../assets/carGal/benzgt55.png';
+import tacoma from '../assets/carGal/tacoma.png';
+import mazda from '../assets/carGal/mazda.png';
+import greenm3 from '../assets/carGal/greenm3.png';
+import blackc8 from '../assets/carGal/blackc8.png';
+import challenger from '../assets/carGal/challenger.png';
+import mustang from '../assets/carGal/mustang.png';
+import lambo from '../assets/carGal/lambo.png';
+import Truck from '../assets/carGal/Truck.png';
+
+import g37 from '../assets/carGal/g37.png';
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
+  
+  // Updated the image object to reflect Tesla Y instead of Lebron
   const images = [
-    { src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%'},
-    { src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%'},
-    { src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
-    { src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%'},
-    { src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%'},
-    { src: lebron, make: 'Lebron\'s Mom', model: 'Lebron James', f_tint: '0% (he black asf)', b_tint: '5%' },
+
+    { src: lambo, make: 'Lamborghini', model: 'Aventador', f_tint: '5%', b_tint: '5%' },
+    { src: ferrari488, make: 'Ferrari', model: '488', f_tint: '5%', b_tint: '5%' },
+    { src: honda, make: 'Honda', model: 'Type R', f_tint: '35%', b_tint: '35%' },
+    
+    { src: mustang, make: 'Ford', model: 'Mustang', f_tint: '35%', b_tint: '5%' },
+    { src: greenm3, make: 'BMW', model: 'M3', f_tint: '5%', b_tint: '5%' },
+    { src: challenger, make: 'Dodge', model: 'Challenger', f_tint: '20%', b_tint: '20%' },
+
+    { src: benzgt55, make: 'Mercedees Benz', model: 'GT55', f_tint: '0%', b_tint: '5%' },
+    { src: cybertruckwhite, make: 'Tesla', model: 'Cybertruck', f_tint: '50%', b_tint: '5%' },
+    { src: vettec8, make: 'Corvette', model: 'C8 Z06', f_tint: '70%', b_tint: '70%' },
+
+    { src: modelX, make: 'Tesla', model: 'Model X', f_tint: '70%', b_tint: '70%' },
+    { src: bentley, make: 'Bentley', model: 'Bentayga', f_tint: '20%', b_tint: '20%' },
+    { src: Rivian1, make: 'Rivian', model: 'R1S', f_tint: '50%', b_tint: '15%' },
+
+    { src: cybertruckgreen, make: 'Tesla', model: 'Cybertruck', f_tint: '20%', b_tint: '20%' },
+    { src: teslaY, make: 'Tesla', model: 'Model Y', f_tint: '30%', b_tint: '5%' },
+    { src: bmw, make: 'BMW', model: 'M3', f_tint: '20%', b_tint: '20%' },
+
+    { src: tacoma, make: 'Toyota', model: 'Tacoma', f_tint: '20%', b_tint: '20%' },
+    { src: mazda, make: 'Mazda', model: 'RX7', f_tint: '30%', b_tint: '30%' },
+    { src: lexus, make: 'Lexus', model: 'RC350', f_tint: '5%', b_tint: '5%' },
+
+    { src: blackc8, make: 'Corvette', model: 'C8 Z06', f_tint: '30%', b_tint: '30%' },
+    { src: g37, make: 'Infiniti', model: 'G37', f_tint: '50%', b_tint: '5%' },
+    { src: Truck, make: 'Freightliner', model: 'pickup truck', f_tint: '35%', b_tint: '35%' },
+    
     // Add more photos as needed
   ];
 
@@ -23,23 +69,20 @@ function Gallery() {
     setSelectedImage(null);
   };
 
-
-
-
   return (
     <section style={{ padding: '20px' }}>
       <h2>Main Gallery</h2>
-      <p>Explore thousands of our tinting projects.</p>
+      <p>Explore 2000+ tinting projects on our instgram</p>
       <div style={galleryStyle}>
-          {images.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image.src}
-                    alt={image.name}
-                    style={imageStyle}
-                    onClick={() => handleImageClick(image)}
-                  />
-                ))}
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image.src}
+            alt={image.model}   // Updated alt text
+            style={imageStyle}
+            onClick={() => handleImageClick(image)}
+          />
+        ))}
       </div>
 
       {selectedImage && (
@@ -53,7 +96,6 @@ function Gallery() {
           b_tint={selectedImage.b_tint}
         />
       )}
-
     </section>
   );
 }
@@ -62,7 +104,7 @@ const galleryStyle = {
   display: 'flex',
   justifyContent: 'space-around',
   gap: '10px',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 };
 
 const imageStyle = {
@@ -70,7 +112,7 @@ const imageStyle = {
   margin: '10px',
   borderRadius: '8px',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
-  cursor: 'pointer'
+  cursor: 'pointer',
 };
 
 export default Gallery;

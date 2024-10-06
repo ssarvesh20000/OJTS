@@ -38,11 +38,14 @@ const overlayStyle = {
 };
 
 const popupStyle = {
-  backgroundColor: 'blue',
+  backgroundColor: 'lightblack',
   padding: '20px',
   borderRadius: '8px',
   position: 'relative',
-  textAlign: 'center'
+  textAlign: 'center',
+  maxWidth: '40%',          // Ensure the popup doesn't exceed 90% of the viewport width
+  maxHeight: '100%'         // Ensure the popup doesn't exceed 90% of the viewport height
+  //overflow: 'auto',         // Allow scrolling if content overflows
 };
 
 const enlargedImageStyle = {

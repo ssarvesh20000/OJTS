@@ -25,6 +25,7 @@ function ContactForm() {
 
   return (
     <section id="contact" style={sectionStyle}>
+      <div style={{ height: '40px' }}></div> {/* This adds the empty space */}
       <h2 style={headerStyle}>Contact Us</h2>
       <form ref={form} onSubmit={sendEmail} style={formStyle}>
         <div style={inputGroupStyle}>
@@ -81,7 +82,7 @@ const sectionStyle = {
 };
 
 const headerStyle = {
-  color: '#007BFF', // Blue accent for the header
+  color: '#00aaff', // Blue accent for the header adgkjq'dwgvALKDFJADJK
   textAlign: 'center',
   marginBottom: '20px',
 };

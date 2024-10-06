@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHover } from './HoverHandler';
 import HoverDetails from './HoverDetails';
@@ -10,23 +10,32 @@ import tesla from '../assets/5tesla.png';
 
 function SmallGallery() {
   const { hoveredImageId, handleMouseEnter, handleMouseLeave } = useHover();
+  const [isPaused, setIsPaused] = useState(false); // State to track if the slider should be paused
   const images = [
     { id: 1, src: supra, make: 'Toyota', model: 'GR Supra', f_tint: '20%', b_tint: '20%' },
     { id: 2, src: rolly, make: 'Rolls Royce', model: 'Ghost', f_tint: '20%', b_tint: '5%' },
-    { id: 3, src: amg, make: 'Mercedes Benz', model: 'AMG GTR', f_tint: '15%', b_tint: '15%' },
     { id: 4, src: ferrari, make: 'Ferrari', model: 'F8 Tributo', f_tint: '??', b_tint: '??' },
+    { id: 3, src: amg, make: 'Mercedes Benz', model: 'AMG GTR', f_tint: '15%', b_tint: '15%' },
     { id: 5, src: tesla, make: 'Tesla', model: 'Model 3', f_tint: '20%', b_tint: '5%' },
   ];
 
   // Duplicate the image array to make the looping seamless
   const duplicatedImages = [...images, ...images];
 
+  // Event handlers for pausing and resuming animation
+  const handleSliderMouseEnter = () => setIsPaused(true);
+  const handleSliderMouseLeave = () => setIsPaused(false);
+
   return (
     <section id="small-gallery" style={{ padding: '20px', scrollMarginTop: '100px' }}>
       <h2>Gallery</h2>
       <p>Here are a few examples of our recent work.</p>
-      <div style={galleryStyle}>
-        <div style={sliderStyle}>
+      <div 
+        style={galleryStyle}
+        onMouseEnter={handleSliderMouseEnter} 
+        onMouseLeave={handleSliderMouseLeave}
+      >
+        <div style={{ ...sliderStyle, animationPlayState: isPaused ? 'paused' : 'running' }}>
           {duplicatedImages.map((image, index) => (
             <div 
               key={index} 
@@ -57,9 +66,10 @@ function SmallGallery() {
 
       <Link to="/gallery">
         <button style={buttonStyle}>
-          View Full Gallery
+          View More
         </button>
       </Link>
+      <div style={{ height: '40px' }}></div> {/* This adds the empty space */}
     </section>
   );
 }
@@ -72,6 +82,7 @@ const galleryStyle = {
 const sliderStyle = {
   display: 'flex',
   animation: 'slide 20s linear infinite', // Slide animation with infinite loop
+  animationPlayState: 'running', // Default is running, but will change when hovered
 };
 
 const imageContainerStyle = {

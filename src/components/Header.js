@@ -15,7 +15,7 @@ function Header() {
       <HashLink to="/#" className='link'>Home</HashLink>
       <HashLink to="/#small-gallery" className='link'>Gallery</HashLink>
       <HashLink to="/#services"  className='link'>Services</HashLink>
-      <HashLink to="/#quote" className='link'>Quote</HashLink>
+      <HashLink to="/#quote" className='link'>Simulator</HashLink>
       <HashLink to="/#contact" className='link'>Contact</HashLink>
       </nav>
 

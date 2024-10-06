@@ -7,6 +7,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import Quote from './components/Quote';
 import Gallery from './components/Gallery'; // Separate Gallery Page
+
 import './App.css';
 
 function App() {
@@ -81,8 +82,9 @@ function Home() {
     color: '#000',
     position: 'relative',
     zIndex: 2, // Ensure the title appears on top of the image
-    animation: 'glow 3s infinite, tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both', // Combine animations
+    animation: 'glow 3s infinite', // Combine animations
     letterSpacing: '-1.6px',
+    //fontFamily: "'Verdana', sans-serif"
   };
 
   const landingParaStyle = {
@@ -124,7 +126,16 @@ function Home() {
     <section id="home" style={homeStyle}>
       <style>{glowAnimation}</style>
       <h2 style={titleStyle}>OJ TINT STUDIO</h2>
-      <h3 style={landingParaStyle}>Bay Area</h3>
+      <h3 style={landingParaStyle}>
+        <a 
+          href="https://www.google.com/maps/place/1580+Oakland+Rd,+San+Jose,+CA+95131/@37.3801141,-121.8968122,17z/data=!3m1!4b1!4m6!3m5!1s0x808fcc0c3be581a5:0xe5961794fa5200b2!8m2!3d37.3801141!4d-121.8942373!16s%2Fg%2F11bw3wyxq3?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D" // Replace with your desired link
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ color: '#D3D3D3', textDecoration: 'underline' }} // Matches the current style of the h3
+        >
+          Bay Area
+        </a>
+      </h3>
       <p style={landingParaStyle}>
         Since 2017, OJ Tint Studio has been providing top-quality automotive window tinting in San Jose, CA. We offer fair pricing and
         exceptional service, with a focus on personalized care and competitive rates.
