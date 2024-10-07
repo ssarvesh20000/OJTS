@@ -29,10 +29,10 @@ h2 {
 
 /* Adjust each rectangle to take up 23% of the width */
 .service-rectangle {
-  flex: 0 0 20%;
+  flex: 0 0 15%;
   padding: 20px;
-  background-color: #b9b8b8;
-  border-radius: 10px;
+  background-color: #fac2c2;
+  border: 2mm solid rgb(255, 255, 255);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: black;
   font-family: Arial, sans-serif;
@@ -67,6 +67,7 @@ h2 {
 }
 
 /* Margin adjustments for icons */
+
 .service-rectangle .MuiSvgIcon-root:nth-child(1) {
   margin-right: -25px;
 }

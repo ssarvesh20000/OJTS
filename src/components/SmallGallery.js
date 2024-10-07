@@ -27,7 +27,7 @@ function SmallGallery() {
   const handleSliderMouseLeave = () => setIsPaused(false);
 
   return (
-    <section id="small-gallery" style={{ padding: '20px', scrollMarginTop: '100px' }}>
+    <section id="small-gallery" style={sectionStyle}>
       <h2>Gallery</h2>
       <p>Here are a few examples of our recent work.</p>
       <div 
@@ -73,6 +73,15 @@ function SmallGallery() {
     </section>
   );
 }
+
+const sectionStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+  padding: '20px',
+  scrollMarginTop: '100px',
+};
 
 const galleryStyle = {
   overflow: 'hidden', // Hide overflow for sliding effect

@@ -90,7 +90,7 @@ function Quote() {
       <div style={{ width: '20%', marginRight: '20px' }}>
         <h2>Tinting Simulator</h2>
         <form>
-          <div>
+          <div style={{ marginBottom: '15px'}}>
             <label>Front Windshield Tint:</label>
             <div style={buttonGroupStyle}>
               { [35, 50, 70, 100].map(value => (
@@ -106,7 +106,7 @@ function Quote() {
             </div>
           </div>
 
-          <div>
+          <div style={{ marginBottom: '15px'}}>
             <label>Front Side Window Tint:</label>
             <div style={buttonGroupStyle}>
               { [5, 20, 35, 50, 70, 100].map(value => (
@@ -122,7 +122,7 @@ function Quote() {
             </div>
           </div>
 
-          <div>
+          <div style={{ marginBottom: '15px'}}>
             <label>Back Windshield Tint:</label>
             <div style={buttonGroupStyle}>
               { [5, 20, 35, 50, 70, 100].map(value => (
@@ -138,8 +138,8 @@ function Quote() {
             </div>
           </div>
 
-          <div>
-            <label>Back Side Window Tint:</label>
+          <div style={{ marginBottom: '15px'}}>
+            <label >Back Side Window Tint:</label>
             <div style={buttonGroupStyle}>
               { [5, 20, 35, 50, 70, 100].map(value => (
                 <button 
@@ -225,12 +225,12 @@ function Quote() {
 }
 
 const buttonStyle = (isSelected) => ({
-  margin: '5px',
+  margin: '3px',
   padding: '10px 20px',
-  backgroundColor: isSelected ? '#007BFF' : '#f0f0f0',
-  color: isSelected ? '#fff' : '#000',
-  border: '1px solid #ccc',
-  borderRadius: '5px',
+  backgroundColor: isSelected ? '#007BFF' : '#dbfff7',
+  color: isSelected ? '#000' : '#000',
+  border: '2px solid #fff',
+  borderRadius: '0',
   cursor: 'pointer',
 });
 
