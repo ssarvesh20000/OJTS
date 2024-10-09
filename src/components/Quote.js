@@ -77,23 +77,100 @@ function Quote() {
   const getWindshieldTintImage = (tintValue) => {
     if (tintValue === 100) return null; // No tint
     switch (tintValue) {
-      case 35: return windshield50;
-      case 50: return windshield70;
-      case 70: return windshield80;
+      case 50: return windshield50;
+      case 70: return windshield70;
+      case 80: return windshield80;
       default: return null;
     }
   };
 
   return (
-    <section id="quote" style={{ display: 'flex', justifyContent: 'space-between', padding: '20px', scrollMarginTop: '100px' }}>
-      {/* Button Form - Left */}
-      <div style={{ width: '20%', marginRight: '20px' }}>
-        <h2>Tinting Simulator</h2>
-        <form>
+    <section id="quote" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', scrollMarginTop: '100px' }}>
+      {/* Title */}
+      <h2>Simulator</h2>
+      <div style={{ height: '40px' }}></div> {/* This adds the empty space */}
+      {/* Car Preview */}
+      <div style={{ width: '75%', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+        <img 
+          src={carImage} 
+          alt="Car Preview" 
+          style={{
+            width: '100%',
+            height: 'auto',
+            marginTop: '20px',
+          }} 
+        />
+        {/* Overlay images for tints, if present */}
+        {getWindshieldTintImage(formData.front_windshield_tint) && (
+          <img 
+            src={getWindshieldTintImage(formData.front_windshield_tint)}  
+            alt="Front Windshield Tint" 
+            style={{
+              position: 'absolute',
+              top: '0%', 
+              left: '-0.20%',
+              width: '100%', 
+              height: 'auto',
+              zIndex: 2,
+              marginTop: '20px',
+            }} 
+          />
+        )}
+        {getFrontTintImage(formData.front_window_tint) && (
+          <img 
+            src={getFrontTintImage(formData.front_window_tint)}  
+            alt="Front Tint" 
+            style={{
+              position: 'absolute',
+              top: '0%', 
+              left: '-0.03%',
+              width: '100%', 
+              height: 'auto',
+              zIndex: 2,
+              marginTop: '20px',
+            }} 
+          />
+        )}
+        {getSideTintImage(formData.back_window_tint) && (
+          <img 
+            src={getSideTintImage(formData.back_window_tint)}  
+            alt="Side Tint" 
+            style={{
+              position: 'absolute',
+              top: '0%', 
+              left: '-0.05%',
+              width: '100%', 
+              height: 'auto',
+              zIndex: 2,
+              marginTop: '20px',
+            }} 
+          />
+        )}
+        {getBackTintImage(formData.back_windshield_tint) && (
+          <img 
+            src={getBackTintImage(formData.back_windshield_tint)}  
+            alt="Back Tint" 
+            style={{
+              position: 'absolute',
+              top: '0%', 
+              left: '-0.1%',
+              width: '100%', 
+              height: 'auto',
+              zIndex: 2,
+              marginTop: '20px',
+            }} 
+          />
+        )}
+      </div>
+
+      {/* Button Form - Below Car */}
+      <div style={{ width: '75%', marginTop: '-20px', display: 'flex', justifyContent: 'space-between', zIndex: 3 }}>
+        {/* Left side buttons */}
+        <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Front Windshield Tint:</label>
             <div style={buttonGroupStyle}>
-              { [35, 50, 70, 100].map(value => (
+              { [50, 70, 80, 100].map(value => (
                 <button 
                   key={value} 
                   type="button"
@@ -121,7 +198,10 @@ function Quote() {
               ))}
             </div>
           </div>
+        </div>
 
+        {/* Right side buttons */}
+        <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Back Windshield Tint:</label>
             <div style={buttonGroupStyle}>
@@ -153,72 +233,7 @@ function Quote() {
               ))}
             </div>
           </div>
-        </form>
-      </div>
-
-      {/* Car Preview - Right */}
-      <div style={{ width: '75%', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-        <img 
-          src={carImage} 
-          alt="Car Preview" 
-          style={{
-            width: '100%',
-            height: 'auto',
-          }} 
-        />
-        {/* Overlay images for tints, if present */}
-        {getWindshieldTintImage(formData.front_windshield_tint) && (
-          <img 
-            src={getWindshieldTintImage(formData.front_windshield_tint)}  
-            alt="Front Windshield Tint" 
-            style={{
-              position: 'absolute',
-              top: '26.8%', 
-              left: '-0.20%',
-              width: '100%', 
-              height: 'auto',
-            }} 
-          />
-        )}
-        {getFrontTintImage(formData.front_window_tint) && (
-          <img 
-            src={getFrontTintImage(formData.front_window_tint)}  
-            alt="Front Tint" 
-            style={{
-              position: 'absolute',
-              top: '26.7%', 
-              left: '-0.0%',
-              width: '100%', 
-              height: 'auto',
-            }} 
-          />
-        )}
-        {getSideTintImage(formData.back_window_tint) && (
-          <img 
-            src={getSideTintImage(formData.back_window_tint)}  
-            alt="Side Tint" 
-            style={{
-              position: 'absolute',
-              top: '26.7%', 
-              left: '-0.03%',
-              width: '100%', 
-              height: 'auto',
-            }} 
-          />
-        )}
-        {getBackTintImage(formData.back_windshield_tint) && (
-          <img 
-            src={getBackTintImage(formData.back_windshield_tint)}  
-            alt="Back Tint" 
-            style={{
-              position: 'absolute',
-              top: '26.8%', 
-              left: '-0.1%',
-              width: '100%', 
-              height: 'auto',
-            }} 
-          />
-        )}
+        </div>
       </div>
     </section>
   );
@@ -226,8 +241,8 @@ function Quote() {
 
 const buttonStyle = (isSelected) => ({
   margin: '3px',
-  padding: '10px 20px',
-  backgroundColor: isSelected ? '#007BFF' : '#dbfff7',
+  padding: '13px 13px',
+  backgroundColor: isSelected ? '#007BFF' : '#cdf3fb',
   color: isSelected ? '#000' : '#000',
   border: '2px solid #fff',
   borderRadius: '0',
