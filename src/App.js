@@ -6,8 +6,10 @@ import SmallGallery from './components/SmallGallery'; // Small gallery for the h
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import Quote from './components/Quote';
+//import Warranty from './components/Warranty'; 
 import Gallery from './components/Gallery'; // Separate Gallery Page
 import ContactIcons from './components/ContactIcons'; // Import the ContactIcons component
+
 
 import './App.css';
 
@@ -138,7 +140,7 @@ const landingParaStyle = {
       <div style={{ height: '10px' }}></div> {/* This adds the empty space */}
       <div style={{ height: '70px' }}></div> {/* This adds the empty space */}
       <p style={landingParaStyle}>
-      Since 2017, OJ Tint Studio has been providing top-quality automotive window tinting in&nbsp;  
+      Since 2019, OJ Tint Studio has been providing top-quality automotive window tinting in&nbsp;  
       <a 
         href="https://www.google.com/maps/place/1580+Oakland+Rd,+San+Jose,+CA+95131/@37.3801141,-121.8968122,17z/data=!3m1!4b1!4m6!3m5!1s0x808fcc0c3be581a5:0xe5961794fa5200b2!8m2!3d37.3801141!4d-121.8942373!16s%2Fg%2F11bw3wyxq3?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D" 
         target="_blank" 

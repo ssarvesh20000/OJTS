@@ -30,7 +30,7 @@ function Gallery() {
   // Updated the image object to reflect Tesla Y instead of Lebron
   const images = [
 
-    { src: lambo, make: 'Lamborghini', model: 'Aventador', f_tint: '5%', b_tint: '5%' },
+    { src: lambo, make: 'Lamborghini', model: 'Hurucan', f_tint: '5%', b_tint: '5%' },
     { src: ferrari488, make: 'Ferrari', model: '488', f_tint: '5%', b_tint: '5%' },
     { src: honda, make: 'Honda', model: 'Type R', f_tint: '35%', b_tint: '35%' },
     

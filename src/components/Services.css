@@ -29,7 +29,7 @@ h2 {
 
 /* Adjust each rectangle to take up 23% of the width */
 .service-rectangle {
-  flex: 0 0 15%;
+  flex: 0 0 17%;
   padding: 20px;
   background-color: #cdf3fb;
   border: 2mm solid rgb(255, 255, 255);
@@ -40,6 +40,7 @@ h2 {
   transform: translateX(-100%);
   transition: transform 0.3s ease, opacity 1s ease;
   text-align: center;
+  
 }
 
 /* Hidden and visible styles remain the same */

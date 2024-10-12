@@ -42,7 +42,7 @@ function ContactForm() {
           <label style={labelStyle}>Phone Number:</label>
           <input type="text" name="number" style={inputStyle} />
         </div>
-
+{/* get rid of 'model' & 'year' and combine it to 'make'*/}
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Car Make:</label>
           <input type="text" name="make" style={inputStyle} required />
