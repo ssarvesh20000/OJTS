@@ -138,7 +138,7 @@ const landingParaStyle = {
       <style>{glowAnimation}</style>
       <h2 style={titleStyle}>OJ TINT STUDIO</h2>
       <div style={{ height: '10px' }}></div> {/* This adds the empty space */}
-      <div style={{ height: '70px' }}></div> {/* This adds the empty space */}
+      <div style={{ height: '50px' }}></div> {/* This adds the empty space */}
       <p style={landingParaStyle}>
       Since 2019, OJ Tint Studio has been providing top-quality automotive window tinting in&nbsp;  
       <a 

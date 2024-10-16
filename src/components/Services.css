@@ -12,10 +12,8 @@
 }
 
 h2 {
-  
   font-family: Arial, sans-serif;
   font-size: 32px;
-  
 }
 
 /* Container for the rectangles */
@@ -27,7 +25,7 @@ h2 {
   width: 100%;
 }
 
-/* Adjust each rectangle to take up 23% of the width */
+/* Adjust each rectangle to take up 17% of the width on large screens */
 .service-rectangle {
   flex: 0 0 17%;
   padding: 20px;
@@ -40,7 +38,6 @@ h2 {
   transform: translateX(-100%);
   transition: transform 0.3s ease, opacity 1s ease;
   text-align: center;
-  
 }
 
 /* Hidden and visible styles remain the same */
@@ -68,11 +65,54 @@ h2 {
 }
 
 /* Margin adjustments for icons */
-
 .service-rectangle .MuiSvgIcon-root:nth-child(1) {
   margin-right: -25px;
 }
 
 .service-rectangle .MuiSvgIcon-root:nth-child(3) {
   margin-left: -22px;
+}
+
+/* --- Add responsiveness for smaller screens --- */
+
+/* Medium screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .rectangles-container {
+    flex-wrap: wrap; /* Allow wrapping on medium-sized screens */
+  }
+
+  .service-rectangle {
+    flex: 0 0 45%; /* Each rectangle takes 45% of width */
+  }
+}
+
+/* Small screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .rectangles-container {
+    flex-direction: column; /* Stack rectangles vertically */
+    align-items: center; /* Center the rectangles */
+    gap: 15px; /* Reduce gap between rectangles */
+  }
+
+  .service-rectangle {
+    flex: 0 0 90%; /* Each rectangle takes almost full width */
+    margin-bottom: 10px; /* Add some space between stacked rectangles */
+    transform: none; /* Prevent the translate animation on small screens */
+  }
+
+  h2 {
+    font-size: 24px; /* Reduce title size for smaller screens */
+  }
+}
+
+/* Very small screens (max-width: 360px) */
+@media (max-width: 360px) {
+  .service-rectangle {
+    flex: 0 0 95%; /* Each rectangle takes 95% width */
+    padding: 15px; /* Reduce padding for very small screens */
+  }
+
+  h2 {
+    font-size: 20px; /* Further reduce title size for very small screens */
+  }
 }

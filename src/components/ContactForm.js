@@ -12,10 +12,12 @@ function ContactForm() {
       .then((result) => {
           console.log(result.text);
           const name = e.target.name.value;
-          const year = e.target.year.value;
-          const make = e.target.make.value;
-          const model = e.target.model.value;
-          setSubmissionMessage(`Message from ${name} successfully submitted (${year} ${make} ${model})`);
+          //const year = e.target.year.value; //REMOVE
+          const make = e.target.make.value; //combine year & model
+          //const model = e.target.model.value; //REMOVE
+          //get rid of year&model
+          //setSubmissionMessage(`Message from ${name} successfully submitted (${year} ${make} ${model})`);
+          setSubmissionMessage(`Message from ${name} successfully submitted (${make})`);
           e.target.reset();
       }, (error) => {
           console.log(error.text);
@@ -44,10 +46,10 @@ function ContactForm() {
         </div>
 {/* get rid of 'model' & 'year' and combine it to 'make'*/}
         <div style={inputGroupStyle}>
-          <label style={labelStyle}>Car Make:</label>
+          <label style={labelStyle}>Vehicle Make, Model, & Year:</label>
           <input type="text" name="make" style={inputStyle} required />
         </div>
-
+{/*
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Car Model:</label>
           <input type="text" name="model" style={inputStyle} required />
@@ -57,7 +59,7 @@ function ContactForm() {
           <label style={labelStyle}>Year:</label>
           <input type="text" name="year" style={inputStyle} required />
         </div>
-        
+*/}       
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Message:</label>
           <textarea name="message" style={textareaStyle} required />
