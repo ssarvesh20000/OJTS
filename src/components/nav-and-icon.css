@@ -1,0 +1,87 @@
+.link {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px; /* Default font size */
+}
+
+.link:hover {
+    color: #add8e6; 
+}
+
+.icon#ig {
+    font-size: 24px;
+    color: #E4405F;
+    text-decoration: none;
+}
+
+.icon#fb {
+    font-size: 24px;
+    color: #1877F2;
+    text-decoration: none;
+}
+
+.icon#yelp {
+    font-size: 24px;
+    color: #D32323;
+    text-decoration: none;
+}
+
+/* Hover effects */
+.icon#ig:hover {
+    color: #F77777;
+    transform: scale(1.05);
+}
+
+.icon#fb:hover {
+    color: #6D9DE8;
+    transform: scale(1.05);
+}
+
+.icon#yelp:hover {
+    color: #F56565;
+    transform: scale(1.05);
+}
+
+nav {
+    gap: 20px; /* Reduce gap between links */
+}
+
+/* Media query for smaller screens (tablets) */
+@media (max-width: 768px) {
+    .link {
+        font-size: 14px; /* Smaller font size */
+    }
+
+    .icon#ig, .icon#fb, .icon#yelp {
+        font-size: 20px; /* Smaller icon size */
+    }
+
+    nav {
+        gap: 7px; /* Reduce gap between links */
+    }
+
+    .social-icons {
+        gap: 15px; /* Reduce gap between social icons */
+    }
+}
+
+/* Media query for very small screens (mobile) */
+@media (max-width: 520px) {
+    .link {
+        font-size: 10px; /* Further reduce text size for mobile */
+    }
+
+    .icon#ig, .icon#fb, .icon#yelp {
+        font-size: 18px; /* Smaller icon size */
+    }
+
+    nav {
+        gap: 4px; /* Reduce gap between navigation links more */
+    }
+
+    .social-icons {
+        gap: 10px; /* Reduce gap between social icons more */
+    }
+}
