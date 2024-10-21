@@ -27,7 +27,7 @@ function ContactForm() {
 
   return (
     <section id="contact" style={sectionStyle}>
-      <div style={{ height: '40px' }}></div> {/* This adds the empty space */}
+      <div style={{ height: '50px' }}></div> {/* This adds the empty space */}
       <h2 style={headerStyle}>Contact Us</h2>
       <form ref={form} onSubmit={sendEmail} style={formStyle}>
         <div style={inputGroupStyle}>

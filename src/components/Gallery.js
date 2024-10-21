@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import ImageClicked from './ImageClicked';
 import teslaY from '../assets/carGal/tesla-y.png';  // Updated import
 import lexus from '../assets/carGal/lexusRC350.png';

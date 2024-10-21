@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Quote.css';
 import carImage from '../assets/tint images/car-black Background Removed.png'; // Base car image
 
 import tintFront5 from '../assets/tint images/car-front-05.png'; // Front tint image
@@ -11,15 +12,15 @@ import tintSide5 from '../assets/tint images/car-sides-05.png';   // Side tint i
 import tintSide20 from '../assets/tint images/car-sides-20.png';
 import tintSide35 from '../assets/tint images/car-sides-35.png';
 import tintSide50 from '../assets/tint images/car-sides-50.avif';
-import tintSide70 from '../assets/tint images/car-sides-70.avif';   
+import tintSide70 from '../assets/tint images/car-sides-70.avif';
 
 import tintBack5 from '../assets/tint images/car-back-05.png';   // Back tint image
 import tintBack20 from '../assets/tint images/car-back-20.avif';
 import tintBack35 from '../assets/tint images/car-back-35.png';
 import tintBack50 from '../assets/tint images/car-back-50.avif';
-import tintBack70 from '../assets/tint images/car-back-70.avif';   
+import tintBack70 from '../assets/tint images/car-back-70.avif';
 
-import windshield50 from '../assets/tint images/car-windshield-50.png'; //windshield
+import windshield50 from '../assets/tint images/car-windshield-50.png'; // windshield
 import windshield70 from '../assets/tint images/car-windshield-70.png';
 import windshield80 from '../assets/tint images/car-windshield-80.avif';
 
@@ -89,6 +90,7 @@ function Quote() {
       {/* Title */}
       <h2>Simulator</h2>
       <div style={{ height: '40px' }}></div> {/* This adds the empty space */}
+
       {/* Car Preview */}
       <div style={{ width: '75%', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <img 
@@ -169,7 +171,7 @@ function Quote() {
         <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Front Windshield Tint:</label>
-            <div style={buttonGroupStyle}>
+            <div className="button-group">  {/* Add the class "button-group" */}
               { [50, 70, 80, 100].map(value => (
                 <button 
                   key={value} 
@@ -185,7 +187,7 @@ function Quote() {
 
           <div style={{ marginBottom: '15px'}}>
             <label>Front Side Window Tint:</label>
-            <div style={buttonGroupStyle}>
+            <div className="button-group">  {/* Add the class "button-group" */}
               { [5, 20, 35, 50, 70, 100].map(value => (
                 <button 
                   key={value} 
@@ -204,7 +206,7 @@ function Quote() {
         <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Back Windshield Tint:</label>
-            <div style={buttonGroupStyle}>
+            <div className="button-group">  {/* Add the class "button-group" */}
               { [5, 20, 35, 50, 70, 100].map(value => (
                 <button 
                   key={value} 
@@ -219,8 +221,8 @@ function Quote() {
           </div>
 
           <div style={{ marginBottom: '15px'}}>
-            <label >Back Side Window Tint:</label>
-            <div style={buttonGroupStyle}>
+            <label>Back Side Window Tint:</label>
+            <div className="button-group">  {/* Add the class "button-group" */}
               { [5, 20, 35, 50, 70, 100].map(value => (
                 <button 
                   key={value} 
@@ -241,17 +243,18 @@ function Quote() {
 
 const buttonStyle = (isSelected) => ({
   margin: '3px',
-  padding: '13px 13px',
+  width: '50px', // Ensure width and height are equal for a circular shape
+  height: '50px',
   backgroundColor: isSelected ? '#007BFF' : '#cdf3fb',
   color: isSelected ? '#000' : '#000',
   border: '2px solid #fff',
-  borderRadius: '0',
+  borderRadius: '50%', // This makes the button circular
   cursor: 'pointer',
+  display: 'flex', // Ensure content is centered
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
-const buttonGroupStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-};
+
 
 export default Quote;

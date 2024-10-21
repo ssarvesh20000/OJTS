@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+//import React, { useState } from 'react';
 import logo from '../assets/logo.webp';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faYelp } from '@fortawesome/free-brands-svg-icons';
 import './nav-and-icon.css';
+
+
 function Header() {
 
 

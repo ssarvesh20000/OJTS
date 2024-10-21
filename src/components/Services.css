@@ -105,14 +105,13 @@ h2 {
   }
 }
 
-/* Very small screens (max-width: 360px) */
-@media (max-width: 360px) {
-  .service-rectangle {
-    flex: 0 0 95%; /* Each rectangle takes 95% width */
-    padding: 15px; /* Reduce padding for very small screens */
-  }
 
-  h2 {
-    font-size: 20px; /* Further reduce title size for very small screens */
+@media (max-width: 480px) {
+  .service-rectangle {
+    flex: 0 0 90%; /* Each rectangle takes almost full width */
+    margin-bottom: 10px; /* Add some space between stacked rectangles */
+    transform: none !important; /* Prevent the translate animation on small screens */
+    opacity: 1; /* Make the rectangle visible */
   }
 }
+

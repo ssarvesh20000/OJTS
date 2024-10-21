@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHover } from './HoverHandler';
 import HoverDetails from './HoverDetails';
@@ -10,11 +10,13 @@ import tesla from '../assets/5tesla.png';
 
 function SmallGallery() {
   const { hoveredImageId, handleMouseEnter, handleMouseLeave } = useHover();
-  const [isPaused, setIsPaused] = useState(false); // State to track if the slider should be paused
+  const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   const images = [
     { id: 1, src: supra, make: 'Toyota', model: 'GR Supra', f_tint: '20%', b_tint: '20%' },
     { id: 2, src: rolly, make: 'Rolls Royce', model: 'Ghost', f_tint: '20%', b_tint: '5%' },
-    { id: 4, src: ferrari, make: 'Ferrari', model: 'F8 Tributo', f_tint: '??', b_tint: '??' },
+    { id: 4, src: ferrari, make: 'Ferrari', model: 'F8 Tributo', f_tint: '15%', b_tint: '15%' },
     { id: 3, src: amg, make: 'Mercedes Benz', model: 'AMG GTR', f_tint: '15%', b_tint: '15%' },
     { id: 5, src: tesla, make: 'Tesla', model: 'Model 3', f_tint: '20%', b_tint: '5%' },
   ];
@@ -22,7 +24,19 @@ function SmallGallery() {
   // Duplicate the image array to make the looping seamless
   const duplicatedImages = [...images, ...images];
 
-  // Event handlers for pausing and resuming animation
+  // Handle window resize to toggle between mobile and desktop views
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const handleSliderMouseEnter = () => setIsPaused(true);
   const handleSliderMouseLeave = () => setIsPaused(false);
 
@@ -31,15 +45,22 @@ function SmallGallery() {
       <h2>Gallery</h2>
       <p>Here are a few examples of our recent work.</p>
       <div 
-        style={galleryStyle}
+        style={isMobile ? mobileGalleryStyle : galleryStyle}
         onMouseEnter={handleSliderMouseEnter} 
         onMouseLeave={handleSliderMouseLeave}
       >
-        <div style={{ ...sliderStyle, animationPlayState: isPaused ? 'paused' : 'running' }}>
+        <div 
+          style={{ 
+            ...sliderStyle, 
+            flexDirection: isMobile ? 'column' : 'row', 
+            animationPlayState: isPaused ? 'paused' : 'running', 
+            animation: isMobile ? 'slideVertical 30s linear infinite' : 'slideHorizontal 30s linear infinite',
+          }}
+        >
           {duplicatedImages.map((image, index) => (
             <div 
               key={index} 
-              style={imageContainerStyle} 
+              style={isMobile ? mobileImageContainerStyle : imageContainerStyle} 
               onMouseEnter={() => handleMouseEnter(image.id)} 
               onMouseLeave={handleMouseLeave}
             >
@@ -86,18 +107,31 @@ const sectionStyle = {
 const galleryStyle = {
   overflow: 'hidden', // Hide overflow for sliding effect
   width: '100%',
+  display: 'flex',
+  flexDirection: 'row', // Default horizontal layout for larger screens
+};
+
+const mobileGalleryStyle = {
+  overflow: 'hidden', // Hide overflow for sliding effect
+  width: '100%',
+  height: '400px', // Limit the height so only 1-3 images are visible at a time on mobile
+  display: 'block', // Vertical stacking for mobile
 };
 
 const sliderStyle = {
   display: 'flex',
-  animation: 'slide 20s linear infinite', // Slide animation with infinite loop
-  animationPlayState: 'running', // Default is running, but will change when hovered
 };
 
 const imageContainerStyle = {
-  minWidth: '48%', // Adjust to fit 5 images on screen
+  minWidth: '48%', // Adjust to fit 5 images on screen for larger screens
   position: 'relative',
   margin: '1%',
+};
+
+const mobileImageContainerStyle = {
+  width: '100%', // Make each image take the full width on mobile
+  marginBottom: '20px', // Add margin between images on mobile
+  position: 'relative',
 };
 
 const imageStyle = {
@@ -136,14 +170,23 @@ const buttonStyle = {
   cursor: 'pointer',
 };
 
-// CSS keyframes for seamless sliding animation
+// CSS keyframes for both horizontal and vertical animations
 const styles = `
-@keyframes slide {
+@keyframes slideHorizontal {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-250%); /* Move by 50% since we duplicated the images */
+    transform: translateX(-250%); /* Move horizontally by 250% for continuous scrolling */
+  }
+}
+
+@keyframes slideVertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%); /* Move vertically by 50% for continuous scrolling */
   }
 }
 `;
