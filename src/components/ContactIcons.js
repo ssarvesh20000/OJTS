@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function ContactIcons() {
   const [isPhoneHovered, setIsPhoneHovered] = useState(false);
   const [isEmailHovered, setIsEmailHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check screen size on mount and when window is resized
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Set threshold for mobile
+    };
+
+    handleResize(); // Initial check on component mount
+    window.addEventListener('resize', handleResize); // Update on resize
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const iconContainerStyle = {
     position: 'fixed',
@@ -54,6 +69,11 @@ function ContactIcons() {
     transform: 'translateX(0)', // Move text back to its original position
   };
 
+  // If the screen is mobile, don't render the icons
+  if (isMobile) {
+    return null;
+  }
+
   return (
     <div style={iconContainerStyle}>
       {/* Phone Icon */}
@@ -95,7 +115,6 @@ function ContactIcons() {
       </div>
     </div>
   );
-  
 }
 
 export default ContactIcons;

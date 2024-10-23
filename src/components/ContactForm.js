@@ -8,15 +8,21 @@ function ContactForm() {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    const number = e.target.number.value;
+
+    // Validate phone number (US format with 10 digits, but you can modify as needed)
+    const phonePattern = /^\d{10}$/; // This ensures the phone number is exactly 10 digits
+
+    if (number && !phonePattern.test(number)) {
+      setSubmissionMessage('Phone number must be a valid 10-digit number.');
+      return; // Stop form submission if phone number is invalid
+    }
+
     emailjs.sendForm('service_9v8bv8k', 'template_xp8se1b', form.current, 'iEPd4ZUZDvveGMX7H')
       .then((result) => {
           console.log(result.text);
           const name = e.target.name.value;
-          //const year = e.target.year.value; //REMOVE
-          const make = e.target.make.value; //combine year & model
-          //const model = e.target.model.value; //REMOVE
-          //get rid of year&model
-          //setSubmissionMessage(`Message from ${name} successfully submitted (${year} ${make} ${model})`);
+          const make = e.target.make.value;
           setSubmissionMessage(`Message from ${name} successfully submitted (${make})`);
           e.target.reset();
       }, (error) => {
@@ -84,7 +90,7 @@ const sectionStyle = {
 };
 
 const headerStyle = {
-  color: '#00aaff', // Blue accent for the header adgkjq'dwgvALKDFJADJK
+  color: '#00aaff', // Blue accent for the header
   textAlign: 'center',
   marginBottom: '20px',
 };
