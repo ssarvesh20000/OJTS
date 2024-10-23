@@ -63,8 +63,9 @@ const headerStyle = {
 };
 
 const logoStyle = {
-  height: '85px', // Adjust the height to fit your header
+  height: '150px', // Adjust the height to fit your header
   width: 'auto',
+  marginRight: '20px',
 };
 
 const navStyle = {
@@ -78,6 +79,7 @@ const navStyle = {
 const socialIconsStyle = {
   display: 'flex',
   gap: '20px', // Space between icons
+  marginLeft: '50px',
 };
 
 

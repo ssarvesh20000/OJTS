@@ -72,7 +72,8 @@ nav {
 @media (max-width: 520px) {
     .link {
         font-size: 10px; /* Further reduce text size for mobile */
-        margin-left: 10px;
+        margin-left: 0px;
+        margin-right: 10px
     }
 
     .icon#ig, .icon#fb, .icon#yelp {
@@ -80,7 +81,7 @@ nav {
     }
 
     nav {
-        gap: 4px; /* Reduce gap between navigation links more */
+        gap: 0px; /* Reduce gap between navigation links more */
     }
 
     .social-icons {
