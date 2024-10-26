@@ -22,8 +22,8 @@ function Header() {
         <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} style={hamburgerIconStyle} />
       </button>
 
-      {/* Navigation links and social icons - always visible in laptop mode */}
-      <nav id="nav" style={{ ...navStyle, display: isMenuOpen || window.innerWidth > 768 ? 'flex' : 'none' }}>
+      {/* Navigation links and social icons - toggle classes based on isMenuOpen */}
+      <nav id="nav" className={isMenuOpen ? 'on' : 'off'} >
         <HashLink to="/#" className='link'>Home</HashLink>
         <HashLink to="/#small-gallery" className='link'>Gallery</HashLink>
         <HashLink to="/#services" className='link'>Services</HashLink>
@@ -31,7 +31,7 @@ function Header() {
         <HashLink to="/#contact" className='link'>Contact</HashLink>
       </nav>
 
-      <div style={{ ...socialIconsStyle, display: isMenuOpen || window.innerWidth > 768 ? 'flex' : 'none' }}>
+      <div id="social" className={isMenuOpen ? 'on' : 'off'} >
         <a href="https://www.yelp.com/biz/oj-tint-studio-san-jose-2" target="_blank" rel="noopener noreferrer" className='icon' id="yelp">
           <FontAwesomeIcon icon={faYelp} />
         </a>
@@ -65,18 +65,7 @@ const logoStyle = {
   marginRight: '20px',
 };
 
-const navStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  gap: '20px',
-};
 
-const socialIconsStyle = {
-  display: 'flex',
-  gap: '20px',
-  marginLeft: '50px',
-};
 
 const hamburgerIconStyle = {
   fontSize: '30px',

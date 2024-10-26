@@ -44,9 +44,7 @@
     transform: scale(1.05);
 }
 
-nav {
-    gap: 20px; /* Reduce gap between links */
-}
+
 
 /* Default styles for non-mobile view */
 .hamburger {
@@ -60,9 +58,10 @@ nav {
     gap: 20px;
 }
 
-.social-icons {
+#social {
     display: flex;
     gap: 20px;
+    margin-left: '50px'
 }
 
 /* Media query for mobile view */
@@ -75,13 +74,26 @@ nav {
         cursor: pointer;
     }
 
-    #nav {
+    #nav.off {
         display: none; /* Hide nav by default on mobile */
         flex-direction: column; /* Stack items vertically when shown */
     }
 
-    .social-icons {
+    #nav.on  {
+        display: flex; /* Hide nav by default on mobile */
+        flex-direction: column; /* Stack items vertically when shown */
+    }
+
+    #social.off {
         display: none; /* Hide social icons by default */
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #social.on {
+        display: flex; /* Hide social icons by default */
+        flex-direction: column;
+        margin-top: 20px;
     }
 
     .icon#ig, .icon#fb, .icon#yelp {
@@ -94,16 +106,16 @@ nav {
     }
 }
 
-/* When the menu is toggled open in mobile view */
-@media (max-width: 768px) {
+/* When the menu is toggled open in mobile view 
+@media (max-width: 768px) { 
     #nav {
-        display: flex; /* Show the nav when hamburger is clicked */
+        display: flex; Show the nav when hamburger is clicked
         flex-direction: column;
     }
 
     .social-icons {
-        display: flex; /* Show social icons in the menu */
+        display: flex; Show social icons in the menu
         flex-direction: column;
         margin-top: 20px;
     }
-}
+} */
