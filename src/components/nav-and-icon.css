@@ -48,44 +48,62 @@ nav {
     gap: 20px; /* Reduce gap between links */
 }
 
-/* Media query for smaller screens (tablets) */
+/* Default styles for non-mobile view */
+.hamburger {
+    display: none; /* Hide hamburger by default */
+}
+
+#nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+/* Media query for mobile view */
 @media (max-width: 768px) {
-    .link {
-        font-size: 14px; /* Smaller font size */
-        margin-left: 10px;
+    /* Show hamburger button */
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 
-    .icon#ig, .icon#fb, .icon#yelp {
-        font-size: 20px; /* Smaller icon size */
-    }
-
-    nav {
-        gap: 7px; /* Reduce gap between links */
+    #nav {
+        display: none; /* Hide nav by default on mobile */
+        flex-direction: column; /* Stack items vertically when shown */
     }
 
     .social-icons {
-        gap: 15px; /* Reduce gap between social icons */
+        display: none; /* Hide social icons by default */
+    }
+
+    .icon#ig, .icon#fb, .icon#yelp {
+        font-size: 20px; /* Resize icons for mobile */
+    }
+
+    .link {
+        font-size: 18px;
+        margin-bottom: 10px;
     }
 }
 
-/* Media query for very small screens (mobile) */
-@media (max-width: 520px) {
-    .link {
-        font-size: 10px; /* Further reduce text size for mobile */
-        margin-left: 0px;
-        margin-right: 10px
-    }
-
-    .icon#ig, .icon#fb, .icon#yelp {
-        font-size: 18px; /* Smaller icon size */
-    }
-
-    nav {
-        gap: 0px; /* Reduce gap between navigation links more */
+/* When the menu is toggled open in mobile view */
+@media (max-width: 768px) {
+    #nav {
+        display: flex; /* Show the nav when hamburger is clicked */
+        flex-direction: column;
     }
 
     .social-icons {
-        gap: 10px; /* Reduce gap between social icons more */
-        margin-left: 30px;
+        display: flex; /* Show social icons in the menu */
+        flex-direction: column;
+        margin-top: 20px;
     }
 }
