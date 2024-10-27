@@ -1,121 +1,127 @@
+/* Basic link and icon styles */
 .link {
     color: #00aaff;
     text-decoration: none;
     font-weight: bold;
-    cursor: pointer;
-    font-size: 18px; /* Default font size */
+    font-size: 18px;
+    margin: 0 15px;
 }
 
-.link:hover {
-    color: #add8e6; 
-}
-
-.icon#ig {
+.icon {
     font-size: 24px;
-    color: #E4405F;
-    text-decoration: none;
+    margin-left: 15px;
 }
 
-.icon#fb {
-    font-size: 24px;
-    color: #1877F2;
-    text-decoration: none;
+/* Social media icons with individual colors */
+.icon#ig,
+.hamburger-icon#ig {
+    color: #E4405F; /* Instagram pink */
 }
 
-.icon#yelp {
-    font-size: 24px;
-    color: #D32323;
-    text-decoration: none;
+.icon#fb,
+.hamburger-icon#fb {
+    color: #1877F2; /* Facebook blue */
 }
 
-/* Hover effects */
-.icon#ig:hover {
-    color: #F77777;
+.icon#yelp,
+.hamburger-icon#yelp {
+    color: #D32323; /* Yelp red */
+}
+
+/* Hover effects for both desktop and mobile icons */
+.icon#ig:hover,
+.hamburger-icon#ig:hover {
+    color: #F77777; /* Lighten Instagram on hover */
     transform: scale(1.05);
 }
 
-.icon#fb:hover {
-    color: #6D9DE8;
+.icon#fb:hover,
+.hamburger-icon#fb:hover {
+    color: #6D9DE8; /* Lighten Facebook on hover */
     transform: scale(1.05);
 }
 
-.icon#yelp:hover {
-    color: #F56565;
+.icon#yelp:hover,
+.hamburger-icon#yelp:hover {
+    color: #F56565; /* Lighten Yelp on hover */
     transform: scale(1.05);
 }
 
-
-
-/* Default styles for non-mobile view */
+/* Hide hamburger by default */
 .hamburger {
-    display: none; /* Hide hamburger by default */
+    display: none;
 }
 
-#nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-#social {
-    display: flex;
-    gap: 20px;
-    margin-left: '50px'
-}
-
-/* Media query for mobile view */
+/* Mobile-specific styles */
 @media (max-width: 768px) {
-    /* Show hamburger button */
+    /* Show hamburger button in mobile view */
     .hamburger {
         display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
         background: none;
         border: none;
         cursor: pointer;
+        z-index: 1002; /* Ensures it's on top of the overlay */
     }
 
-    #nav.off {
-        display: none; /* Hide nav by default on mobile */
-        flex-direction: column; /* Stack items vertically when shown */
+    /* Hide nav links and social icons by default in mobile */
+    .nav-links,
+    .social-icons {
+        display: none;
     }
 
-    #nav.on  {
-        display: flex; /* Hide nav by default on mobile */
-        flex-direction: column; /* Stack items vertically when shown */
-    }
-
-    #social.off {
-        display: none; /* Hide social icons by default */
+    /* Compact overlay for mobile */
+    .compact-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001; /* Under the hamburger button */
+    }
+
+    /* Hamburger nav links */
+    .hamburger-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger-link {
+        color: #00aaff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 24px;
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    /* Social icons in overlay */
+    .hamburger-social-icons {
+        display: flex;
+        gap: 15px;
         margin-top: 20px;
     }
 
-    #social.on {
-        display: flex; /* Hide social icons by default */
-        flex-direction: column;
-        margin-top: 20px;
-    }
-
-    .icon#ig, .icon#fb, .icon#yelp {
-        font-size: 20px; /* Resize icons for mobile */
-    }
-
-    .link {
-        font-size: 18px;
-        margin-bottom: 10px;
+    .hamburger-icon {
+        font-size: 24px;
     }
 }
 
-/* When the menu is toggled open in mobile view 
-@media (max-width: 768px) { 
-    #nav {
-        display: flex; Show the nav when hamburger is clicked
-        flex-direction: column;
+/* Laptop view: always display nav-links and social-icons */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex;
     }
 
     .social-icons {
-        display: flex; Show social icons in the menu
-        flex-direction: column;
-        margin-top: 20px;
+        display: flex;
     }
-} */
+}
