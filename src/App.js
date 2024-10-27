@@ -6,7 +6,6 @@ import SmallGallery from './components/SmallGallery'; // Small gallery for the h
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import Quote from './components/Quote';
-//import Warranty from './components/Warranty'; 
 import Gallery from './components/Gallery'; // Separate Gallery Page
 import ContactIcons from './components/ContactIcons'; // Import the ContactIcons component
 
@@ -92,8 +91,8 @@ function Home() {
   };
 
 const landingParaStyle = {
-  fontSize: '29px',
-  fontFamily: 'times new roman, cursive',
+  fontSize: '28px',
+  fontFamily: 'Merriweather, serif',
   textAlign: 'center',
   color: '#ffffff',  // A brighter color to make it pop immediately
   lineHeight: '1.5',  // Slightly increased for better readability

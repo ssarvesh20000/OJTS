@@ -38,7 +38,9 @@ h2 {
   transform: translateX(-100%);
   transition: transform 0.3s ease, opacity 1s ease;
   text-align: center;
+  border-radius: 65px; /* Added for rounded edges */
 }
+
 
 /* Hidden and visible styles remain the same */
 .service-rectangle.hidden {
@@ -72,6 +74,7 @@ h2 {
 .service-rectangle .MuiSvgIcon-root:nth-child(3) {
   margin-left: -22px;
 }
+
 
 /* --- Add responsiveness for smaller screens --- */
 
