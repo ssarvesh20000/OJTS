@@ -21,10 +21,8 @@ function SmallGallery() {
     { id: 5, src: tesla, make: 'Tesla', model: 'Model 3', f_tint: '20%', b_tint: '5%' },
   ];
 
-  // Duplicate the image array to make the looping seamless
   const duplicatedImages = [...images, ...images];
 
-  // Handle window resize to toggle between mobile and desktop views
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -40,6 +38,14 @@ function SmallGallery() {
   const handleSliderMouseEnter = () => setIsPaused(true);
   const handleSliderMouseLeave = () => setIsPaused(false);
 
+  // Function to temporarily pause scrolling on mobile when clicked
+  const handleClickPause = () => {
+    if (isMobile) {
+      setIsPaused(true); // Temporarily pause scrolling
+      setTimeout(() => setIsPaused(false), 500); // Resume scrolling after 500ms
+    }
+  };
+
   return (
     <section id="small-gallery" style={sectionStyle}>
       <h2>Gallery</h2>
@@ -48,6 +54,7 @@ function SmallGallery() {
         style={isMobile ? mobileGalleryStyle : galleryStyle}
         onMouseEnter={handleSliderMouseEnter} 
         onMouseLeave={handleSliderMouseLeave}
+        onClick={handleClickPause} // Temporarily pause on click for mobile
       >
         <div 
           style={{ 
@@ -61,15 +68,15 @@ function SmallGallery() {
             <div 
               key={index} 
               style={isMobile ? mobileImageContainerStyle : imageContainerStyle} 
-              onMouseEnter={() => handleMouseEnter(image.id)} 
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={isMobile ? null : () => handleMouseEnter(image.id)} 
+              onMouseLeave={isMobile ? null : handleMouseLeave}
             >
               <img
                 src={image.src}
                 alt={image.model}
                 style={imageStyle}
               />
-              {hoveredImageId === image.id && (
+              {hoveredImageId === image.id && !isMobile && (
                 <div style={overlayStyle}>
                   <HoverDetails
                     image={image.src}
@@ -105,17 +112,17 @@ const sectionStyle = {
 };
 
 const galleryStyle = {
-  overflow: 'hidden', // Hide overflow for sliding effect
+  overflow: 'hidden',
   width: '100%',
   display: 'flex',
-  flexDirection: 'row', // Default horizontal layout for larger screens
+  flexDirection: 'row',
 };
 
 const mobileGalleryStyle = {
-  overflow: 'hidden', // Hide overflow for sliding effect
+  overflow: 'hidden',
   width: '100%',
-  height: '400px', // Limit the height so only 1-3 images are visible at a time on mobile
-  display: 'block', // Vertical stacking for mobile
+  height: '600px', // Increase height to show more images in mobile mode
+  display: 'block',
 };
 
 const sliderStyle = {
@@ -123,14 +130,14 @@ const sliderStyle = {
 };
 
 const imageContainerStyle = {
-  minWidth: '48%', // Adjust to fit 5 images on screen for larger screens
+  minWidth: '48%',
   position: 'relative',
   margin: '1%',
 };
 
 const mobileImageContainerStyle = {
-  width: '100%', // Make each image take the full width on mobile
-  marginBottom: '20px', // Add margin between images on mobile
+  width: '100%',
+  marginBottom: '20px',
   position: 'relative',
 };
 
@@ -170,14 +177,13 @@ const buttonStyle = {
   cursor: 'pointer',
 };
 
-// CSS keyframes for both horizontal and vertical animations
 const styles = `
 @keyframes slideHorizontal {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-250%); /* Move horizontally by 250% for continuous scrolling */
+    transform: translateX(-250%);
   }
 }
 
@@ -186,7 +192,7 @@ const styles = `
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-50%); /* Move vertically by 50% for continuous scrolling */
+    transform: translateY(-50%);
   }
 }
 `;
