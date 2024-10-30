@@ -39,6 +39,39 @@ function Footer() {
         </a>
       </p>
 
+      <p>
+        <a 
+          href="https://www.instagram.com/ojtintstudio/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ color: '#0088cc'}}
+        >
+          Instagram
+        </a>
+      </p>
+
+      <p>
+        <a 
+          href="https://www.facebook.com/ojtintstudio/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ color: '#0088cc'}}
+        >
+          Facebook
+        </a>
+      </p>
+
+      <p>
+        <a 
+          href="https://www.yelp.com/biz/oj-tint-studio-san-jose-2" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ color: '#0088cc'}}
+        >
+          Yelp
+        </a>
+      </p>
+
       <p>© 2024 Tinting Services. All rights reserved.</p>
 
       

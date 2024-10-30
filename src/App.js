@@ -2,15 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Services from './components/Services';
-import SmallGallery from './components/SmallGallery'; // Small gallery for the homepage
+import SmallGallery from './components/SmallGallery';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import Quote from './components/Quote';
-//import Warranty from './components/Warranty'; 
-import Gallery from './components/Gallery'; // Separate Gallery Page
-import ContactIcons from './components/ContactIcons'; // Import the ContactIcons component
-
-
+import Gallery from './components/Gallery';
+import ContactIcons from './components/ContactIcons';
 import './App.css';
 
 function App() {
@@ -23,7 +20,7 @@ function App() {
             path="/" 
             element={
               <div>
-                <Home /> {/* Updated Home component with background image and scroll fade */}
+                <Home />
                 <SmallGallery />
                 <Services />
                 <Quote />
@@ -31,32 +28,37 @@ function App() {
               </div>
             } 
           />
-          <Route path="/gallery" element={<Gallery />} /> {/* Main Gallery Page */}
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
         <Footer />
-        <ContactIcons /> {/* Add phone and email icons here */}
+        <ContactIcons />
       </div>
     </Router>
   );
 }
 
 function Home() {
-  const [opacity, setOpacity] = React.useState(1); // Initial opacity for the car image
+  const [opacity, setOpacity] = React.useState(1);
+  const [isLargeScreen, setIsLargeScreen] = React.useState(window.innerWidth > 768);
 
-  // Hook to monitor scroll and update opacity
+  React.useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth > 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const fadeStart = 0; // Where the fade should start
-      const fadeEnd = 400; // Where the fade should end (adjust to your preference)
+      const fadeStart = 0;
+      const fadeEnd = 400;
 
-      // Calculate opacity based on scroll position
       if (scrollY >= fadeStart && scrollY <= fadeEnd) {
-        setOpacity(1 - scrollY / fadeEnd); // Adjust opacity from 1 to 0
+        setOpacity(1 - scrollY / fadeEnd);
       } else if (scrollY > fadeEnd) {
-        setOpacity(0); // Fully faded
+        setOpacity(0);
       } else {
-        setOpacity(1); // Full opacity if at top
+        setOpacity(1);
       }
     };
 
@@ -64,19 +66,18 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Inline styles for the home section and background image
   const homeStyle = {
-    height: '100vh', // Full view height for the first section
+    height: '100vh',
     position: 'relative',
     textAlign: 'center',
-    backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/23/17/16/automobile-1853893_1280.jpg')`, // Replace with your image path
-    backgroundSize: 'cover', // Ensures the image covers the entire width and height
-    backgroundPosition: 'center center', // Center the image vertically and horizontally
-    backgroundRepeat: 'no-repeat', // Ensures the image is not repeated
-    backgroundAttachment: 'fixed', // Keeps the image fixed during scroll
-    width: '100vw', // Ensure the image takes up the full width of the page
-    opacity: opacity, // Apply the dynamic opacity
-    transition: 'opacity 0.5s ease-out', // Smooth transition
+    backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/23/17/16/automobile-1853893_1280.jpg')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    width: '100vw',
+    opacity: opacity,
+    transition: 'opacity 0.5s ease-out',
   };
 
   const titleStyle = {
@@ -85,27 +86,26 @@ function Home() {
     fontWeight: 'bold',
     color: '#000',
     position: 'relative',
-    zIndex: 2, // Ensure the title appears on top of the image
-    animation: 'glow 3s infinite', // Combine animations
+    zIndex: 2,
+    animation: 'glow 3s infinite',
     letterSpacing: '-1.6px',
     fontFamily: "'Playfair Display', serif"
   };
 
-const landingParaStyle = {
-  fontSize: '29px',
-  fontFamily: 'times new roman, cursive',
-  textAlign: 'center',
-  color: '#ffffff',  // A brighter color to make it pop immediately
-  lineHeight: '1.5',  // Slightly increased for better readability
-  maxWidth: '750px',
-  margin: '0 auto',
-  opacity: 0, // Start invisible for the fade-in effect
-  animation: 'fadeInFromDarkness 10s ease-out forwards', // Fade-in from darkness for paragraph text
-  textShadow: '2px 2px 6px rgba(0, 0, 0, 0.8)', // Text shadow for depth and more "pop"
-  transform: 'scale(1.05)',  // Slightly larger text for emphasis
-  transition: 'transform 0.5s ease',  // Smooth transition for any changes
-};
-
+  const landingParaStyle = {
+    fontSize: '28px',
+    fontFamily: 'Merriweather, serif',
+    textAlign: 'center',
+    color: '#ffffff',
+    lineHeight: '1.5',
+    maxWidth: '750px',
+    margin: '0 auto',
+    opacity: 0,
+    animation: 'fadeInFromDarkness 10s ease-out forwards',
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.8)',
+    transform: 'scale(1.05)',
+    transition: 'transform 0.5s ease',
+  };
 
   const glowAnimation = `
     @keyframes glow {
@@ -122,36 +122,34 @@ const landingParaStyle = {
 
     @keyframes fadeInFromDarkness {
       0% {
-        opacity: 0; // Start fully transparent (hidden in the darkness)
+        opacity: 0;
       }
       100% {
-        opacity: 1; // End fully visible
+        opacity: 1;
       }
     }
   `;
 
   return (
     <section id="home" style={homeStyle}>
-      <div style={{ height: '40px' }}></div> {/* This adds the empty space */}
-      <div style={{ height: '40px' }}></div> {/* This adds the empty space */}
-      <div style={{ height: '20px' }}></div> {/* This adds the empty space */}
+      {isLargeScreen && <div style={{ height: '40px' }}></div>}
+      {isLargeScreen && <div style={{ height: '40px' }}></div>}
+      {isLargeScreen && <div style={{ height: '20px' }}></div>}
       <style>{glowAnimation}</style>
       <h2 style={titleStyle}>OJ TINT STUDIO</h2>
-      <div style={{ height: '10px' }}></div> {/* This adds the empty space */}
-      <div style={{ height: '50px' }}></div> {/* This adds the empty space */}
+      {isLargeScreen && <div style={{ height: '10px' }}></div>}
+      {isLargeScreen && <div style={{ height: '50px' }}></div>}
       <p style={landingParaStyle}>
-      Since 2019, OJ Tint Studio has been providing top-quality automotive window tinting in&nbsp;  
-      <a 
-        href="https://www.google.com/maps/place/1580+Oakland+Rd,+San+Jose,+CA+95131/@37.3801141,-121.8968122,17z/data=!3m1!4b1!4m6!3m5!1s0x808fcc0c3be581a5:0xe5961794fa5200b2!8m2!3d37.3801141!4d-121.8942373!16s%2Fg%2F11bw3wyxq3?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        style={{ color: '#0088cc', textDecoration: 'underline' }}
-      >
-      San Jose, CA
-      </a>. 
-      We offer fair pricing and exceptional service, with a focus on personalized care and competitive rates for everyone in the Bay Area.
+        Since 2019, OJ Tint Studio has been providing top-quality automotive window tinting in &nbsp;
+        <a 
+          href="https://www.google.com/maps/place/1580+Oakland+Rd,+San+Jose,+CA+95131"
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ color: '#0088cc', textDecoration: 'underline' }}
+        >
+        San Jose, CA
+        </a>. We offer fair pricing and exceptional service, with a focus on personalized care and competitive rates for everyone in the Bay Area.
       </p>
-
     </section>
   );
 }

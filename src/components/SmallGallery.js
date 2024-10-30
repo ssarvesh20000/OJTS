@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHover } from './HoverHandler';
 import HoverDetails from './HoverDetails';
@@ -10,45 +10,75 @@ import tesla from '../assets/5tesla.png';
 
 function SmallGallery() {
   const { hoveredImageId, handleMouseEnter, handleMouseLeave } = useHover();
-  const [isPaused, setIsPaused] = useState(false); // State to track if the slider should be paused
+  const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   const images = [
     { id: 1, src: supra, make: 'Toyota', model: 'GR Supra', f_tint: '20%', b_tint: '20%' },
     { id: 2, src: rolly, make: 'Rolls Royce', model: 'Ghost', f_tint: '20%', b_tint: '5%' },
-    { id: 4, src: ferrari, make: 'Ferrari', model: 'F8 Tributo', f_tint: '??', b_tint: '??' },
+    { id: 4, src: ferrari, make: 'Ferrari', model: 'F8 Tributo', f_tint: '15%', b_tint: '15%' },
     { id: 3, src: amg, make: 'Mercedes Benz', model: 'AMG GTR', f_tint: '15%', b_tint: '15%' },
     { id: 5, src: tesla, make: 'Tesla', model: 'Model 3', f_tint: '20%', b_tint: '5%' },
   ];
 
-  // Duplicate the image array to make the looping seamless
   const duplicatedImages = [...images, ...images];
 
-  // Event handlers for pausing and resuming animation
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const handleSliderMouseEnter = () => setIsPaused(true);
   const handleSliderMouseLeave = () => setIsPaused(false);
+
+  // Function to temporarily pause scrolling on mobile when clicked
+  const handleClickPause = () => {
+    if (isMobile) {
+      setIsPaused(true); // Temporarily pause scrolling
+      setTimeout(() => setIsPaused(false), 500); // Resume scrolling after 500ms
+    }
+  };
 
   return (
     <section id="small-gallery" style={sectionStyle}>
       <h2>Gallery</h2>
-      <p>Here are a few examples of our recent work.</p>
+      <p style={{ fontFamily: 'Merriweather, serif', fontSize: '14px', color: '#ddd' }}>
+      Here are a few examples of our recent work.
+      </p>
       <div 
-        style={galleryStyle}
+        style={isMobile ? mobileGalleryStyle : galleryStyle}
         onMouseEnter={handleSliderMouseEnter} 
         onMouseLeave={handleSliderMouseLeave}
+        onClick={handleClickPause} // Temporarily pause on click for mobile
       >
-        <div style={{ ...sliderStyle, animationPlayState: isPaused ? 'paused' : 'running' }}>
+        <div 
+          style={{ 
+            ...sliderStyle, 
+            flexDirection: isMobile ? 'column' : 'row', 
+            animationPlayState: isPaused ? 'paused' : 'running', 
+            animation: isMobile ? 'slideVertical 30s linear infinite' : 'slideHorizontal 30s linear infinite',
+          }}
+        >
           {duplicatedImages.map((image, index) => (
             <div 
               key={index} 
-              style={imageContainerStyle} 
-              onMouseEnter={() => handleMouseEnter(image.id)} 
-              onMouseLeave={handleMouseLeave}
+              style={isMobile ? mobileImageContainerStyle : imageContainerStyle} 
+              onMouseEnter={isMobile ? null : () => handleMouseEnter(image.id)} 
+              onMouseLeave={isMobile ? null : handleMouseLeave}
             >
               <img
                 src={image.src}
                 alt={image.model}
                 style={imageStyle}
               />
-              {hoveredImageId === image.id && (
+              {hoveredImageId === image.id && !isMobile && (
                 <div style={overlayStyle}>
                   <HoverDetails
                     image={image.src}
@@ -84,20 +114,33 @@ const sectionStyle = {
 };
 
 const galleryStyle = {
-  overflow: 'hidden', // Hide overflow for sliding effect
+  overflow: 'hidden',
   width: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+};
+
+const mobileGalleryStyle = {
+  overflow: 'hidden',
+  width: '100%',
+  height: '600px', // Increase height to show more images in mobile mode
+  display: 'block',
 };
 
 const sliderStyle = {
   display: 'flex',
-  animation: 'slide 20s linear infinite', // Slide animation with infinite loop
-  animationPlayState: 'running', // Default is running, but will change when hovered
 };
 
 const imageContainerStyle = {
-  minWidth: '48%', // Adjust to fit 5 images on screen
+  minWidth: '48%',
   position: 'relative',
   margin: '1%',
+};
+
+const mobileImageContainerStyle = {
+  width: '100%',
+  marginBottom: '20px',
+  position: 'relative',
 };
 
 const imageStyle = {
@@ -136,14 +179,22 @@ const buttonStyle = {
   cursor: 'pointer',
 };
 
-// CSS keyframes for seamless sliding animation
 const styles = `
-@keyframes slide {
+@keyframes slideHorizontal {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-250%); /* Move by 50% since we duplicated the images */
+    transform: translateX(-250%);
+  }
+}
+
+@keyframes slideVertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
   }
 }
 `;

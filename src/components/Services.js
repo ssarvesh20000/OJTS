@@ -33,6 +33,7 @@ function Services() {
       {/* Container for the title and rectangles */}
       <div className="services-container">
         {/* Blue-colored title for Services */}
+        <div style={{ height: '10px' }}></div> {/* This adds the empty space */}
         <h2>Autobahn Window Tint</h2>
 
         <div className="rectangles-container">

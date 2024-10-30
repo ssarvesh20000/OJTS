@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import ImageClicked from './ImageClicked';
 import teslaY from '../assets/carGal/tesla-y.png';  // Updated import
 import lexus from '../assets/carGal/lexusRC350.png';
@@ -72,7 +72,9 @@ function Gallery() {
   return (
     <section style={{ padding: '20px' }}>
       <h2>Main Gallery</h2>
-      <p>Explore 2000+ tinting projects on our instgram</p>
+      <p style={{ fontFamily: 'Merriweather, serif', fontSize: '14px', color: '#ddd' }}>
+      Explore 2000+ tinting projects on our instgram
+      </p>
       <div style={galleryStyle}>
         {images.map((image, index) => (
           <img

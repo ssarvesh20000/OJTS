@@ -38,7 +38,9 @@ h2 {
   transform: translateX(-100%);
   transition: transform 0.3s ease, opacity 1s ease;
   text-align: center;
+  border-radius: 65px; /* Added for rounded edges */
 }
+
 
 /* Hidden and visible styles remain the same */
 .service-rectangle.hidden {
@@ -73,6 +75,7 @@ h2 {
   margin-left: -22px;
 }
 
+
 /* --- Add responsiveness for smaller screens --- */
 
 /* Medium screens (max-width: 768px) */
@@ -105,14 +108,13 @@ h2 {
   }
 }
 
-/* Very small screens (max-width: 360px) */
-@media (max-width: 360px) {
-  .service-rectangle {
-    flex: 0 0 95%; /* Each rectangle takes 95% width */
-    padding: 15px; /* Reduce padding for very small screens */
-  }
 
-  h2 {
-    font-size: 20px; /* Further reduce title size for very small screens */
+@media (max-width: 480px) {
+  .service-rectangle {
+    flex: 0 0 90%; /* Each rectangle takes almost full width */
+    margin-bottom: 10px; /* Add some space between stacked rectangles */
+    transform: none !important; /* Prevent the translate animation on small screens */
+    opacity: 1; /* Make the rectangle visible */
   }
 }
+
