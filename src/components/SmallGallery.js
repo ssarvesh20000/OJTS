@@ -49,7 +49,9 @@ function SmallGallery() {
   return (
     <section id="small-gallery" style={sectionStyle}>
       <h2>Gallery</h2>
-      <p>Here are a few examples of our recent work.</p>
+      <p style={{ fontFamily: 'Merriweather, serif', fontSize: '14px', color: '#ddd' }}>
+      Here are a few examples of our recent work.
+      </p>
       <div 
         style={isMobile ? mobileGalleryStyle : galleryStyle}
         onMouseEnter={handleSliderMouseEnter} 
