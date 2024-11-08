@@ -10,11 +10,14 @@ import Gallery from './components/Gallery';
 import ContactIcons from './components/ContactIcons';
 import './App.css';
 
+import { Analytics } from '@vercel/analytics/react';
+
 function App() {
   return (
     <Router>
       <div>
         <Header />
+        <Analytics />
         <Routes>
           <Route 
             path="/" 
