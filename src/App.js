@@ -77,12 +77,14 @@ function Home() {
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll', // Only apply 'fixed' on larger screens
+    backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll',
     width: '100vw',
+    maxWidth: '100%',  // Prevents content from exceeding viewport width
+    overflowX: 'hidden', // Disables horizontal scroll
     opacity: opacity,
     transition: 'opacity 0.5s ease-out',
   };
-  
+
   const titleStyle = {
     fontSize: '102.5px',
     textAlign: 'center',
