@@ -6,23 +6,18 @@ import tintFront5 from '../assets/tint images/car-front-05.png'; // Front tint i
 import tintFront20 from '../assets/tint images/car-front-20.avif';
 import tintFront35 from '../assets/tint images/car-front-35.png';
 import tintFront50 from '../assets/tint images/car-front-50.png';
-import tintFront70 from '../assets/tint images/car-front-70.avif';
 
 import tintSide5 from '../assets/tint images/car-sides-05.png';   // Side tint image
 import tintSide20 from '../assets/tint images/car-sides-20.png';
 import tintSide35 from '../assets/tint images/car-sides-35.png';
 import tintSide50 from '../assets/tint images/car-sides-50.avif';
-import tintSide70 from '../assets/tint images/car-sides-70.avif';
 
 import tintBack5 from '../assets/tint images/car-back-05.png';   // Back tint image
 import tintBack20 from '../assets/tint images/car-back-20.avif';
 import tintBack35 from '../assets/tint images/car-back-35.png';
 import tintBack50 from '../assets/tint images/car-back-50.avif';
-import tintBack70 from '../assets/tint images/car-back-70.avif';
 
 import windshield50 from '../assets/tint images/car-windshield-50.png'; // windshield
-import windshield70 from '../assets/tint images/car-windshield-70.png';
-import windshield80 from '../assets/tint images/car-windshield-80.avif';
 
 function Quote() {
   const [formData, setFormData] = useState({
@@ -46,7 +41,6 @@ function Quote() {
       case 20: return tintFront20;
       case 35: return tintFront35;
       case 50: return tintFront50;
-      case 70: return tintFront70;
       default: return null;
     }
   };
@@ -58,7 +52,6 @@ function Quote() {
       case 20: return tintSide20;
       case 35: return tintSide35;
       case 50: return tintSide50;
-      case 70: return tintSide70;
       default: return null;
     }
   };
@@ -70,7 +63,6 @@ function Quote() {
       case 20: return tintBack20;
       case 35: return tintBack35;
       case 50: return tintBack50;
-      case 70: return tintBack70;
       default: return null;
     }
   };
@@ -79,8 +71,6 @@ function Quote() {
     if (tintValue === 100) return null; // No tint
     switch (tintValue) {
       case 50: return windshield50;
-      case 70: return windshield70;
-      case 80: return windshield80;
       default: return null;
     }
   };
@@ -171,15 +161,15 @@ function Quote() {
         <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Front Windshield Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
-              { [50, 70, 80, 100].map(value => (
+            <div className="button-group">
+              { [50, 100].map(value => (
                 <button 
                   key={value} 
                   type="button"
                   style={buttonStyle(formData.front_windshield_tint === value)}
                   onClick={() => handleTintChange('front_windshield_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -187,15 +177,15 @@ function Quote() {
 
           <div style={{ marginBottom: '15px'}}>
             <label>Front Side Window Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
-              { [5, 20, 35, 50, 70, 100].map(value => (
+            <div className="button-group">
+              { [5, 20, 35, 50, 100].map(value => (
                 <button 
                   key={value} 
                   type="button"
                   style={buttonStyle(formData.front_window_tint === value)}
                   onClick={() => handleTintChange('front_window_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -206,15 +196,15 @@ function Quote() {
         <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Back Windshield Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
-              { [5, 20, 35, 50, 70, 100].map(value => (
+            <div className="button-group">
+              { [5, 20, 35, 50, 100].map(value => (
                 <button 
                   key={value} 
                   type="button"
                   style={buttonStyle(formData.back_windshield_tint === value)}
                   onClick={() => handleTintChange('back_windshield_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -222,15 +212,15 @@ function Quote() {
 
           <div style={{ marginBottom: '15px'}}>
             <label>Back Side Window Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
-              { [5, 20, 35, 50, 70, 100].map(value => (
+            <div className="button-group">
+              { [5, 20, 35, 50, 100].map(value => (
                 <button 
                   key={value} 
                   type="button"
                   style={buttonStyle(formData.back_window_tint === value)}
                   onClick={() => handleTintChange('back_window_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -254,7 +244,5 @@ const buttonStyle = (isSelected) => ({
   alignItems: 'center',
   justifyContent: 'center',
 });
-
-
 
 export default Quote;
