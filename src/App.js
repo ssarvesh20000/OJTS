@@ -52,22 +52,26 @@ function Home() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const fadeStart = 0;
-      const fadeEnd = 400;
+      if (isLargeScreen) { // Only apply fade effect on large screens
+        const scrollY = window.scrollY;
+        const fadeStart = 0;
+        const fadeEnd = 400;
 
-      if (scrollY >= fadeStart && scrollY <= fadeEnd) {
-        setOpacity(1 - scrollY / fadeEnd);
-      } else if (scrollY > fadeEnd) {
-        setOpacity(0);
+        if (scrollY >= fadeStart && scrollY <= fadeEnd) {
+          setOpacity(1 - scrollY / fadeEnd);
+        } else if (scrollY > fadeEnd) {
+          setOpacity(0);
+        } else {
+          setOpacity(1);
+        }
       } else {
-        setOpacity(1);
+        setOpacity(1); // Reset opacity to 1 on mobile
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isLargeScreen]);
 
   const homeStyle = {
     height: '100vh',
@@ -83,6 +87,7 @@ function Home() {
     transition: 'opacity 0.5s ease-out',
   };
 
+  // Rest of your component code remains the same
   const titleStyle = {
     fontSize: '102.5px',
     textAlign: 'center',
