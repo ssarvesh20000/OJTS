@@ -210,6 +210,11 @@ button:hover {
     padding: 5px 10px;
     font-size: 11px;
   }
+
+  #home {
+    background-attachment: scroll;
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
 }
 
 
