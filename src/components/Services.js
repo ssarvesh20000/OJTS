@@ -40,7 +40,7 @@ function Services() {
           <div className="service-rectangle hidden">
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} /> {/* Icon styling */}
             <h3>Black</h3>
-            <p style={{ color: 'black' }}>
+            <p style={{ color: 'black', fontFamily: 'sans-serif' }}>
               Not looking to break the bank, yet, still have the visual and UV benefits of window tints? 
               Autobahn’s Black Film offers privacy, UV protection, and glare reduction, making your car’s 
               interior more comfortable to drive in. This option is the entry-level window film with an 
@@ -52,7 +52,7 @@ function Services() {
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} /> {/* Icon styling */}
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
             <h3>Black Ceramic</h3>
-            <p style={{ color: 'black' }}>
+            <p style={{ color: 'black', fontFamily: 'sans-serif' }}>
               For a more premium option, Autobahn’s Black Ceramic Film offers the same benefits as the previous
               two combined. Meaning it has it all: privacy, glare reduction, 88% heat rejection, and UV protection. 
               A great choice for those in search of finer performance and style.
@@ -64,7 +64,7 @@ function Services() {
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
             <h3>Ceramic i3</h3>
-            <p style={{ color: 'black' }}>
+            <p style={{ color: 'black', fontFamily: 'sans-serif' }}>
               For those seeking the highest level of protection and performance in a film, 
               the Ceramic i3 offers the most advanced features, with 98% heat rejection. Additionally, 
               its multi-ceramic layers and thick deep dye construction make it the most durable film available.
@@ -77,7 +77,7 @@ function Services() {
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
             <h3>Air Ceramic</h3>
-            <p style={{ color: 'black' }}>
+            <p style={{ color: 'black', fontFamily: 'sans-serif' }}>
               A crystal clear, ceramic window film that blocks out heat and harmful UV rays; perfect for
               those who are looking to gain the benefits of a premium window film without altering the 
               appearance of their vehicle.
