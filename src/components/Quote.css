@@ -5,6 +5,9 @@
     gap: 10px; /* Add space between buttons */
     justify-content: flex-start;
   }
+label {
+  font-family: baloo, serif;
+}
   
   /* Media query for mobile screens (max-width: 768px) */
   @media (max-width: 1375px) {
