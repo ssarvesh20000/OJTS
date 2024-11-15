@@ -73,7 +73,7 @@ function Gallery() {
     <section style={{ padding: '20px' }}>
       <h2>Main Gallery</h2>
       <p style={{ fontFamily: 'Merriweather, serif', fontSize: '14px', color: '#ddd' }}>
-      Explore 2000+ tinting projects on our instgram
+      Explore 2000+ tinting projects on our instagram
       </p>
       <div style={galleryStyle}>
         {images.map((image, index) => (

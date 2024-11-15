@@ -77,7 +77,7 @@ function Home() {
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll',
+    backgroundAttachment: 'scroll',
     width: '100vw',
     maxWidth: '100%',
     overflowX: 'hidden',
