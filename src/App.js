@@ -77,10 +77,11 @@ function Home() {
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
+    backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll',
     width: '100vw',
     maxWidth: '100%',
     overflowX: 'hidden',
+    overflowY: 'hidden',
     opacity: opacity,
     transition: 'opacity 0.5s ease-out',
   };

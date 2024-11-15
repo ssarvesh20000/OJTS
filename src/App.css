@@ -42,7 +42,7 @@ section {
   border-radius: 0; /* Remove border radius */
   box-shadow: none; /* Remove box shadow */
   position: relative;
-  overflow: auto; /* Enable scroll if content exceeds viewport */
+  overflow: hidden; /* Enable scroll if content exceeds viewport */
   
 }
 
