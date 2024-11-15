@@ -34,7 +34,7 @@ h2 {
   border: 2mm solid rgb(255, 255, 255);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: black;
-  font-family: fantasy, serif;
+  font-family: roboto, serif;
   opacity: 0;
   transform: translateX(-100%);
   transition: transform 0.3s ease, opacity 1s ease;
