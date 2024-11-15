@@ -22,7 +22,6 @@ import tintBack70 from '../assets/tint images/car-back-70.avif';
 
 import windshield50 from '../assets/tint images/car-windshield-50.png'; // windshield
 import windshield70 from '../assets/tint images/car-windshield-70.png';
-import windshield80 from '../assets/tint images/car-windshield-80.avif';
 
 function Quote() {
   const [formData, setFormData] = useState({
@@ -80,7 +79,6 @@ function Quote() {
     switch (tintValue) {
       case 50: return windshield50;
       case 70: return windshield70;
-      case 80: return windshield80;
       default: return null;
     }
   };
@@ -171,15 +169,15 @@ function Quote() {
         <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Front Windshield Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
-              { [50, 70, 80, 100].map(value => (
+            <div className="button-group">
+              { [50, 70, 100].map(value => (
                 <button 
                   key={value} 
                   type="button"
                   style={buttonStyle(formData.front_windshield_tint === value)}
                   onClick={() => handleTintChange('front_windshield_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -187,7 +185,7 @@ function Quote() {
 
           <div style={{ marginBottom: '15px'}}>
             <label>Front Side Window Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
+            <div className="button-group">
               { [5, 20, 35, 50, 70, 100].map(value => (
                 <button 
                   key={value} 
@@ -195,7 +193,7 @@ function Quote() {
                   style={buttonStyle(formData.front_window_tint === value)}
                   onClick={() => handleTintChange('front_window_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -206,7 +204,7 @@ function Quote() {
         <div style={{ width: '48%' }}>
           <div style={{ marginBottom: '15px'}}>
             <label>Back Windshield Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
+            <div className="button-group">
               { [5, 20, 35, 50, 70, 100].map(value => (
                 <button 
                   key={value} 
@@ -214,7 +212,7 @@ function Quote() {
                   style={buttonStyle(formData.back_windshield_tint === value)}
                   onClick={() => handleTintChange('back_windshield_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -222,7 +220,7 @@ function Quote() {
 
           <div style={{ marginBottom: '15px'}}>
             <label>Back Side Window Tint:</label>
-            <div className="button-group">  {/* Add the class "button-group" */}
+            <div className="button-group">
               { [5, 20, 35, 50, 70, 100].map(value => (
                 <button 
                   key={value} 
@@ -230,7 +228,7 @@ function Quote() {
                   style={buttonStyle(formData.back_window_tint === value)}
                   onClick={() => handleTintChange('back_window_tint', value)}
                 >
-                  {value}%
+                  {value === 100 ? 'None' : `${value}%`}
                 </button>
               ))}
             </div>
@@ -254,7 +252,5 @@ const buttonStyle = (isSelected) => ({
   alignItems: 'center',
   justifyContent: 'center',
 });
-
-
 
 export default Quote;

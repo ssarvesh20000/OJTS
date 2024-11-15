@@ -10,11 +10,14 @@ import Gallery from './components/Gallery';
 import ContactIcons from './components/ContactIcons';
 import './App.css';
 
+import { Analytics } from '@vercel/analytics/react';
+
 function App() {
   return (
     <Router>
       <div>
         <Header />
+        <Analytics />
         <Routes>
           <Route 
             path="/" 
@@ -67,15 +70,17 @@ function Home() {
   }, []);
 
   const homeStyle = {
-    height: '100vh',
+    minHeight: '100vh', // Allows the section to expand if content is larger than the viewport
     position: 'relative',
     textAlign: 'center',
     backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/23/17/16/automobile-1853893_1280.jpg')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
+    backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll',
     width: '100vw',
+    maxWidth: '100%',
+    overflowX: 'hidden',
     opacity: opacity,
     transition: 'opacity 0.5s ease-out',
   };

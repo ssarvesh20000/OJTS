@@ -1,3 +1,10 @@
+/* Apply new font to navigation links and icons */
+.link,
+.hamburger-link,
+.icon {
+    font-family: 'Merriweather', serif;
+}
+
 /* Basic link and icon styles */
 .link {
     color: #00aaff;
@@ -101,6 +108,7 @@
         font-size: 24px;
         margin: 15px 0;
         text-align: center;
+        font-family: 'Merriweather', serif; /* Apply Merriweather font */
     }
 
     /* Social icons in overlay */
