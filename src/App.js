@@ -69,16 +69,13 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const homeStyle = {
-    minHeight: '100vh', // Allows the section to expand if content is larger than the viewport
+  const homeStyle = { // Allows the section to expand if content is larger than the viewport
     position: 'relative',
     textAlign: 'center',
     backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/23/17/16/automobile-1853893_1280.jpg')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
-    width: '100vw',
     maxWidth: '100%',
     overflowX: 'hidden',
     opacity: opacity,
