@@ -212,8 +212,8 @@ button:hover {
   }
 
   #home {
-    background-attachment: fixed;
-    overflow-y: hidden; /* Enable vertical scrolling */
+    background-attachment: scroll;
+    overflow-y: auto; /* Enable vertical scrolling */
   }
 }
 
