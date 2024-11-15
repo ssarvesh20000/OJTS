@@ -81,6 +81,7 @@ function Home() {
     width: '100vw',
     maxWidth: '100%',
     overflowX: 'hidden',
+    overflowY: 'hidden',
     opacity: opacity,
     transition: 'opacity 0.5s ease-out',
   };
