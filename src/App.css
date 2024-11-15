@@ -49,6 +49,7 @@ section {
 h1, h2, h3 {
   color: #00aaff; /* Blue color for headings */
   margin-bottom: 20px;
+  font-family: Impact, sans-serif;
 }
 
 p {
