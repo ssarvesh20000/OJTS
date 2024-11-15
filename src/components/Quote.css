@@ -1,0 +1,32 @@
+/* Default layout for larger screens */
+.button-group {
+    display: flex;
+    flex-wrap: nowrap; /* Keep buttons in one row for larger screens */
+    gap: 10px; /* Add space between buttons */
+    justify-content: flex-start;
+  }
+  
+  /* Media query for mobile screens (max-width: 768px) */
+  @media (max-width: 768px) {
+    .button-group {
+      display: flex;
+      flex-wrap: wrap; /* Allow wrapping */
+      justify-content: space-between; /* Ensure buttons are spaced evenly */
+      gap: 0px; /* Remove gap between buttons */
+    }
+  
+    .button-group button {
+      flex: 0 0 45%; /* Ensure two buttons per row, 45% width */
+      margin: 5px 0; /* Small margin to give some space */
+      width: 40px; /* Smaller button width */
+      height: 40px; /* Smaller button height */
+      font-size: 12px; /* Larger font size for mobile screens */
+      padding: 2px; /* Maintain reduced padding inside buttons */
+    }
+  
+    /* Add more margin above "Front Side Window Tint:" */
+    .front-side-label {
+      margin-top: 20px; /* Add extra space above this label */
+    }
+  }
+  

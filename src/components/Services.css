@@ -1,0 +1,120 @@
+/* Ensure the section allows space for the title and the rectangles */
+.services-section {
+  padding: 20px;
+}
+
+/* New container for the title and rectangles */
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+}
+
+/* Container for the rectangles */
+.rectangles-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* Adjust each rectangle to take up 17% of the width on large screens */
+.service-rectangle {
+  flex: 0 0 17%;
+  padding: 20px;
+  background-color: #cdf3fb;
+  border: 2mm solid rgb(255, 255, 255);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+  font-family: Arial, sans-serif;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease, opacity 1s ease;
+  text-align: center;
+  border-radius: 65px; /* Added for rounded edges */
+}
+
+
+/* Hidden and visible styles remain the same */
+.service-rectangle.hidden {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.service-rectangle.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover effect remains the same */
+.service-rectangle.hover-enabled:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon and content center alignment */
+.service-rectangle .MuiSvgIcon-root {
+  display: inline-block;
+  font-size: 40px;
+  color: #000;
+}
+
+/* Margin adjustments for icons */
+.service-rectangle .MuiSvgIcon-root:nth-child(1) {
+  margin-right: -25px;
+}
+
+.service-rectangle .MuiSvgIcon-root:nth-child(3) {
+  margin-left: -22px;
+}
+
+
+/* --- Add responsiveness for smaller screens --- */
+
+/* Medium screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .rectangles-container {
+    flex-wrap: wrap; /* Allow wrapping on medium-sized screens */
+  }
+
+  .service-rectangle {
+    flex: 0 0 45%; /* Each rectangle takes 45% of width */
+  }
+}
+
+/* Small screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .rectangles-container {
+    flex-direction: column; /* Stack rectangles vertically */
+    align-items: center; /* Center the rectangles */
+    gap: 15px; /* Reduce gap between rectangles */
+  }
+
+  .service-rectangle {
+    flex: 0 0 90%; /* Each rectangle takes almost full width */
+    margin-bottom: 10px; /* Add some space between stacked rectangles */
+    transform: none; /* Prevent the translate animation on small screens */
+  }
+
+  h2 {
+    font-size: 24px; /* Reduce title size for smaller screens */
+  }
+}
+
+
+@media (max-width: 480px) {
+  .service-rectangle {
+    flex: 0 0 90%; /* Each rectangle takes almost full width */
+    margin-bottom: 10px; /* Add some space between stacked rectangles */
+    transform: none !important; /* Prevent the translate animation on small screens */
+    opacity: 1; /* Make the rectangle visible */
+  }
+}
+

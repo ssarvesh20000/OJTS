@@ -1,0 +1,127 @@
+/* Basic link and icon styles */
+.link {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+.icon {
+    font-size: 24px;
+    margin-left: 15px;
+}
+
+/* Social media icons with individual colors */
+.icon#ig,
+.hamburger-icon#ig {
+    color: #E4405F; /* Instagram pink */
+}
+
+.icon#fb,
+.hamburger-icon#fb {
+    color: #1877F2; /* Facebook blue */
+}
+
+.icon#yelp,
+.hamburger-icon#yelp {
+    color: #D32323; /* Yelp red */
+}
+
+/* Hover effects for both desktop and mobile icons */
+.icon#ig:hover,
+.hamburger-icon#ig:hover {
+    color: #F77777; /* Lighten Instagram on hover */
+    transform: scale(1.05);
+}
+
+.icon#fb:hover,
+.hamburger-icon#fb:hover {
+    color: #6D9DE8; /* Lighten Facebook on hover */
+    transform: scale(1.05);
+}
+
+.icon#yelp:hover,
+.hamburger-icon#yelp:hover {
+    color: #F56565; /* Lighten Yelp on hover */
+    transform: scale(1.05);
+}
+
+/* Hide hamburger by default */
+.hamburger {
+    display: none;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    /* Show hamburger button in mobile view */
+    .hamburger {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1002; /* Ensures it's on top of the overlay */
+    }
+
+    /* Hide nav links and social icons by default in mobile */
+    .nav-links,
+    .social-icons {
+        display: none;
+    }
+
+    /* Compact overlay for mobile */
+    .compact-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001; /* Under the hamburger button */
+    }
+
+    /* Hamburger nav links */
+    .hamburger-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger-link {
+        color: #00aaff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 24px;
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    /* Social icons in overlay */
+    .hamburger-social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .hamburger-icon {
+        font-size: 24px;
+    }
+}
+
+/* Laptop view: always display nav-links and social-icons */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex;
+    }
+
+    .social-icons {
+        display: flex;
+    }
+}
