@@ -145,16 +145,17 @@ function Home() {
       <h2 style={titleStyle}>OJ TINT STUDIO</h2>
       {isLargeScreen && <div style={{ height: '10px' }}></div>}
       {isLargeScreen && <div style={{ height: '50px' }}></div>}
-      <p style={landingParaStyle}>
+      <p className="landing-para" style={landingParaStyle}>
         Since 2019, OJ Tint Studio has been providing top-quality automotive window tinting in &nbsp;
-        <a 
+        <a
           href="https://www.google.com/maps/place/1580+Oakland+Rd,+San+Jose,+CA+95131"
-          target="_blank" 
+          target="_blank"
           rel="noopener noreferrer"
           style={{ color: '#0088cc', textDecoration: 'underline' }}
         >
-        San Jose, CA
-        </a>. We offer fair pricing and exceptional service, with a focus on personalized care and competitive rates for everyone in the Bay Area.
+          San Jose, CA
+        </a>
+        . We offer fair pricing and exceptional service, with a focus on personalized care and competitive rates for everyone in the Bay Area.
       </p>
     </section>
   );
