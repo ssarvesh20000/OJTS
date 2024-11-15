@@ -219,3 +219,25 @@ button:hover {
 
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+
+
+.landing-para {
+  font-size: 28px; /* Default for laptop mode (matches landingParaStyle in App.js) */
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .landing-para {
+    font-size: 22px !important; /* Smaller font size for tablet and smaller screens */
+    line-height: 1.4 !important;
+    transform: scale(1); /* Adjust scale if needed */
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-para {
+    font-size: 22px !important; /* Smallest font size for phone mode */
+    line-height: 1.3 !important;
+  }
+}
