@@ -24,7 +24,7 @@ label {
       width: 40px; /* Smaller button width */
       height: 40px; /* Smaller button height */
       font-size: 12px; /* Larger font size for mobile screens */
-      font-family: Georgia, serif;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode';
       padding: 2px; /* Maintain reduced padding inside buttons */
     }
   
