@@ -100,39 +100,6 @@ function Footer() {
                 </a>
               </p>
             </div>
-
-            <div style={socialLinksStyle}>
-              <p>
-                <a 
-                  href="https://www.instagram.com/ojtintstudio/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={linkStyle}
-                >
-                  Instagram
-                </a>
-              </p>
-              <p>
-                <a 
-                  href="https://www.facebook.com/ojtintstudio/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={linkStyle}
-                >
-                  Facebook
-                </a>
-              </p>
-              <p>
-                <a 
-                  href="https://www.yelp.com/biz/oj-tint-studio-san-jose-2" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={linkStyle}
-                >
-                  Yelp
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       )}
@@ -161,14 +128,13 @@ const mobileFooterStyle = {
 
 const footerContainerStyle = {
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'center', // Center content for landscape mode
   alignItems: 'center',
   flexDirection: 'row',
   gap: '30px',
 };
 
 const logoContainerStyle = {
-  flex: '1',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -186,25 +152,15 @@ const mobileLogoStyle = {
 };
 
 const infoContainerStyle = {
-  flex: '2',
   display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'flex-start',
-  gap: '50px',
-  paddingLeft: '30px',
+  flexDirection: 'column', // Stack vertically for clarity
+  alignItems: 'center',
 };
 
 const contactInfoStyle = {
   display: 'flex',
   flexDirection: 'column',
-  textAlign: 'left',
-};
-
-const socialLinksStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  textAlign: 'left',
-  marginLeft: '0',
+  textAlign: 'center', // Center align for consistency
 };
 
 const linkStyle = {

@@ -72,17 +72,7 @@ function Services() {
           </div>
 
           {/* Move AutoBahn Air Ceramic to the end with $$$ */}
-          <div className="service-rectangle hidden">
-            <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} /> {/* Icon styling */}
-            <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
-            <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
-            <h3>Air Ceramic</h3>
-            <p style={{ color: 'black' }}>
-              A crystal clear, ceramic window film that blocks out heat and harmful UV rays; perfect for
-              those who are looking to gain the benefits of a premium window film without altering the 
-              appearance of their vehicle.
-            </p>
-          </div>
+
         </div>
       </div>
       <p style={{ textAlign: 'center', color: '#8dd9ff', fontWeight: 'bold', fontSize: '18px' }}>

@@ -43,7 +43,7 @@ section {
   box-shadow: none; /* Remove box shadow */
   position: relative;
   overflow: hidden; /* Enable scroll if content exceeds viewport */
-  
+  background-color: #000; /* Set to black background */
 }
 
 h1, h2, h3 {

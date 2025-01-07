@@ -28,7 +28,7 @@ h2 {
 
 /* Adjust each rectangle to take up 17% of the width on large screens */
 .service-rectangle {
-  flex: 0 0 17%;
+  flex: 0 0 22%;
   padding: 20px;
   background-color: #cdf3fb;
   border: 2mm solid rgb(255, 255, 255);

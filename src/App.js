@@ -73,7 +73,8 @@ function Home() {
     minHeight: '100vh', // Allows the section to expand if content is larger than the viewport
     position: 'relative',
     textAlign: 'center',
-    backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/23/17/16/automobile-1853893_1280.jpg')`,
+    //backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/23/17/16/automobile-1853893_1280.jpg')`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url('https://cdn.pixabay.com/photo/2016/11/23/17/16/automobile-1853893_1280.jpg')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
@@ -85,7 +86,7 @@ function Home() {
     opacity: opacity,
     transition: 'opacity 0.5s ease-out',
   };
-
+/*
   const titleStyle = {
     fontSize: '102.5px',
     textAlign: 'center',
@@ -97,10 +98,22 @@ function Home() {
     letterSpacing: '-1.6px',
     fontFamily: "'Playfair Display', serif"
   };
+*/
+//NEW TITLE STYLE
+const titleStyle = {
+  fontSize: '102.5px',
+  textAlign: 'center',
+  fontWeight: 'bold',
+  color: '#00aaff', // Changed to blue color
+  position: 'relative',
+  zIndex: 2,
+  letterSpacing: '-1.6px',
+  fontFamily: "'Playfair Display', serif"
+};
 
   const landingParaStyle = {
-    fontSize: '28px',
-    fontFamily: 'Merriweather, serif',
+    fontSize: '28px', //28px
+    fontFamily: 'Merriweather, serif',  //"'Dancing Script', cursive"       'Merriweather, serif'
     textAlign: 'center',
     color: '#ffffff',
     lineHeight: '1.5',
