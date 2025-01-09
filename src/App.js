@@ -104,12 +104,12 @@ const titleStyle = {
   fontSize: '102.5px',
   textAlign: 'center',
   fontWeight: 'bold',
-  color: '#00008b', // Text color (blue)
+  color: '#00aaff', // Text color (blue)
   position: 'relative',
   zIndex: 2,
   letterSpacing: '-1.6px',
   fontFamily: "Charcoal, serif",
-  WebkitTextStroke: '1px #00aaff' // Outlines the characters with dark blue
+  // WebkitTextStroke: '1px #00aaff' // Outlines the characters with dark blue
 };
 
 
