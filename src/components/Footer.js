@@ -1,3 +1,4 @@
+import { height } from '@mui/system';
 import React, { useState, useEffect } from 'react';
 import logo from '../assets/logo.webp';
 
@@ -72,36 +73,27 @@ function Footer() {
         </>
       ) : (
         // Desktop Layout
-        <div style={footerContainerStyle}>
-          <div style={logoContainerStyle}>
-            <img src={logo} alt="OJ TINT STUDIO" style={logoStyle} />
-          </div>
+
 
           <div style={infoContainerStyle}>
             <div style={contactInfoStyle}>
-              <p>
+              <p style={p_style}>
                 <a 
                   href="https://www.google.com/maps/place/1580+Oakland+Rd+%23C109,+San+Jose,+CA+95131" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   style={linkStyle}
                 >
-                  OJ Tint Studio, 1580 Oakland Rd #C109, San Jose, CA 95131
+                  1580 Oakland Rd #C109, San Jose, CA 95131
                 </a>
               </p>
-              <p>
-                <a href="mailto:ojtintstudio@gmail.com" style={linkStyle}>
-                  ojtintstudio@gmail.com
-                </a>
-              </p>
-              <p>
-                <a href="tel:+15106761517" style={linkStyle}>
-                  1 (510)-676-1517
-                </a>
-              </p>
+              <p style={p_style}>ojtintstudio@gmail.com</p>
+              <p style={p_style}>1 (510)-676-1517</p>
+            </div>
+            <div style={logoContainerStyle}>
+            <img src={logo} alt="OJ TINT STUDIO" style={logoStyle} />
             </div>
           </div>
-        </div>
       )}
       {/* Always display this at the bottom */}
       <p style={{ marginTop: '20px' }}>© 2024 Tinting Services. All rights reserved.</p>
@@ -126,14 +118,21 @@ const mobileFooterStyle = {
   textAlign: 'center',
 };
 
+// const p_style = {
+//   lineHeight: 
+// }
+
 const footerContainerStyle = {
   display: 'flex',
   justifyContent: 'center', // Center content for landscape mode
   alignItems: 'center',
   flexDirection: 'row',
-  gap: '30px',
+  gap: '20px',
 };
 
+const p_style = {
+  lineHeight: 1.1,
+}
 const logoContainerStyle = {
   display: 'flex',
   justifyContent: 'center',
@@ -142,7 +141,7 @@ const logoContainerStyle = {
 };
 
 const logoStyle = {
-  height: '280px', // Larger logo for desktop
+  height: '80px', // Larger logo for desktop
   width: 'auto',
 };
 

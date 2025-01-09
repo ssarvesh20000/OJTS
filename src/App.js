@@ -104,12 +104,15 @@ const titleStyle = {
   fontSize: '102.5px',
   textAlign: 'center',
   fontWeight: 'bold',
-  color: '#00aaff', // Changed to blue color
+  color: '#00008b', // Text color (blue)
   position: 'relative',
   zIndex: 2,
   letterSpacing: '-1.6px',
-  fontFamily: "'Playfair Display', serif"
+  fontFamily: "Charcoal, serif",
+  WebkitTextStroke: '1px #00aaff' // Outlines the characters with dark blue
 };
+
+
 
   const landingParaStyle = {
     fontSize: '28px', //28px
