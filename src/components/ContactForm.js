@@ -8,12 +8,11 @@ function ContactForm() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    const number = e.target.number.value;
+    const number = e.target.number.value.trim();
 
-    // Validate phone number (US format with 10 digits, but you can modify as needed)
+    // Validate phone number (mandatory and 10-digit US format)
     const phonePattern = /^\d{10}$/; // This ensures the phone number is exactly 10 digits
-
-    if (number && !phonePattern.test(number)) {
+    if (!phonePattern.test(number)) {
       setSubmissionMessage('Phone number must be a valid 10-digit number.');
       return; // Stop form submission if phone number is invalid
     }
@@ -48,24 +47,14 @@ function ContactForm() {
 
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Phone Number:</label>
-          <input type="text" name="number" style={inputStyle} />
+          <input type="text" name="number" style={inputStyle} required />
         </div>
-{/* get rid of 'model' & 'year' and combine it to 'make'*/}
+
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Vehicle Make, Model, & Year:</label>
           <input type="text" name="make" style={inputStyle} required />
         </div>
-{/*
-        <div style={inputGroupStyle}>
-          <label style={labelStyle}>Car Model:</label>
-          <input type="text" name="model" style={inputStyle} required />
-        </div>
-
-        <div style={inputGroupStyle}>
-          <label style={labelStyle}>Year:</label>
-          <input type="text" name="year" style={inputStyle} required />
-        </div>
-*/}       
+       
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Message:</label>
           <textarea name="message" style={textareaStyle} required />
