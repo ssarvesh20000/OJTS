@@ -96,7 +96,7 @@ function Footer() {
           </div>
       )}
       {/* Always display this at the bottom */}
-      <p style={{ marginTop: '20px' }}>© 2024 Tinting Services. All rights reserved.</p>
+      <p style={{ marginTop: '20px' }}>© 2025 Tinting Services. All rights reserved.</p>
     </footer>
   );
 }
