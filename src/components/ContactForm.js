@@ -60,9 +60,10 @@ function ContactForm() {
           <textarea name="message" style={textareaStyle} required />
         </div>
 
+        {submissionMessage && <p style={messageStyle}>{submissionMessage}</p>}
+
         <button type="submit" style={buttonStyle}>Submit</button>
 
-        {submissionMessage && <p style={messageStyle}>{submissionMessage}</p>}
       </form>
     </section>
   );
