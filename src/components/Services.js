@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './Services.css';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import xpel from '../assets/xpelwhite.webp';
 
 function Services() {
   useEffect(() => {
@@ -34,15 +35,15 @@ function Services() {
       <div className="services-container">
         {/* Blue-colored title for Services */}
         <div style={{ height: '10px' }}></div> {/* This adds the empty space */}
-        <h2>Autobahn Window Tint</h2>
+        <h2>Xpel Automotive Films</h2>
 
         <div className="rectangles-container">
           <div className="service-rectangle hidden">
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} /> {/* Icon styling */}
-            <h3>Black</h3>
+            <h3>Xpel CS (Color Stable)</h3>
             <p style={{ color: 'black'}}>
               Not looking to break the bank, yet, still have the visual and UV benefits of window tints? 
-              Autobahn’s Black Film offers privacy, UV protection, and glare reduction, making your car’s 
+              This film offers privacy, UV protection, and glare reduction, making your car’s 
               interior more comfortable to drive in. This option is the entry-level window film with an 
               affordable price.
             </p>
@@ -51,9 +52,9 @@ function Services() {
           <div className="service-rectangle hidden">
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} /> {/* Icon styling */}
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
-            <h3>Black Ceramic</h3>
+            <h3>Xpel XR Ceramic</h3>
             <p style={{ color: 'black'}}>
-              For a more premium option, Autobahn’s Black Ceramic Film offers the same benefits as the previous
+              For a more premium option, This film offers the same benefits as the previous
               two combined. Meaning it has it all: privacy, glare reduction, 88% heat rejection, and UV protection. 
               A great choice for those in search of finer performance and style.
             </p>
@@ -63,10 +64,10 @@ function Services() {
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} /> {/* Icon styling */}
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
             <AttachMoneyIcon style={{ fontSize: 40, color: '#000' }} />
-            <h3>Ceramic i3</h3>
+            <h3>Xpel XR Plus Ceramic</h3>
             <p style={{ color: 'black'}}>
               For those seeking the highest level of protection and performance in a film, 
-              the Ceramic i3 offers the most advanced features, with 98% heat rejection. Additionally, 
+              the film offers the most advanced features, with 98% heat rejection. Additionally, 
               its multi-ceramic layers and thick deep dye construction make it the most durable film available.
             </p>
           </div>
@@ -81,7 +82,7 @@ function Services() {
         offers a no-fault warranty, which means any damage or break-ins 
         are covered at no charge.
       </p>
-      <div style={{ height: '58px' }}></div> {/* This adds the empty space */}
+      <img src={xpel} alt="Xpel Logo" style={{ width: '200px', height: 'auto', marginBottom: '20px', marginLeft: '450px' }} />
     </section>
   );
 }
