@@ -82,7 +82,10 @@ function Services() {
         offers a no-fault warranty, which means any damage or break-ins 
         are covered at no charge.
       </p>
-      <img src={xpel} alt="Xpel Logo" style={{ width: '100px', height: 'auto', marginBottom: '30px', marginTop: '10', marginLeft: '500px' }} />
+      <div className="xpel-logo-wrapper">
+        <img src={xpel} alt="Xpel Logo" className="xpel-logo" />
+      </div>
+
     </section>
   );
 }

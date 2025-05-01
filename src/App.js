@@ -174,7 +174,7 @@ const titleStyle = {
         </a>
         . We offer fair pricing and exceptional service, with a focus on personalized care and competitive rates for everyone in the Bay Area.
       </p>
-      <div style={{ height: '50px' }}></div>
+      <div style={{ height: '30px' }}></div>
       <img src={xpel} alt="Xpel Logo" style={{ width: '100px', height: 'auto', marginBottom: '20px' }} />
     </section>
   );

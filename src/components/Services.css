@@ -76,6 +76,17 @@ h2 {
   margin-left: -22px;
 }
 
+.xpel-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.xpel-logo {
+  width: 100px;
+  height: auto;
+}
 
 /* --- Add responsiveness for smaller screens --- */
 
