@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Container from '../layout/Container';
 import Button from '../ui/Button';
-import heroPhoto from '../../assets/hero-tesla.webp';
+import heroPhoto from '../../assets/hero-lambo.webp';
 
-const HERO_ALT = 'Black Tesla Model 3 with tinted windows outside the OJ Tint Studio shop at night';
+const HERO_ALT = 'Black Lamborghini Huracán with tinted windows outside the OJ Tint Studio shop at night';
 
 // Feathers the photo's left, top and bottom edges into the page background,
 // so it reads as one scene with the dark hero instead of a boxed image.
 const featherMask = {
   maskImage:
-    'linear-gradient(90deg, transparent 0%, #000 24%), linear-gradient(180deg, transparent 0%, #000 12%, #000 84%, transparent 100%)',
+    'linear-gradient(90deg, transparent 0%, #000 16%), linear-gradient(180deg, transparent 0%, #000 10%, #000 86%, transparent 100%)',
   WebkitMaskImage:
-    'linear-gradient(90deg, transparent 0%, #000 24%), linear-gradient(180deg, transparent 0%, #000 12%, #000 84%, transparent 100%)',
+    'linear-gradient(90deg, transparent 0%, #000 16%), linear-gradient(180deg, transparent 0%, #000 10%, #000 86%, transparent 100%)',
   maskComposite: 'intersect',
   WebkitMaskComposite: 'source-in',
 };
@@ -27,12 +27,15 @@ function Hero() {
       // bottom of the first screen.
       className="relative w-full m-0 p-0 overflow-hidden bg-ink lg:flex lg:min-h-[calc(100svh-10.25rem)] lg:items-center"
     >
-      {/* Desktop: photo fills the right side of the hero behind the copy */}
+      {/* Desktop: photo fills the right side of the hero behind the copy. Its
+          width is derived from the viewport so the car's nose (~15% into the
+          image) always lands just right of the CTA buttons (~560px into the
+          content, which is centered once the viewport passes 1600px). */}
       <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
         <img
           src={heroPhoto}
           alt=""
-          className="absolute bottom-[4%] right-0 w-[72%] max-w-[1500px]"
+          className="absolute bottom-[3%] right-0 w-[calc((100%_-_560px_-_max(0px,(100%_-_1600px)/2))/0.85)] max-w-[1600px]"
           style={featherMask}
         />
         {/* Keeps the copy readable where it overlaps the building */}
@@ -40,7 +43,7 @@ function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(90deg, #05070A 0%, rgba(5,7,10,0.9) 24%, rgba(5,7,10,0.45) 38%, rgba(5,7,10,0) 52%)',
+              'linear-gradient(90deg, #05070A 0%, rgba(5,7,10,0.9) 22%, rgba(5,7,10,0.4) 34%, rgba(5,7,10,0) 46%)',
           }}
         />
       </div>
