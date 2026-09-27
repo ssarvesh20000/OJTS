@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import Section from '../layout/Section';
-import logo from '../../assets/logo.webp';
+import logo from '../../assets/logo-mark.png';
 
 const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/search/?api=1&query=OJ+Tint+Studio+San+Jose';
 const MAPS_URL = 'https://www.google.com/maps/place/1580+Oakland+Rd+%23C109,+San+Jose,+CA+95131';
@@ -78,7 +78,7 @@ function Reviews() {
             className="absolute inset-0"
             style={{ background: 'radial-gradient(260px 120px at 70% 40%, rgba(30,158,255,0.22), transparent 70%)' }}
           />
-          <img src={logo} alt="OJ Tint Studio" className="relative h-12 w-auto" />
+          <img src={logo} alt="OJ Tint Studio" className="relative h-14 w-auto" />
           <p className="relative m-0 flex items-center gap-2 text-xs text-fg-muted">
             <FontAwesomeIcon icon={faLocationDot} className="text-brand" />
             1580 Oakland Rd #C109, San Jose

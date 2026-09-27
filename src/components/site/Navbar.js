@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import logo from '../../assets/logo.webp';
+import logo from '../../assets/logo-mark.png';
 import Container from '../layout/Container';
 import Button from '../ui/Button';
 
@@ -39,16 +39,16 @@ function Navbar() {
       <Container>
         <div className="flex h-20 items-center justify-between gap-4">
           <HashLink to="/#" className="flex items-center" onClick={close}>
-            <img src={logo} alt="OJ Tint Studio" className="h-11 w-auto" />
+            <img src={logo} alt="OJ Tint Studio" className="h-11 w-auto sm:h-12" />
           </HashLink>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-7 xl:gap-9 lg:flex">
             {NAV_LINKS.map((link) => (
               <HashLink
                 key={link.label}
                 to={link.to}
-                className="text-sm font-medium uppercase tracking-wide text-white/80 transition-colors hover:text-brand"
+                className="text-[13px] font-medium uppercase tracking-wide text-white/80 transition-colors hover:text-brand"
               >
                 {link.label}
               </HashLink>

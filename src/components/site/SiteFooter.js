@@ -3,7 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faYelp } from '@fortawesome/free-brands-svg-icons';
 import Container from '../layout/Container';
-import logo from '../../assets/logo.webp';
+import logo from '../../assets/logo-mark.png';
 import xpel from '../../assets/xpelwhite.webp';
 import { CONTACT, SOCIALS } from './contactInfo';
 
@@ -24,7 +24,7 @@ function SiteFooter() {
       <Container>
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <img src={logo} alt="OJ Tint Studio" className="h-12 w-auto" />
+            <img src={logo} alt="OJ Tint Studio" className="h-14 w-auto" />
             <p className="m-0 mt-4 max-w-sm leading-relaxed text-fg-muted">
               Premium automotive window tinting in San Jose since 2019. Authorized XPEL dealer serving
               the Bay Area.
