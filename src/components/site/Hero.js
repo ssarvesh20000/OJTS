@@ -32,7 +32,7 @@ function Hero() {
         <img
           src={heroPhoto}
           alt=""
-          className="absolute bottom-[4%] right-0 w-[72%] max-w-[1320px]"
+          className="absolute bottom-[4%] right-0 w-[72%] max-w-[1500px]"
           style={featherMask}
         />
         {/* Keeps the copy readable where it overlaps the building */}

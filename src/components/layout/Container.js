@@ -8,7 +8,7 @@ import React from 'react';
  *
  * Props:
  *   as       — element/component to render (default 'div')
- *   size     — 'default' (1200px) | 'narrow' (~768px) | 'full'
+ *   size     — 'default' (1600px) | 'narrow' (~768px) | 'full'
  *   className— extra Tailwind classes to merge
  */
 const SIZES = {
@@ -19,7 +19,7 @@ const SIZES = {
 
 function Container({ as: Tag = 'div', size = 'default', className = '', children, ...rest }) {
   return (
-    <Tag className={`mx-auto w-full px-5 sm:px-6 lg:px-8 ${SIZES[size] || SIZES.default} ${className}`} {...rest}>
+    <Tag className={`mx-auto w-full px-5 sm:px-6 lg:px-10 xl:px-16 ${SIZES[size] || SIZES.default} ${className}`} {...rest}>
       {children}
     </Tag>
   );

@@ -43,7 +43,7 @@ module.exports = {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       maxWidth: {
-        content: '1200px', // standard page content width
+        content: '1600px', // standard page content width
       },
       borderRadius: {
         card: '14px',
@@ -59,7 +59,7 @@ module.exports = {
           lg: '2rem',
         },
         screens: {
-          '2xl': '1200px',
+          '2xl': '1600px',
         },
       },
     },
