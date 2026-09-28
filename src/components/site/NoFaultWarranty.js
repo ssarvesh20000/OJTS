@@ -128,7 +128,7 @@ function NoFaultWarranty() {
               <div className="hidden h-12 w-px bg-white/10 2xl:block" aria-hidden />
               <div className="hidden 2xl:block">
                 <HashLink
-                  to="/#contact"
+                  smooth to="/#faq"
                   className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand hover:text-brand-300"
                 >
                   Warranty Details <FontAwesomeIcon icon={faArrowRight} />
@@ -138,7 +138,7 @@ function NoFaultWarranty() {
             </div>
             <p className="m-0 text-center text-[11px] text-fg-subtle lg:hidden">
               Subject to warranty terms.{' '}
-              <HashLink to="/#contact" className="font-semibold text-brand">
+              <HashLink smooth to="/#faq" className="font-semibold text-brand">
                 Warranty details
               </HashLink>
             </p>

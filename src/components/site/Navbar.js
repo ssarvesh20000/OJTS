@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -6,14 +7,33 @@ import logo from '../../assets/logo-mark.png';
 import Container from '../layout/Container';
 import Button from '../ui/Button';
 
+// `hash` links scroll to a section of the home page; the rest are pages.
 const NAV_LINKS = [
-  { label: 'Services', to: '/#services' },
-  { label: 'XPEL Films', to: '/#films' },
-  { label: 'Our Work', to: '/#work' },
-  { label: 'About', to: '/#about' },
-  { label: 'Reviews', to: '/#reviews' },
-  { label: 'Contact', to: '/#contact' },
+  { label: 'XPEL Films', to: '/films' },
+  { label: 'Our Work', to: '/work' },
+  { label: 'About', to: '/about' },
+  { label: 'Reviews', to: '/#reviews', hash: true },
+  { label: 'Contact', to: '/contact' },
 ];
+
+function NavItem({ link, className, activeClassName, onClick }) {
+  if (link.hash) {
+    return (
+      <HashLink smooth to={link.to} className={className} onClick={onClick}>
+        {link.label}
+      </HashLink>
+    );
+  }
+  return (
+    <NavLink
+      to={link.to}
+      onClick={onClick}
+      className={({ isActive }) => `${className} ${isActive ? activeClassName : ''}`}
+    >
+      {link.label}
+    </NavLink>
+  );
+}
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,25 +58,24 @@ function Navbar() {
     >
       <Container>
         <div className="flex h-20 items-center justify-between gap-4">
-          <HashLink to="/#" className="flex items-center" onClick={close}>
+          <Link to="/" className="flex items-center" onClick={close}>
             <img src={logo} alt="OJ Tint Studio" className="h-11 w-auto sm:h-12" />
-          </HashLink>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-7 xl:gap-9 lg:flex">
             {NAV_LINKS.map((link) => (
-              <HashLink
+              <NavItem
                 key={link.label}
-                to={link.to}
+                link={link}
                 className="text-[13px] font-medium uppercase tracking-wide text-white/80 transition-colors hover:text-brand"
-              >
-                {link.label}
-              </HashLink>
+                activeClassName="!text-brand"
+              />
             ))}
           </nav>
 
           <div className="hidden lg:block">
-            <Button to="/#contact" variant="outline" size="sm">
+            <Button to="/contact" variant="outline" size="sm">
               Get Your Quote
             </Button>
           </div>
@@ -78,16 +97,15 @@ function Navbar() {
           <Container>
             <nav className="flex flex-col py-4">
               {NAV_LINKS.map((link) => (
-                <HashLink
+                <NavItem
                   key={link.label}
-                  to={link.to}
+                  link={link}
                   onClick={close}
                   className="py-3 text-sm font-medium uppercase tracking-wide text-white/85 hover:text-brand"
-                >
-                  {link.label}
-                </HashLink>
+                  activeClassName="!text-brand"
+                />
               ))}
-              <Button to="/#contact" variant="primary" size="md" className="mt-3 w-full" onClick={close}>
+              <Button to="/contact" variant="primary" size="md" className="mt-3 w-full" onClick={close}>
                 Get Your Quote <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </nav>

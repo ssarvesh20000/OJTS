@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import Section from '../layout/Section';
+import SectionHeading from '../ui/SectionHeading';
 import logo from '../../assets/logo-mark.png';
 
 const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/search/?api=1&query=OJ+Tint+Studio+San+Jose';
@@ -26,6 +27,7 @@ function GoogleG() {
 function Reviews() {
   return (
     <Section id="reviews" spacing="compact">
+      <SectionHeading eyebrow="Reviews" title="What our customers say" align="left" className="mb-6" />
       <div className="grid overflow-hidden rounded-card border border-white/10 bg-ink-700 lg:grid-cols-[auto_minmax(0,1fr)_minmax(0,22rem)]">
         {/* Rating */}
         <div className="flex items-center gap-4 border-b border-white/10 p-6 lg:border-b-0 lg:border-r">
@@ -67,7 +69,6 @@ function Reviews() {
 
         {/* Studio panel (stand-in for a shop photo) */}
         <a
-          id="about"
           href={MAPS_URL}
           target="_blank"
           rel="noopener noreferrer"

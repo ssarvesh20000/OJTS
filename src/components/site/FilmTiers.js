@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import Section from '../layout/Section';
-import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
 import carImage from '../../assets/tint images/car-black Background Removed.png';
 
@@ -96,17 +95,15 @@ function FilmCard({ film }) {
 function FilmTiers() {
   return (
     <Section id="films" spacing="compact">
-      <SectionHeading eyebrow="Premium XPEL Window Films" title="Choose the perfect film for your vehicle" />
-
-      <div className="mt-8 grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-3">
         {FILMS.map((film) => (
           <FilmCard key={film.name} film={film} />
         ))}
       </div>
 
       <div className="mt-8 flex justify-center">
-        <Button to="/#contact" variant="outline" size="sm" className="border-brand/60 text-brand">
-          Compare All Films <FontAwesomeIcon icon={faArrowRight} />
+        <Button to="/contact" variant="primary" size="md">
+          Get a Quote for Your Vehicle <FontAwesomeIcon icon={faArrowRight} />
         </Button>
       </div>
     </Section>

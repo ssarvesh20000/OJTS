@@ -1,43 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import Navbar from './components/site/Navbar';
-import Hero from './components/site/Hero';
-import TrustBar from './components/site/TrustBar';
-import NoFaultWarranty from './components/site/NoFaultWarranty';
-import FilmTiers from './components/site/FilmTiers';
-import RecentWork from './components/site/RecentWork';
-import Reviews from './components/site/Reviews';
-import Benefits from './components/site/Benefits';
-import Contact from './components/site/Contact';
 import SiteFooter from './components/site/SiteFooter';
-import Gallery from './components/Gallery';
+import { ScrollToTop } from './components/layout/RouteEffects';
+import HomePage from './pages/HomePage';
+import FilmsPage from './pages/FilmsPage';
+import WorkPage from './pages/WorkPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 import { Analytics } from '@vercel/analytics/react';
-
-function HomePage() {
-  return (
-    <>
-      <Hero />
-      <NoFaultWarranty />
-      <TrustBar />
-      <FilmTiers />
-      <RecentWork />
-      <Reviews />
-      <Benefits />
-      <Contact />
-    </>
-  );
-}
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-ink">
         <Navbar />
         <Analytics />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/films" element={<FilmsPage />} />
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* Old gallery URL, kept working for existing links */}
+          <Route path="/gallery" element={<Navigate to="/work" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <SiteFooter />
       </div>

@@ -10,12 +10,12 @@ import { CONTACT, SOCIALS } from './contactInfo';
 const SOCIAL_ICONS = { Instagram: faInstagram, Facebook: faFacebook, Yelp: faYelp };
 
 const LINKS = [
-  { label: 'XPEL Films', to: '/#films' },
-  { label: 'No-Fault Warranty', to: '/#warranty' },
-  { label: 'Our Work', to: '/#work' },
-  { label: 'Full Gallery', to: '/gallery' },
+  { label: 'XPEL Films', to: '/films' },
+  { label: 'Our Work', to: '/work' },
+  { label: 'About', to: '/about' },
   { label: 'Reviews', to: '/#reviews' },
-  { label: 'Contact', to: '/#contact' },
+  { label: 'FAQ', to: '/#faq' },
+  { label: 'Get a Quote', to: '/contact' },
 ];
 
 function SiteFooter() {

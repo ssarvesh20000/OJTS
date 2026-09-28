@@ -70,10 +70,10 @@ function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col items-stretch justify-center gap-4 sm:flex-row lg:justify-start">
-              <Button to="/#contact" variant="primary" size="lg" className="sm:px-8">
+              <Button to="/contact" variant="primary" size="lg" className="sm:px-8">
                 Get Your Quote <FontAwesomeIcon icon={faArrowRight} />
               </Button>
-              <Button to="/#work" variant="outline" size="lg" className="border-brand/60 sm:px-8">
+              <Button to="/work" variant="outline" size="lg" className="border-brand/60 sm:px-8">
                 View Our Work <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </div>
