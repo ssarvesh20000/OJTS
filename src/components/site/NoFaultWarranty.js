@@ -1,19 +1,18 @@
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import Section from '../layout/Section';
-import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
+import { faArrowRight, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import Container from '../layout/Container';
 
 /* Line-art step icons drawn to match the mockup's thin blue outline style. */
 const iconProps = {
   viewBox: '0 0 64 64',
   fill: 'none',
   stroke: 'currentColor',
-  strokeWidth: 2,
+  strokeWidth: 2.5,
   strokeLinecap: 'round',
   strokeLinejoin: 'round',
-  className: 'h-14 w-14 sm:h-16 sm:w-16',
+  className: 'h-9 w-9 sm:h-10 sm:w-10',
   'aria-hidden': true,
 };
 
@@ -50,72 +49,103 @@ function ReTintIcon() {
 }
 
 const STEPS = [
-  { label: 'Break-In', icon: <BrokenGlassIcon /> },
+  { label: 'Break\u2011In', icon: <BrokenGlassIcon /> }, // non-breaking hyphen
   { label: 'Window Replaced', icon: <NewWindowIcon /> },
-  { label: 'OJ Re-Tints It', icon: <ReTintIcon /> },
-  {
-    label: 'No Additional Tint Charge',
-    icon: (
-      <span className="flex h-14 items-center font-display text-5xl font-extrabold text-brand sm:h-16">
-        $0
-      </span>
-    ),
-  },
+  { label: 'OJ Re\u2011Tints It', icon: <ReTintIcon /> },
 ];
 
 function StepArrow() {
-  return (
-    <FontAwesomeIcon
-      icon={faArrowRight}
-      className="hidden shrink-0 text-lg text-brand sm:block"
-      aria-hidden
-    />
-  );
+  return <FontAwesomeIcon icon={faArrowRight} className="shrink-0 text-sm text-brand/80" aria-hidden />;
 }
 
+/**
+ * NoFaultWarranty — condensed, high-emphasis bar directly under the trust bar,
+ * so the warranty is part of the first screen. Brand-blue border and glow set
+ * it apart from the neutral trust bar above.
+ */
 function NoFaultWarranty() {
   return (
-    <Section id="warranty" spacing="compact">
-      <div className="rounded-card border border-white/10 bg-ink-800 p-6 shadow-card sm:p-10">
-        <SectionHeading
-          eyebrow={<>The OJ No-Fault Warranty&trade;</>}
-          title="We've got your tint covered."
-        />
+    <section id="warranty" className="w-full m-0 bg-ink px-0 pb-12 pt-4 scroll-mt-24 lg:pb-16">
+      <Container>
+        <div className="relative overflow-hidden rounded-card border border-brand/50 bg-ink-700 shadow-glow">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(90deg, rgba(30,158,255,0.16) 0%, rgba(30,158,255,0.05) 45%, rgba(30,158,255,0) 70%)',
+            }}
+          />
 
-        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-          {/* Explainer */}
-          <div className="text-center lg:text-left">
-            <p className="m-0 text-base leading-relaxed text-white/85">
-              If your tinted window is damaged and the glass needs to be replaced, we will
-              re-tint the replacement glass at no additional charge.
-            </p>
-            <p className="m-0 mt-3 text-xs text-fg-subtle">Subject to warranty terms.</p>
-            <Button to="/#contact" variant="outline" size="sm" className="mt-6 text-xs">
-              Learn More About Our Warranties <FontAwesomeIcon icon={faArrowRight} />
-            </Button>
-          </div>
+          <div className="relative grid items-center gap-6 p-5 sm:p-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-10 lg:px-8 lg:py-4">
+            {/* What it is */}
+            <div className="flex items-center gap-4">
+              <FontAwesomeIcon icon={faShieldHalved} className="shrink-0 text-4xl text-brand" />
+              <div>
+                <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand">
+                  The OJ No-Fault Warranty&trade;
+                </p>
+                <h2 className="m-0 mt-1 font-display text-xl font-extrabold uppercase leading-tight text-white sm:text-2xl lg:whitespace-nowrap lg:text-xl xl:text-2xl">
+                  We&rsquo;ve got your tint covered.
+                </h2>
+                <p className="m-0 mt-1 text-sm leading-snug text-fg-muted">
+                  Glass broken and replaced? We re-tint the new glass free.
+                </p>
+              </div>
+            </div>
 
-          {/* How it works */}
-          <ol className="m-0 grid list-none grid-cols-2 gap-8 p-0 sm:flex sm:items-start sm:justify-between sm:gap-3">
-            {STEPS.map((step, i) => (
-              <React.Fragment key={step.label}>
-                <li className="flex flex-col items-center gap-3 text-center sm:flex-1">
-                  <span className="text-brand">{step.icon}</span>
-                  <span className="max-w-[9rem] text-xs font-bold uppercase tracking-wide text-white sm:text-sm">
-                    {step.label}
-                  </span>
-                </li>
-                {i < STEPS.length - 1 && (
-                  <li aria-hidden className="hidden sm:flex sm:h-16 sm:items-center">
+            {/* How it works */}
+            <ol className="m-0 flex list-none items-center justify-between gap-2 p-0 sm:gap-4">
+              {STEPS.map((step, i) => (
+                <React.Fragment key={step.label}>
+                  <li className="flex max-w-[6.5rem] flex-col items-center gap-2 text-center text-brand xl:max-w-none">
+                    {step.icon}
+                    <span className="text-[10px] font-bold uppercase leading-tight tracking-wide text-white sm:text-[11px] xl:whitespace-nowrap">
+                      {step.label}
+                    </span>
+                  </li>
+                  <li aria-hidden className="flex items-center">
                     <StepArrow />
                   </li>
-                )}
-              </React.Fragment>
-            ))}
-          </ol>
+                </React.Fragment>
+              ))}
+              {/* Outcome, repeated large on desktop in the right column */}
+              <li className="flex flex-col items-center gap-2 text-center lg:hidden">
+                <span className="font-display text-3xl font-extrabold leading-none text-brand">$0</span>
+                <span className="text-[10px] font-bold uppercase tracking-wide text-white">Tint Charge</span>
+              </li>
+            </ol>
+
+            {/* The payoff */}
+            <div className="hidden items-center gap-5 lg:flex">
+              <div className="text-center">
+                <p className="m-0 font-display text-5xl font-extrabold leading-none text-brand">$0</p>
+                <p className="m-0 mt-1 max-w-[7rem] text-[11px] font-bold uppercase leading-tight tracking-wide text-white xl:max-w-none xl:whitespace-nowrap">
+                  Additional Tint Charge
+                </p>
+                <p className="m-0 mt-1 text-[10px] text-fg-subtle 2xl:hidden">Subject to warranty terms.</p>
+              </div>
+              <div className="hidden h-12 w-px bg-white/10 2xl:block" aria-hidden />
+              <div className="hidden 2xl:block">
+                <HashLink
+                  to="/#contact"
+                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand hover:text-brand-300"
+                >
+                  Warranty Details <FontAwesomeIcon icon={faArrowRight} />
+                </HashLink>
+                <p className="m-0 mt-1 text-[11px] text-fg-subtle">Subject to warranty terms.</p>
+              </div>
+            </div>
+            <p className="m-0 text-center text-[11px] text-fg-subtle lg:hidden">
+              Subject to warranty terms.{' '}
+              <HashLink to="/#contact" className="font-semibold text-brand">
+                Warranty details
+              </HashLink>
+            </p>
+          </div>
         </div>
-      </div>
-    </Section>
+      </Container>
+    </section>
   );
 }
 

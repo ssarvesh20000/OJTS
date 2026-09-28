@@ -22,20 +22,21 @@ function Hero() {
   return (
     <section
       id="home"
-      // On desktop the hero fills the screen minus the sticky nav (5rem) and the
-      // part of the trust bar below it (~5.25rem), so the trust bar sits at the
-      // bottom of the first screen.
-      className="relative w-full m-0 p-0 overflow-hidden bg-ink lg:flex lg:min-h-[calc(100svh-10.25rem)] lg:items-center"
+      // On desktop the hero fills the screen minus the sticky nav (5rem), the
+      // visible trust bar (~4rem) and the no-fault warranty bar with its gaps
+      // (~10rem), so both bars sit in the first screen.
+      className="relative w-full m-0 p-0 overflow-hidden bg-ink lg:flex lg:min-h-[calc(100svh-19rem)] lg:items-center"
     >
       {/* Desktop: photo fills the right side of the hero behind the copy. Its
-          width is derived from the viewport so the car's nose (~15% into the
-          image) always lands just right of the CTA buttons (~560px into the
-          content, which is centered once the viewport passes 1600px). */}
+          width is the smaller of: what keeps the car's nose (~15% into the
+          image) just right of the CTA buttons (~560px into the content, which
+          is centered past 1600px), and what fits the hero's height, so the
+          sign and wheels are never cropped. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
         <img
           src={heroPhoto}
           alt=""
-          className="absolute bottom-[3%] right-0 w-[calc((100%_-_560px_-_max(0px,(100%_-_1600px)/2))/0.85)] max-w-[1600px]"
+          className="absolute bottom-[2%] right-0 w-[min((100%_-_560px_-_max(0px,(100%_-_1600px)/2))/0.85,(100svh_-_19rem)*1.72)] max-w-[1600px]"
           style={featherMask}
         />
         {/* Keeps the copy readable where it overlaps the building */}
@@ -49,7 +50,7 @@ function Hero() {
       </div>
 
       <Container className="relative w-full">
-        <div className="pb-10 pt-10 sm:pt-14 lg:max-w-[40rem] lg:pb-14 lg:pt-6">
+        <div className="pb-10 pt-10 sm:pt-14 lg:max-w-[40rem] lg:pb-10 lg:pt-4">
           <div className="relative z-10 text-center lg:text-left">
             <p className="m-0 mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand">
               San Jose&rsquo;s Premier
