@@ -73,7 +73,7 @@ function Hero() {
               <Button to="/contact" variant="primary" size="lg" className="sm:px-8">
                 Get Your Quote <FontAwesomeIcon icon={faArrowRight} />
               </Button>
-              <Button to="/work" variant="outline" size="lg" className="border-brand/60 sm:px-8">
+              <Button to="/gallery" variant="outline" size="lg" className="border-brand/60 sm:px-8">
                 View Our Work <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </div>

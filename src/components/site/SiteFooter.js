@@ -10,8 +10,9 @@ import { CONTACT, SOCIALS } from './contactInfo';
 const SOCIAL_ICONS = { Instagram: faInstagram, Facebook: faFacebook, Yelp: faYelp };
 
 const LINKS = [
-  { label: 'XPEL Films', to: '/films' },
-  { label: 'Our Work', to: '/work' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: '/services' },
+  { label: 'Gallery', to: '/gallery' },
   { label: 'About', to: '/about' },
   { label: 'Reviews', to: '/#reviews' },
   { label: 'FAQ', to: '/#faq' },

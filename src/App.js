@@ -4,8 +4,8 @@ import Navbar from './components/site/Navbar';
 import SiteFooter from './components/site/SiteFooter';
 import { ScrollToTop } from './components/layout/RouteEffects';
 import HomePage from './pages/HomePage';
-import FilmsPage from './pages/FilmsPage';
-import WorkPage from './pages/WorkPage';
+import ServicesPage from './pages/ServicesPage';
+import GalleryPage from './pages/GalleryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
@@ -20,12 +20,13 @@ function App() {
         <Analytics />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/films" element={<FilmsPage />} />
-          <Route path="/work" element={<WorkPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          {/* Old gallery URL, kept working for existing links */}
-          <Route path="/gallery" element={<Navigate to="/work" replace />} />
+          {/* Earlier page addresses, kept working for existing links */}
+          <Route path="/films" element={<Navigate to="/services" replace />} />
+          <Route path="/work" element={<Navigate to="/gallery" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <SiteFooter />

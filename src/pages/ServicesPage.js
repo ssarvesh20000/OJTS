@@ -4,8 +4,8 @@ import FilmTiers from '../components/site/FilmTiers';
 import Benefits from '../components/site/Benefits';
 import { usePageTitle } from '../components/layout/RouteEffects';
 
-function FilmsPage() {
-  usePageTitle('XPEL Films');
+function ServicesPage() {
+  usePageTitle('Services');
   return (
     <>
       <PageHeader eyebrow="Premium XPEL Window Films" title="Choose the perfect film for your vehicle">
@@ -18,4 +18,4 @@ function FilmsPage() {
   );
 }
 
-export default FilmsPage;
+export default ServicesPage;

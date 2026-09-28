@@ -8,11 +8,11 @@ import { usePageTitle } from '../components/layout/RouteEffects';
 
 const INSTAGRAM = SOCIALS.find((s) => s.label === 'Instagram').href;
 
-function WorkPage() {
-  usePageTitle('Our Work');
+function GalleryPage() {
+  usePageTitle('Gallery');
   return (
     <>
-      <PageHeader eyebrow="Our Work" title="Recent installs">
+      <PageHeader eyebrow="Gallery" title="Our recent work">
         A look at vehicles we&rsquo;ve tinted, with the shades used on each. Tap any photo to
         see it larger.{' '}
         <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand hover:text-brand-300">
@@ -24,4 +24,4 @@ function WorkPage() {
   );
 }
 
-export default WorkPage;
+export default GalleryPage;

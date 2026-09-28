@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/logo-mark.png';
 import Container from '../layout/Container';
 import Button from '../ui/Button';
 
-// `hash` links scroll to a section of the home page; the rest are pages.
+// Contact lives behind the "Get Your Quote" button; reviews and the FAQ
+// are on the home page.
 const NAV_LINKS = [
-  { label: 'XPEL Films', to: '/films' },
-  { label: 'Our Work', to: '/work' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: '/services' },
+  { label: 'Gallery', to: '/gallery' },
   { label: 'About', to: '/about' },
-  { label: 'Reviews', to: '/#reviews', hash: true },
-  { label: 'Contact', to: '/contact' },
 ];
 
 function NavItem({ link, className, activeClassName, onClick }) {
-  if (link.hash) {
-    return (
-      <HashLink smooth to={link.to} className={className} onClick={onClick}>
-        {link.label}
-      </HashLink>
-    );
-  }
   return (
     <NavLink
       to={link.to}
+      end
       onClick={onClick}
       className={({ isActive }) => `${className} ${isActive ? activeClassName : ''}`}
     >
