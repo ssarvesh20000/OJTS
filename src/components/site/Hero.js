@@ -23,8 +23,9 @@ function Hero() {
     <section
       id="home"
       // On desktop the hero fills the screen minus the sticky nav (5rem), the
-      // visible trust bar (~4rem) and the no-fault warranty bar with its gaps
-      // (~10rem), so both bars sit in the first screen.
+      // no-fault warranty bar that overlaps its bottom edge, and the trust bar
+      // below it with their gaps (~14rem together), so both bars sit in the
+      // first screen.
       className="relative w-full m-0 p-0 overflow-hidden bg-ink lg:flex lg:min-h-[calc(100svh-19rem)] lg:items-center"
     >
       {/* Desktop: photo fills the right side of the hero behind the copy. Its

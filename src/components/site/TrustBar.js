@@ -17,9 +17,9 @@ function Item({ children }) {
 
 function TrustBar() {
   return (
-    <section className="w-full m-0 p-0 bg-ink">
+    <section className="w-full m-0 bg-ink px-0 pb-12 pt-4 lg:pb-16">
       <Container>
-        <div className="relative z-10 -mt-6 rounded-card border border-white/10 bg-ink-600 px-4 shadow-card sm:px-8">
+        <div className="rounded-card border border-white/10 bg-ink-600 px-4 shadow-card sm:px-8">
           <div className="grid grid-cols-1 divide-y divide-white/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-5 lg:divide-x">
             {/* Rating */}
             <Item>

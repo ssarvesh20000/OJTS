@@ -59,15 +59,15 @@ function StepArrow() {
 }
 
 /**
- * NoFaultWarranty — condensed, high-emphasis bar directly under the trust bar,
- * so the warranty is part of the first screen. Brand-blue border and glow set
- * it apart from the neutral trust bar above.
+ * NoFaultWarranty — condensed, high-emphasis bar directly under the hero (the
+ * trust bar follows it), so the warranty is part of the first screen.
+ * Brand-blue border and glow set it apart from the neutral trust bar below.
  */
 function NoFaultWarranty() {
   return (
-    <section id="warranty" className="w-full m-0 bg-ink px-0 pb-12 pt-4 scroll-mt-24 lg:pb-16">
+    <section id="warranty" className="w-full m-0 bg-ink p-0 scroll-mt-24">
       <Container>
-        <div className="relative overflow-hidden rounded-card border border-brand/50 bg-ink-700 shadow-glow">
+        <div className="relative z-10 -mt-6 overflow-hidden rounded-card border border-brand/50 bg-ink-700 shadow-glow">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"

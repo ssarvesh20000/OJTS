@@ -18,8 +18,8 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <TrustBar />
       <NoFaultWarranty />
+      <TrustBar />
       <FilmTiers />
       <RecentWork />
       <Reviews />
