@@ -19,7 +19,7 @@ const BENEFITS = [
 
 function Benefits() {
   return (
-    <Section id="services" spacing="compact" className="border-y border-white/10">
+    <Section id="services" spacing="none" className="border-t border-white/10 py-8 lg:py-6">
       <ul className="m-0 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
         {BENEFITS.map((b) => (
           <li key={b.title} className="flex items-start gap-3">
