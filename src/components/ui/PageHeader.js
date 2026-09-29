@@ -33,7 +33,7 @@ function PageHeader({ eyebrow, title, compact = false, action, children }) {
           </h1>
           {children && (
             <p
-              className={`m-0 mt-3 text-base leading-relaxed text-fg-muted sm:text-lg ${compact ? 'max-w-4xl lg:text-xl short:mt-2 short:text-lg' : 'mt-4 max-w-2xl'}`}
+              className={`m-0 mt-3 text-base leading-relaxed text-fg-muted sm:text-lg ${compact ? 'max-w-4xl short:mt-2' : 'mt-4 max-w-2xl'}`}
             >
               {children}
             </p>

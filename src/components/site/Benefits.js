@@ -23,10 +23,10 @@ function Benefits() {
       <ul className="m-0 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
         {BENEFITS.map((b) => (
           <li key={b.title} className="flex items-start gap-3">
-            <FontAwesomeIcon icon={b.icon} className="mt-0.5 w-8 shrink-0 text-3xl text-brand" />
+            <FontAwesomeIcon icon={b.icon} className="mt-0.5 w-7 shrink-0 text-2xl text-brand" />
             <div>
-              <h3 className="m-0 text-sm font-bold uppercase tracking-wide text-white">{b.title}</h3>
-              <p className="m-0 mt-1 text-sm leading-snug text-fg-muted">{b.body}</p>
+              <h3 className="m-0 text-[13px] font-bold uppercase tracking-wide text-white">{b.title}</h3>
+              <p className="m-0 mt-1 text-[13px] leading-snug text-fg-muted">{b.body}</p>
             </div>
           </li>
         ))}
