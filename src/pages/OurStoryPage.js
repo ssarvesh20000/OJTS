@@ -9,16 +9,16 @@ import { usePageTitle } from '../components/layout/RouteEffects';
 
 const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(CONTACT.address)}&output=embed`;
 
-// Placeholder page: final About content (hours, location details) is still
+// Placeholder page: final Our Story content (hours, location details) is still
 // being decided. Fill in HOURS when ready; the card shows a call-to-book note
 // until then.
 const HOURS = null; // e.g. [{ days: 'Mon–Fri', time: '9am–6pm' }, …]
 
-function AboutPage() {
-  usePageTitle('About');
+function OurStoryPage() {
+  usePageTitle('Our Story');
   return (
     <>
-      <PageHeader eyebrow="About Us" title="OJ Tint Studio">
+      <PageHeader eyebrow="Our Story" title="OJ Tint Studio">
         Since 2019, OJ Tint Studio has provided top-quality automotive window tinting in San Jose,
         with fair pricing, personal care and competitive rates for everyone in the Bay Area.
       </PageHeader>
@@ -82,4 +82,4 @@ function AboutPage() {
   );
 }
 
-export default AboutPage;
+export default OurStoryPage;

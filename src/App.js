@@ -6,7 +6,7 @@ import { ScrollToTop } from './components/layout/RouteEffects';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import GalleryPage from './pages/GalleryPage';
-import AboutPage from './pages/AboutPage';
+import OurStoryPage from './pages/OurStoryPage';
 import ContactPage from './pages/ContactPage';
 
 import { Analytics } from '@vercel/analytics/react';
@@ -22,11 +22,12 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/our-story" element={<OurStoryPage />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* Earlier page addresses, kept working for existing links */}
           <Route path="/films" element={<Navigate to="/services" replace />} />
           <Route path="/work" element={<Navigate to="/gallery" replace />} />
+          <Route path="/about" element={<Navigate to="/our-story" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <SiteFooter />

@@ -13,7 +13,7 @@ const LINKS = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/services' },
   { label: 'Gallery', to: '/gallery' },
-  { label: 'About', to: '/about' },
+  { label: 'Our Story', to: '/our-story' },
   { label: 'Reviews', to: '/#reviews' },
   { label: 'FAQ', to: '/#faq' },
   { label: 'Get a Quote', to: '/contact' },

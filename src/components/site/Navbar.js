@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/services' },
   { label: 'Gallery', to: '/gallery' },
-  { label: 'About', to: '/about' },
+  { label: 'Our Story', to: '/our-story' },
 ];
 
 function NavItem({ link, className, activeClassName, onClick }) {
