@@ -11,7 +11,7 @@ function PageHeader({ eyebrow, title, compact = false, action, children }) {
   return (
     <section
       className={`relative w-full m-0 overflow-hidden border-b border-white/10 bg-ink px-0 ${
-        compact ? 'pb-6 pt-8 sm:pb-8 sm:pt-10' : 'pb-10 pt-12 sm:pb-14 sm:pt-16'
+        compact ? 'pb-6 pt-8 sm:pb-8 sm:pt-10 short:pb-5 short:pt-6' : 'pb-10 pt-12 sm:pb-14 sm:pt-16'
       }`}
     >
       <div
@@ -33,7 +33,7 @@ function PageHeader({ eyebrow, title, compact = false, action, children }) {
           </h1>
           {children && (
             <p
-              className={`m-0 mt-3 text-base leading-relaxed text-fg-muted sm:text-lg ${compact ? 'max-w-4xl' : 'mt-4 max-w-2xl'}`}
+              className={`m-0 mt-3 text-base leading-relaxed text-fg-muted sm:text-lg ${compact ? 'max-w-4xl lg:text-xl short:mt-2 short:text-lg' : 'mt-4 max-w-2xl'}`}
             >
               {children}
             </p>

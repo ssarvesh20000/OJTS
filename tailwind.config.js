@@ -42,6 +42,11 @@ module.exports = {
         // Body / UI
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
+      screens: {
+        // Desktop windows with little height (e.g. 1366x768 laptops): used to
+        // tighten spacing on pages meant to fit one screen.
+        short: { raw: '(min-width: 1024px) and (max-height: 820px)' },
+      },
       maxWidth: {
         content: '1600px', // standard page content width
       },

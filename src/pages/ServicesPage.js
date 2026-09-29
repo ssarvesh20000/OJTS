@@ -10,7 +10,9 @@ import { usePageTitle } from '../components/layout/RouteEffects';
 function ServicesPage() {
   usePageTitle('Services');
   return (
-    <>
+    // On desktop the page fills the screen below the nav, so the footer only
+    // appears once you scroll.
+    <div className="flex flex-col lg:min-h-[calc(100svh-5rem)]">
       <PageHeader
         compact
         eyebrow="Premium XPEL Window Films"
@@ -26,7 +28,7 @@ function ServicesPage() {
       </PageHeader>
       <FilmTiers />
       <Benefits />
-    </>
+    </div>
   );
 }
 
