@@ -10,9 +10,12 @@ import storyPhoto from "../assets/story-install.webp";
 
 const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(CONTACT.address)}&output=embed`;
 
-// Story copy provided by the shop. Business hours are still to be decided:
-// fill in HOURS when ready; the card shows a call-to-book note until then.
-const HOURS = null; // e.g. [{ days: 'Mon–Fri', time: '9am–6pm' }, …]
+// Story copy provided by the shop.
+// HOURS shows in the Business Hours card (set to null for a call-to-book note).
+const HOURS = [
+  { days: 'Tuesday – Saturday', time: '10 AM – 6 PM' },
+  { days: 'Sunday – Monday', time: 'Closed' },
+];
 
 function Highlight({ children }) {
   return <strong className="font-bold text-brand">{children}</strong>;
