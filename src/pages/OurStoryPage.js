@@ -24,26 +24,28 @@ function OurStoryPage() {
     <>
       <PageHeader eyebrow="Our Story" title="OJ Tint Studio" />
 
-      <Section spacing="compact" className="relative overflow-hidden lg:min-h-[46rem]">
-        {/* Desktop: unframed photo on the right, fading into the story text like
-            the home hero. Sized by its own height so the whole photo shows (no
-            crop); darkened so the bright shop doesn't wash out the fade. */}
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden justify-end lg:flex">
+      <Section spacing="compact" className="relative overflow-hidden lg:flex lg:min-h-[min(67vw,68rem)] lg:items-center">
+        {/* Desktop: unframed photo covering the right half, fading into the story
+            text like the home hero. The section's height tracks the viewport
+            width (67vw ~ the photo's height at half-width, less ~10%), so only
+            a sliver of the bottom is cropped. Darkened so the bright shop
+            doesn't wash out the fade. */}
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 max-w-[820px] lg:block">
           <img
             src={storyPhoto}
             alt=""
-            className="h-full w-auto max-w-none brightness-[0.72]"
+            className="h-full w-full object-cover object-top brightness-[0.72]"
             style={{
               maskImage:
-                'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 5%, #000 95%, transparent 100%)',
+                'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 6%, #000 88%, transparent 100%)',
               WebkitMaskImage:
-                'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 5%, #000 95%, transparent 100%)',
+                'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 6%, #000 88%, transparent 100%)',
               maskComposite: 'intersect',
               WebkitMaskComposite: 'source-in',
             }}
           />
         </div>
-        <div className="relative grid items-start gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-16">
+        <div className="relative grid w-full items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-16">
           <article className="space-y-5 text-lg leading-relaxed text-white/85">
             <h2 className="m-0 font-display text-2xl font-extrabold uppercase text-white">About OJ Tint Studio</h2>
             <p className="m-0">
