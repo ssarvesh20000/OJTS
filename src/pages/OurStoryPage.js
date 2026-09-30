@@ -28,7 +28,9 @@ function OurStoryPage() {
       {/* Desktop: header + story fill the screen below the nav, so the whole
           story and photo are visible on arrival. */}
       <div className="flex flex-col lg:min-h-[calc(100svh-5rem)]">
-        <PageHeader compact eyebrow="Our Story" title="Who we are!" />
+        <PageHeader compact eyebrow="Our Story" title="Who we are!">
+          Our business hours and location are further down this page.
+        </PageHeader>
 
         <Section
           spacing="none"
