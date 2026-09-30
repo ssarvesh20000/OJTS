@@ -29,38 +29,40 @@ function OurStoryPage() {
           <article className="space-y-5 text-lg leading-relaxed text-white/85">
             <h2 className="m-0 font-display text-2xl font-extrabold uppercase text-white">About OJ Tint Studio</h2>
             <p className="m-0">
-              We opened in <Highlight>2020</Highlight>, right in the middle of COVID. It started as a
-              small shop, and it&rsquo;s grown into something we&rsquo;re really proud of.
+              OJ Tint Studio started in <Highlight>2020</Highlight>, right in the middle of COVID. What
+              started as a small business has grown into something we&rsquo;re really proud of.
             </p>
             <p className="m-0">
-              Since then we&rsquo;ve tinted over <Highlight>7,000 vehicles</Highlight>. Everyday cars,
-              trucks, SUVs, high-end stuff &ndash; we&rsquo;ve pretty much seen it all come through the
-              door.
+              Since then, we&rsquo;ve tinted over <Highlight>7,000 vehicles</Highlight> and have worked on
+              just about every type of vehicle you can think of &mdash; from everyday cars and trucks to
+              high-end vehicles, SUVs, and everything in between.
             </p>
             <p className="m-0">
-              We don&rsquo;t just throw tint on and send you off. We take our time, keep the work clean,
-              use good film, and make sure you&rsquo;re happy with it before you drive away.
+              For us, it&rsquo;s not just about putting tint on a window and sending you on your way. We
+              care about doing clean work, using quality film, and making sure you&rsquo;re happy with the
+              finished product.
             </p>
 
             <h2 className="m-0 pt-4 font-display text-2xl font-extrabold uppercase text-white">
-              What makes us different
+              What Makes Us Different?
             </h2>
+            <p className="m-0">One of the biggest things that sets OJ Tint Studio apart is our warranty.</p>
             <p className="m-0">
-              Our warranty. Every job is covered by our regular warranty, and we go one step further: if
-              your car gets broken into and the window has to be replaced, we&rsquo;ll re-tint it for
-              free.
+              We stand behind our work with our regular warranty, but we also go a step further. If your
+              vehicle is broken into and the window needs to be replaced, we don&rsquo;t charge you to have
+              that window re-tinted.
             </p>
             <p className="m-0">
-              Stuff happens. You shouldn&rsquo;t have to pay twice for something that wasn&rsquo;t your
-              fault.
+              We know accidents happen, and the last thing we want is for you to have to pay twice for
+              something that wasn&rsquo;t your fault.
             </p>
             <p className="m-0">
-              After 7,000+ cars, what we&rsquo;re going for hasn&rsquo;t changed: do good work, take care
-              of people, and stand behind it.
+              After 7,000+ vehicles, we&rsquo;ve seen just about everything. Our goal is simple: do good
+              work, take care of our customers, and stand behind what we do.
             </p>
             <p className="m-0 font-semibold text-white">
-              Thanks to everyone who&rsquo;s trusted us with their car over the years. We wouldn&rsquo;t
-              be here without you.
+              Thank you to everyone who has trusted OJ Tint Studio with their vehicle over the years. We
+              wouldn&rsquo;t be here without you.
             </p>
           </article>
 
