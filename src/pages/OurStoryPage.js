@@ -24,19 +24,20 @@ function OurStoryPage() {
     <>
       <PageHeader eyebrow="Our Story" title="OJ Tint Studio" />
 
-      <Section spacing="compact" className="relative overflow-hidden">
+      <Section spacing="compact" className="relative overflow-hidden lg:min-h-[46rem]">
         {/* Desktop: unframed photo on the right, fading into the story text like
-            the home hero. Darkened so the bright shop doesn't wash out the fade. */}
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden w-[55%] lg:block">
+            the home hero. Sized by its own height so the whole photo shows (no
+            crop); darkened so the bright shop doesn't wash out the fade. */}
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden justify-end lg:flex">
           <img
             src={storyPhoto}
             alt=""
-            className="h-full w-full object-cover object-[40%_50%] brightness-[0.72]"
+            className="h-full w-auto max-w-none brightness-[0.72]"
             style={{
               maskImage:
-                'linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
+                'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 5%, #000 95%, transparent 100%)',
               WebkitMaskImage:
-                'linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
+                'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 5%, #000 95%, transparent 100%)',
               maskComposite: 'intersect',
               WebkitMaskComposite: 'source-in',
             }}
@@ -76,8 +77,8 @@ function OurStoryPage() {
             alt="OJ Tint Studio installer applying window film in the shop"
             className="w-full brightness-[0.85] lg:hidden"
             style={{
-              maskImage: 'linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
+              maskImage: 'linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%)',
             }}
           />
         </div>
