@@ -3,20 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Container from '../layout/Container';
 import Button from '../ui/Button';
-import heroPhoto from '../../assets/hero-lambo.webp';
+import heroPhoto from '../../assets/hero-install.webp';
 
-const HERO_ALT = 'Black Lamborghini Huracán with tinted windows outside the OJ Tint Studio shop at night';
+const HERO_ALT = 'OJ Tint Studio installer applying window film inside a car with red racing seats';
 
-// Feathers the photo's left, top and bottom edges into the page background,
-// so it reads as one scene with the dark hero instead of a boxed image.
-const featherMask = {
-  maskImage:
-    'linear-gradient(90deg, transparent 0%, #000 16%), linear-gradient(180deg, transparent 0%, #000 10%, #000 86%, transparent 100%)',
-  WebkitMaskImage:
-    'linear-gradient(90deg, transparent 0%, #000 16%), linear-gradient(180deg, transparent 0%, #000 10%, #000 86%, transparent 100%)',
-  maskComposite: 'intersect',
-  WebkitMaskComposite: 'source-in',
-};
+// The photo is portrait, so it is framed beside the copy rather than used as a
+// full-bleed background; object-position keeps the installer and red seat in
+// view whatever the frame's shape.
+const PHOTO_FOCUS = 'object-[55%_55%]';
 
 function Hero() {
   return (
@@ -28,30 +22,14 @@ function Hero() {
       // first screen.
       className="relative w-full m-0 p-0 overflow-hidden bg-ink lg:flex lg:min-h-[calc(100svh-19rem)] lg:items-center"
     >
-      {/* Desktop: photo fills the right side of the hero behind the copy. Its
-          width is the smaller of: what keeps the car's nose (~15% into the
-          image) just right of the CTA buttons (~560px into the content, which
-          is centered past 1600px), and what fits the hero's height, so the
-          sign and wheels are never cropped. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
-        <img
-          src={heroPhoto}
-          alt=""
-          className="absolute bottom-[2%] right-0 w-[min((100%_-_560px_-_max(0px,(100%_-_1600px)/2))/0.85,(100svh_-_19rem)*1.72)] max-w-[1600px]"
-          style={featherMask}
-        />
-        {/* Keeps the copy readable where it overlaps the building */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(90deg, #05070A 0%, rgba(5,7,10,0.9) 22%, rgba(5,7,10,0.4) 34%, rgba(5,7,10,0) 46%)',
-          }}
-        />
-      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(900px 500px at 78% 45%, rgba(30,158,255,0.12), transparent 65%)' }}
+      />
 
       <Container className="relative w-full">
-        <div className="pb-10 pt-10 sm:pt-14 lg:max-w-[40rem] lg:pb-10 lg:pt-4">
+        <div className="grid items-center gap-10 pb-10 pt-10 sm:pt-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-12 lg:pb-12 lg:pt-6">
           <div className="relative z-10 text-center lg:text-left">
             <p className="m-0 mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand">
               San Jose&rsquo;s Premier
@@ -79,16 +57,16 @@ function Hero() {
             </div>
           </div>
 
-          {/* Mobile/tablet: photo sits below the copy */}
-          <img
-            src={heroPhoto}
-            alt={HERO_ALT}
-            className="-mx-5 mt-10 block w-[calc(100%+2.5rem)] max-w-none sm:-mx-6 sm:w-[calc(100%+3rem)] lg:hidden"
-            style={{
-              maskImage: 'linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%)',
-            }}
-          />
+          {/* Photo frame: sized from the screen height on desktop so the
+              first-screen layout holds; a 4:5 crop on smaller screens. */}
+          <div className="relative aspect-[4/5] overflow-hidden rounded-card border border-white/10 shadow-card sm:aspect-[4/3] lg:aspect-auto lg:h-[calc(100svh-23rem)] lg:min-h-[20rem]">
+            <img src={heroPhoto} alt={HERO_ALT} className={`absolute inset-0 h-full w-full object-cover ${PHOTO_FOCUS}`} />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{ background: 'linear-gradient(180deg, rgba(5,7,10,0) 55%, rgba(5,7,10,0.45) 100%)' }}
+            />
+          </div>
         </div>
       </Container>
     </section>
