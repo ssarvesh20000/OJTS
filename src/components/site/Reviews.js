@@ -9,22 +9,19 @@ import logo from '../../assets/logo-mark.png';
 
 const MAPS_URL = 'https://www.google.com/maps/place/1580+Oakland+Rd+%23C109,+San+Jose,+CA+95131';
 
-// Review platforms shown side by side. Set `rating` (e.g. 5.0) and `count`
-// (e.g. '100+') to show the stars and numbers; while either is null the card
-// shows just the platform and a link to its reviews.
+// Review platforms shown side by side. Set `rating` (e.g. 5.0) to show the
+// stars; while it is null the card shows just the platform and a link.
 const PLATFORMS = [
   {
     name: 'Google',
     url: 'https://www.google.com/maps/search/?api=1&query=OJ+Tint+Studio+San+Jose',
     rating: 5.0,
-    count: '200+',
     thumbnail: <GoogleG />,
   },
   {
     name: 'Yelp',
     url: SOCIALS.find((s) => s.label === 'Yelp').href,
-    rating: null, // TODO: current Yelp rating
-    count: null, // TODO: current Yelp review count
+    rating: 5.0,
     thumbnail: <YelpMark />,
   },
 ];
@@ -60,7 +57,7 @@ function Stars({ rating }) {
 }
 
 function PlatformCard({ platform }) {
-  const hasStats = platform.rating != null && platform.count != null;
+  const hasStats = platform.rating != null;
   return (
     <a
       href={platform.url}
@@ -79,7 +76,6 @@ function PlatformCard({ platform }) {
             <span className="mt-1 block text-sm text-white">
               {platform.rating.toFixed(1)} on {platform.name}
             </span>
-            <span className="block text-sm text-fg-muted">{platform.count} reviews</span>
           </>
         ) : (
           <>
