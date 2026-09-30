@@ -1,24 +1,18 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck, faClock, faLocationDot, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/layout/Section';
 import Button from '../components/ui/Button';
 import { CONTACT } from '../components/site/contactInfo';
 import { usePageTitle } from '../components/layout/RouteEffects';
+import storyPhoto from '../assets/story-install.webp';
 
 const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(CONTACT.address)}&output=embed`;
 
 // Story copy provided by the shop. Business hours are still to be decided:
 // fill in HOURS when ready; the card shows a call-to-book note until then.
 const HOURS = null; // e.g. [{ days: 'Mon–Fri', time: '9am–6pm' }, …]
-
-// Warranty copy split into short points so it scans quickly beside the story.
-const WARRANTY_POINTS = [
-  'Every tint job comes with our standard warranty.',
-  'Car broken into and a window replaced? We re-tint the new one for free.',
-  'Getting broken into is bad enough. You shouldn\u2019t pay for tint twice.',
-];
 
 function Highlight({ children }) {
   return <strong className="font-bold text-brand">{children}</strong>;
@@ -31,49 +25,51 @@ function OurStoryPage() {
       <PageHeader eyebrow="Our Story" title="OJ Tint Studio" />
 
       <Section spacing="compact">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-14">
-          <div className="space-y-5 text-lg leading-relaxed text-white/85">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-16">
+          <article className="space-y-5 text-lg leading-relaxed text-white/85">
+            <h2 className="m-0 font-display text-2xl font-extrabold uppercase text-white">About OJ Tint Studio</h2>
             <p className="m-0">
-              We opened OJ Tint Studio in <Highlight>2020</Highlight>, in the middle of COVID. It was a
-              risky time to start a business, but it worked out, and we&rsquo;re proud of what it&rsquo;s
-              become.
+              We opened in <Highlight>2020</Highlight>, right in the middle of COVID. It started as a
+              small shop, and it&rsquo;s grown into something we&rsquo;re really proud of.
             </p>
             <p className="m-0">
-              Since then we&rsquo;ve tinted over <Highlight>7,000 vehicles</Highlight>. Daily drivers,
-              work trucks, SUVs, high-end cars, you name it, we&rsquo;ve probably had it in the shop.
+              Since then we&rsquo;ve tinted over <Highlight>7,000 vehicles</Highlight>. Everyday cars,
+              trucks, SUVs, high-end stuff &ndash; we&rsquo;ve pretty much seen it all come through the
+              door.
             </p>
             <p className="m-0">
-              We take our time on every car. That means clean edges, no bubbles or dust, good film, and
-              making sure you&rsquo;re happy with it before you leave.
+              We don&rsquo;t just throw tint on and send you off. We take our time, keep the work clean,
+              use good film, and make sure you&rsquo;re happy with it before you drive away.
             </p>
-          </div>
 
-          <aside className="relative self-start overflow-hidden rounded-card border border-brand/50 bg-ink-700 p-6 shadow-glow sm:p-7">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{ background: 'linear-gradient(135deg, rgba(30,158,255,0.14) 0%, rgba(30,158,255,0) 60%)' }}
-            />
-            <div className="relative">
-              <h2 className="m-0 flex items-center gap-3 font-display text-xl font-extrabold uppercase text-white">
-                <FontAwesomeIcon icon={faShieldHalved} className="text-2xl text-brand" /> Our Warranty
-              </h2>
-              <ul className="m-0 mt-5 list-none space-y-4 p-0">
-                {WARRANTY_POINTS.map((point) => (
-                  <li key={point} className="flex gap-3 text-base leading-snug text-white/85">
-                    <FontAwesomeIcon icon={faCircleCheck} className="mt-1 shrink-0 text-brand" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
+            <h2 className="m-0 pt-4 font-display text-2xl font-extrabold uppercase text-white">
+              What makes us different
+            </h2>
+            <p className="m-0">
+              Our warranty. Every job is covered by our regular warranty, and we go one step further: if
+              your car gets broken into and the window has to be replaced, we&rsquo;ll re-tint it for
+              free.
+            </p>
+            <p className="m-0">
+              Stuff happens. You shouldn&rsquo;t have to pay twice for something that wasn&rsquo;t your
+              fault.
+            </p>
+            <p className="m-0">
+              After 7,000+ cars, what we&rsquo;re going for hasn&rsquo;t changed: do good work, take care
+              of people, and stand behind it.
+            </p>
+            <p className="m-0 font-semibold text-white">
+              Thanks to everyone who&rsquo;s trusted us with their car over the years. We wouldn&rsquo;t
+              be here without you.
+            </p>
+          </article>
+
+          <img
+            src={storyPhoto}
+            alt="OJ Tint Studio installer applying window film in the shop"
+            className="w-full rounded-card border border-white/10 object-cover shadow-card lg:sticky lg:top-28 lg:max-h-[calc(100svh-9rem)]"
+          />
         </div>
-
-        <p className="m-0 mt-12 text-center text-lg font-semibold text-white">
-          Thanks to everyone who&rsquo;s brought their car to us over the years. We couldn&rsquo;t have
-          done it without you.
-        </p>
       </Section>
 
       <Section spacing="compact">
