@@ -12,7 +12,7 @@ function GalleryPage() {
   usePageTitle('Gallery');
   return (
     <>
-      <PageHeader eyebrow="Gallery" title="Our recent work">
+      <PageHeader compact eyebrow="Gallery" title="Our recent work">
         A look at vehicles we&rsquo;ve tinted, with the shades used on each. Tap any photo to
         see it larger.{' '}
         <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand hover:text-brand-300">
