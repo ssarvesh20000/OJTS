@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faLocationDot, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck, faClock, faLocationDot, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/layout/Section';
 import Button from '../components/ui/Button';
@@ -11,13 +11,18 @@ const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(CONTACT.ad
 
 // Story copy provided by the shop. Business hours are still to be decided:
 // fill in HOURS when ready; the card shows a call-to-book note until then.
-const HOURS = null;
+const HOURS = null; // e.g. [{ days: 'Mon–Fri', time: '9am–6pm' }, …]
 
-const STATS = [
-  { value: '2020', label: 'Opened' },
-  { value: '7,000+', label: 'Vehicles tinted' },
-  { value: '$0', label: 'Re-tint after a break-in' },
-]; // e.g. [{ days: 'Mon–Fri', time: '9am–6pm' }, …]
+// Warranty copy split into short points so it scans quickly beside the story.
+const WARRANTY_POINTS = [
+  'Every tint job comes with our standard warranty.',
+  'Car broken into and a window replaced? We re-tint the new one for free.',
+  'Getting broken into is bad enough. You shouldn\u2019t pay for tint twice.',
+];
+
+function Highlight({ children }) {
+  return <strong className="font-bold text-brand">{children}</strong>;
+}
 
 function OurStoryPage() {
   usePageTitle('Our Story');
@@ -26,15 +31,16 @@ function OurStoryPage() {
       <PageHeader eyebrow="Our Story" title="OJ Tint Studio" />
 
       <Section spacing="compact">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-14">
           <div className="space-y-5 text-lg leading-relaxed text-white/85">
             <p className="m-0">
-              We opened OJ Tint Studio in 2020, in the middle of COVID. It was a risky time to start a
-              business, but it worked out, and we&rsquo;re proud of what it&rsquo;s become.
+              We opened OJ Tint Studio in <Highlight>2020</Highlight>, in the middle of COVID. It was a
+              risky time to start a business, but it worked out, and we&rsquo;re proud of what it&rsquo;s
+              become.
             </p>
             <p className="m-0">
-              Since then we&rsquo;ve tinted over 7,000 vehicles. Daily drivers, work trucks, SUVs,
-              high-end cars, you name it, we&rsquo;ve probably had it in the shop.
+              Since then we&rsquo;ve tinted over <Highlight>7,000 vehicles</Highlight>. Daily drivers,
+              work trucks, SUVs, high-end cars, you name it, we&rsquo;ve probably had it in the shop.
             </p>
             <p className="m-0">
               We take our time on every car. That means clean edges, no bubbles or dust, good film, and
@@ -42,37 +48,29 @@ function OurStoryPage() {
             </p>
           </div>
 
-          <dl className="m-0 grid grid-cols-1 gap-4 self-start sm:grid-cols-3 lg:grid-cols-1">
-            {STATS.map((s) => (
-              <div key={s.label} className="rounded-card border border-white/10 bg-ink-700 p-5">
-                <dd className="m-0 font-display text-3xl font-extrabold text-brand sm:text-4xl">{s.value}</dd>
-                <dt className="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-fg-muted">{s.label}</dt>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <div className="relative mt-12 overflow-hidden rounded-card border border-brand/50 bg-ink-700 p-6 shadow-glow sm:p-8">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{ background: 'linear-gradient(90deg, rgba(30,158,255,0.14) 0%, rgba(30,158,255,0) 60%)' }}
-          />
-          <div className="relative flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-8">
-            <FontAwesomeIcon icon={faShieldHalved} className="text-4xl text-brand" />
-            <div className="max-w-3xl">
-              <h2 className="m-0 font-display text-2xl font-extrabold uppercase text-white">Our Warranty</h2>
-              <p className="m-0 mt-3 text-lg leading-relaxed text-white/85">
-                Every tint job comes with our standard warranty. On top of that, if someone breaks into
-                your car and you have to replace a window, we&rsquo;ll re-tint the new one for free.
-                Getting your car broken into is bad enough, and you shouldn&rsquo;t have to pay for tint
-                twice because of it.
-              </p>
+          <aside className="relative self-start overflow-hidden rounded-card border border-brand/50 bg-ink-700 p-6 shadow-glow sm:p-7">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{ background: 'linear-gradient(135deg, rgba(30,158,255,0.14) 0%, rgba(30,158,255,0) 60%)' }}
+            />
+            <div className="relative">
+              <h2 className="m-0 flex items-center gap-3 font-display text-xl font-extrabold uppercase text-white">
+                <FontAwesomeIcon icon={faShieldHalved} className="text-2xl text-brand" /> Our Warranty
+              </h2>
+              <ul className="m-0 mt-5 list-none space-y-4 p-0">
+                {WARRANTY_POINTS.map((point) => (
+                  <li key={point} className="flex gap-3 text-base leading-snug text-white/85">
+                    <FontAwesomeIcon icon={faCircleCheck} className="mt-1 shrink-0 text-brand" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          </aside>
         </div>
 
-        <p className="m-0 mt-10 text-center text-lg font-semibold text-white">
+        <p className="m-0 mt-12 text-center text-lg font-semibold text-white">
           Thanks to everyone who&rsquo;s brought their car to us over the years. We couldn&rsquo;t have
           done it without you.
         </p>
