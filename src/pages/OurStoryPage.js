@@ -24,8 +24,25 @@ function OurStoryPage() {
     <>
       <PageHeader eyebrow="Our Story" title="OJ Tint Studio" />
 
-      <Section spacing="compact">
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-16">
+      <Section spacing="compact" className="relative overflow-hidden">
+        {/* Desktop: unframed photo on the right, fading into the story text like
+            the home hero. Darkened so the bright shop doesn't wash out the fade. */}
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden w-[55%] lg:block">
+          <img
+            src={storyPhoto}
+            alt=""
+            className="h-full w-full object-cover object-[40%_50%] brightness-[0.72]"
+            style={{
+              maskImage:
+                'linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
+              WebkitMaskImage:
+                'linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
+              maskComposite: 'intersect',
+              WebkitMaskComposite: 'source-in',
+            }}
+          />
+        </div>
+        <div className="relative grid items-start gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-16">
           <article className="space-y-5 text-lg leading-relaxed text-white/85">
             <h2 className="m-0 font-display text-2xl font-extrabold uppercase text-white">About OJ Tint Studio</h2>
             <p className="m-0">
@@ -66,10 +83,15 @@ function OurStoryPage() {
             </p>
           </article>
 
+          {/* Phones/tablets: photo below the text, fading in at top and bottom */}
           <img
             src={storyPhoto}
             alt="OJ Tint Studio installer applying window film in the shop"
-            className="w-full rounded-card border border-white/10 object-cover shadow-card lg:sticky lg:top-28 lg:max-h-[calc(100svh-9rem)]"
+            className="w-full brightness-[0.85] lg:hidden"
+            style={{
+              maskImage: 'linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 12%, #000 85%, transparent 100%)',
+            }}
           />
         </div>
       </Section>
