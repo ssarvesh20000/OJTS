@@ -60,19 +60,6 @@ function OurStoryPage() {
               finished product.
             </p>
 
-            <h2 className="m-0 pt-4 font-display text-2xl font-extrabold uppercase text-white">
-              What Makes Us Different?
-            </h2>
-            <p className="m-0">One of the biggest things that sets OJ Tint Studio apart is our warranty.</p>
-            <p className="m-0">
-              We stand behind our work with our regular warranty, but we also go a step further. If your
-              vehicle is broken into and the window needs to be replaced, we don&rsquo;t charge you to have
-              that window re-tinted.
-            </p>
-            <p className="m-0">
-              We know accidents happen, and the last thing we want is for you to have to pay twice for
-              something that wasn&rsquo;t your fault.
-            </p>
             <p className="m-0">
               After 7,000+ vehicles, we&rsquo;ve seen just about everything. Our goal is simple: do good
               work, take care of our customers, and stand behind what we do.
