@@ -7,10 +7,24 @@ import heroPhoto from '../../assets/hero-install.webp';
 
 const HERO_ALT = 'OJ Tint Studio installer applying window film inside a car with red racing seats';
 
-// The photo is portrait, so it is framed beside the copy rather than used as a
-// full-bleed background; object-position keeps the installer and red seat in
-// view whatever the frame's shape.
-const PHOTO_FOCUS = 'object-[55%_55%]';
+// Where the photo is cropped from: keeps the installer and red seat in view.
+const PHOTO_FOCUS = 'object-[55%_58%]';
+
+// Desktop: fades the photo's left edge into the copy and softens top/bottom.
+const desktopFade = {
+  maskImage:
+    'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 12%, #000 80%, transparent 100%)',
+  WebkitMaskImage:
+    'linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, transparent 0%, #000 12%, #000 80%, transparent 100%)',
+  maskComposite: 'intersect',
+  WebkitMaskComposite: 'source-in',
+};
+
+// Phones/tablets: the photo sits below the buttons, fading in at top and bottom.
+const mobileFade = {
+  maskImage: 'linear-gradient(180deg, transparent 0%, #000 15%, #000 80%, transparent 100%)',
+  WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 15%, #000 80%, transparent 100%)',
+};
 
 function Hero() {
   return (
@@ -22,14 +36,13 @@ function Hero() {
       // first screen.
       className="relative w-full m-0 p-0 overflow-hidden bg-ink lg:flex lg:min-h-[calc(100svh-19rem)] lg:items-center"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(900px 500px at 78% 45%, rgba(30,158,255,0.12), transparent 65%)' }}
-      />
+      {/* Desktop: unframed photo filling the right side, fading into the page */}
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+        <img src={heroPhoto} alt="" className={`h-full w-full object-cover ${PHOTO_FOCUS}`} style={desktopFade} />
+      </div>
 
       <Container className="relative w-full">
-        <div className="grid items-center gap-10 pb-10 pt-10 sm:pt-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-12 lg:pb-12 lg:pt-6">
+        <div className="grid items-center gap-10 pb-10 pt-10 sm:pt-14 lg:gap-12 lg:pb-12 lg:pt-6">
           <div className="relative z-10 text-center lg:text-left">
             <p className="m-0 mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand">
               San Jose&rsquo;s Premier
@@ -57,16 +70,12 @@ function Hero() {
             </div>
           </div>
 
-          {/* Photo frame: sized from the screen height on desktop so the
-              first-screen layout holds; a 4:5 crop on smaller screens. */}
-          <div className="relative aspect-[4/5] overflow-hidden rounded-card border border-white/10 shadow-card sm:aspect-[4/3] lg:aspect-auto lg:h-[calc(100svh-23rem)] lg:min-h-[20rem]">
-            <img src={heroPhoto} alt={HERO_ALT} className={`absolute inset-0 h-full w-full object-cover ${PHOTO_FOCUS}`} />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{ background: 'linear-gradient(180deg, rgba(5,7,10,0) 55%, rgba(5,7,10,0.45) 100%)' }}
-            />
-          </div>
+          <img
+            src={heroPhoto}
+            alt={HERO_ALT}
+            className={`-mx-5 block aspect-[4/5] w-[calc(100%+2.5rem)] max-w-none object-cover sm:-mx-6 sm:aspect-[4/3] sm:w-[calc(100%+3rem)] lg:hidden ${PHOTO_FOCUS}`}
+            style={mobileFade}
+          />
         </div>
       </Container>
     </section>
