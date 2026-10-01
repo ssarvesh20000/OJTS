@@ -43,6 +43,9 @@ module.exports = {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       screens: {
+        // Laptop windows a little shorter than 900px (e.g. 1536x864, 1600x874).
+        // Listed before `short` so `short` wins where both apply.
+        mid: { raw: '(min-width: 1024px) and (max-height: 890px)' },
         // Desktop windows with little height (e.g. 1366x768 laptops): used to
         // tighten spacing on pages meant to fit one screen.
         short: { raw: '(min-width: 1024px) and (max-height: 820px)' },

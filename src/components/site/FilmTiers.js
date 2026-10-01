@@ -5,6 +5,8 @@ import { faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import Section from '../layout/Section';
 import Container from '../layout/Container';
 
+// Features are listed in the same order on every card (UV, heat, glare,
+// card-specific extras, warranty) so the tiers compare line by line.
 const FILMS = [
   {
     tier: 'Good',
@@ -18,8 +20,8 @@ const FILMS = [
     name: 'XPEL Ceramic',
     blurb: 'Advanced ceramic technology for maximum comfort and clarity.',
     features: [
-      'Superior heat rejection',
       'Blocks up to 99% UV rays',
+      'Superior heat rejection',
       'Reduces glare',
       'Non-metallic, no signal interference',
       "Manufacturer's Warranty",
@@ -31,7 +33,7 @@ const FILMS = [
     tier: 'Best',
     name: 'XPEL XR Plus',
     blurb: 'Our top-of-the-line film with maximum heat rejection.',
-    features: ['Maximum heat rejection', 'Blocks up to 99% UV rays', 'Reduces glare', 'Clearer view', "Manufacturer's Warranty"],
+    features: ['Blocks up to 99% UV rays', 'Maximum heat rejection', 'Reduces glare', 'Clearer view', "Manufacturer's Warranty"],
     tagline: 'Ultimate Performance',
   },
 ];
@@ -39,7 +41,7 @@ const FILMS = [
 function FilmCard({ film }) {
   return (
     <article
-      className={`relative flex flex-col rounded-card border bg-ink-700 p-6 short:py-4 ${
+      className={`relative flex flex-col rounded-card border bg-ink-700 p-6 mid:py-5 short:py-3 ${
         film.featured ? 'border-brand shadow-glow' : 'border-brand/40'
       }`}
     >
@@ -54,9 +56,9 @@ function FilmCard({ film }) {
       </p>
       <h3 className="m-0 mt-2 font-display text-[1.625rem] font-extrabold uppercase leading-tight text-white">{film.name}</h3>
       <p className="m-0 mt-2 text-[15px] leading-relaxed text-fg-muted short:leading-snug">{film.blurb}</p>
-      <ul className="m-0 mb-6 mt-4 list-none space-y-2 p-0 short:mb-4 short:mt-3 short:space-y-1.5">
+      <ul className="m-0 mb-6 mt-5 list-none space-y-2.5 p-0 mid:mb-3 mid:mt-3 mid:space-y-2 short:mb-3 short:mt-2 short:space-y-1.5">
         {film.features.map((feature) => (
-          <li key={feature} className="flex items-center gap-2.5 text-[15px] text-white/90">
+          <li key={feature} className="flex items-center gap-3 text-base text-white/90 xl:text-[17px] short:text-[15px]">
             <FontAwesomeIcon icon={faCircleCheck} className="text-brand" />
             {feature}
           </li>
@@ -66,7 +68,7 @@ function FilmCard({ film }) {
       {/* Pinned to the card's bottom edge, so the stretched cards stay aligned */}
       <Link
         to="/contact"
-        className="mt-auto inline-flex items-center gap-2 border-t border-white/10 pt-4 text-sm short:pt-3 font-semibold uppercase tracking-wide text-brand hover:text-brand-300"
+        className="mt-auto inline-flex items-center gap-2 border-t border-white/10 pt-4 text-sm mid:pt-3 short:pt-3 font-semibold uppercase tracking-wide text-brand hover:text-brand-300"
       >
         Get a quote for {film.name} <FontAwesomeIcon icon={faArrowRight} />
       </Link>
