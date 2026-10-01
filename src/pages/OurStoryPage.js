@@ -60,38 +60,43 @@ function OurStoryPage() {
           </div>
           <div className="relative grid w-full items-start gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16">
             <article className="space-y-5 text-lg leading-relaxed text-white/85 short:space-y-3 short:text-base">
-              <h2 className="m-0 font-display text-2xl font-extrabold uppercase text-white">
-                About OJ Tint Studio
-              </h2>
-              <p className="m-0">
-                OJ Tint Studio started in <Highlight>2020</Highlight>, right in
-                the middle of COVID. What started as a small business has grown
-                into something we&rsquo;re really proud of.
-              </p>
-              <p className="m-0">
-                Since then, we&rsquo;ve tinted over{" "}
-                <Highlight>7,000 vehicles</Highlight> and have worked on just
-                about every type of vehicle you can think of &mdash; from
-                everyday cars and trucks to high-end vehicles, SUVs, and
-                everything in between.
-              </p>
-              <p className="m-0">
-                For us, it&rsquo;s not just about putting tint on a window and
-                sending you on your way. We care about doing clean work, using
-                quality film, and making sure you&rsquo;re happy with the
-                finished product.
-              </p>
-
-              <p className="m-0">
-                After 7,000+ vehicles, we&rsquo;ve seen just about everything.
-                Our goal is simple: do good work, take care of our customers,
-                and stand behind what we do.
-              </p>
-              <p className="m-0 font-semibold text-white">
-                Thank you to everyone who has trusted OJ Tint Studio with their
-                vehicle over the years. We wouldn&rsquo;t be here without you.
-              </p>
-            </article>
+            <h2 className="m-0 font-display text-2xl font-extrabold uppercase text-white">About OJ Tint Studio</h2>
+            <p className="m-0 font-semibold text-white">
+              What started in <Highlight>2019</Highlight> as a simple passion for cars has grown into
+              something much bigger.
+            </p>
+            <p className="m-0">
+              OJ Tint Studio began during COVID as a hobby&mdash;just a genuine love for cars and the
+              satisfaction of making them look and feel better. What we didn&rsquo;t know then was that
+              this passion would eventually become a full-service tint studio proudly serving car
+              enthusiasts and everyday drivers throughout the Bay Area.
+            </p>
+            <p className="m-0">
+              Today, we&rsquo;ve tinted <Highlight>7,000+ vehicles</Highlight>, from daily drivers to some
+              of the most special cars our customers own. No matter the make, model, or vehicle, our
+              approach remains the same: quality work, attention to detail, and treating every car as if
+              it were our own.
+            </p>
+            <p className="m-0">
+              We believe a great tint job is more than just applying film. It&rsquo;s about precision,
+              patience, and taking pride in every detail. Every vehicle is thoroughly inspected before it
+              leaves our studio because we want our customers to leave knowing their car was taken care
+              of the right way.
+            </p>
+            <p className="m-0">
+              We stand behind our craftsmanship with a lifetime, no-fault warranty, because we believe our
+              customers should feel just as confident in our work as we do.
+            </p>
+            <p className="m-0">
+              After 7,000+ cars, one thing hasn&rsquo;t changed: we still care about every car that comes
+              through our doors.
+            </p>
+            <p className="m-0 font-semibold text-white">
+              Whether you&rsquo;re protecting your daily driver, upgrading the look of your car, or
+              finishing off a vehicle you&rsquo;ve put your heart into, you can expect the same level of
+              care, precision, and attention to detail every time.
+            </p>
+          </article>
 
             {/* Phones/tablets: photo below the text, fading in at top and bottom */}
             <img

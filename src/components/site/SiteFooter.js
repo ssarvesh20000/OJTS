@@ -27,7 +27,7 @@ function SiteFooter() {
           <div>
             <img src={logo} alt="OJ Tint Studio" className="h-14 w-auto" />
             <p className="m-0 mt-4 max-w-sm leading-relaxed text-fg-muted">
-              Premium automotive window tinting in San Jose since 2020. Authorized XPEL dealer serving
+              Premium automotive window tinting in San Jose since 2019. Authorized XPEL dealer serving
               the Bay Area.
             </p>
             <img src={xpel} alt="XPEL Authorized Dealer" className="mt-5 h-5 w-auto opacity-80" />
