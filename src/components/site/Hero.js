@@ -45,7 +45,7 @@ function Hero() {
         <div className="grid items-center gap-10 pb-10 pt-10 sm:pt-14 lg:gap-12 lg:pb-12 lg:pt-6">
           <div className="relative z-10 text-center lg:text-left">
             <p className="m-0 mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand">
-              San Jose&rsquo;s Premier
+              Silicon Valley
             </p>
             <h1 className="m-0 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-5xl lg:whitespace-nowrap lg:text-[3.5rem] xl:text-[4.25rem]">
               Premium
