@@ -66,7 +66,7 @@ function OurStoryPage() {
               something much bigger.
             </p>
             <p className="m-0">
-              OJ Tint Studio began during COVID as a hobby&mdash;just a genuine love for cars and the
+              OJ Tint Studio began during COVID as a hobby, just a genuine love for cars and the
               satisfaction of making them look and feel better. What we didn&rsquo;t know then was that
               this passion would eventually become a full-service tint studio proudly serving car
               enthusiasts and everyday drivers throughout the Bay Area.
