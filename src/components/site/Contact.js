@@ -41,14 +41,15 @@ function Contact() {
           </ul>
         </div>
 
-        {/* Brand-edged frame around the TintWiz form. The form's dark styling
-            lives in TintWiz (Form Settings > Add custom CSS to form). Heights are trimmed to the form's
-            content (taller on phones, where its fields stack). */}
-        <div className="rounded-card border border-brand/40 bg-ink-700 p-2 shadow-glow sm:p-3">
+        {/* Card around the TintWiz form, matching our other cards. The form's
+            dark styling lives in TintWiz (Form Settings > Add custom CSS to
+            form). Heights fit the form's content (taller on phones, where its
+            fields stack). */}
+        <div className="rounded-card border border-white/10 bg-ink-700 p-2 shadow-card sm:p-4">
           <iframe
             title="Request a quote from OJ Tint Studio"
             src={TINTWIZ_FORM_URL}
-            className="block h-[1100px] w-full rounded-[10px] border-0 bg-ink-700 sm:h-[760px] lg:h-[620px]"
+            className="block h-[1100px] w-full rounded-[10px] border-0 bg-ink-700 sm:h-[800px] lg:h-[680px]"
           />
         </div>
       </div>
