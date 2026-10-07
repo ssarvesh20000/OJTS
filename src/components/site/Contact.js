@@ -41,17 +41,14 @@ function Contact() {
           </ul>
         </div>
 
-        {/* Dark, brand-edged frame around TintWiz's light form so it sits in
-            the page like our other cards. Heights are trimmed to the form's
+        {/* Brand-edged frame around the TintWiz form. The form's dark styling
+            lives in TintWiz (Form Settings > Add custom CSS to form). Heights are trimmed to the form's
             content (taller on phones, where its fields stack). */}
         <div className="rounded-card border border-brand/40 bg-ink-700 p-2 shadow-glow sm:p-3">
           <iframe
             title="Request a quote from OJ Tint Studio"
             src={TINTWIZ_FORM_URL}
-            className="block h-[1100px] w-full rounded-[10px] border-0 bg-[#f4f5f7] sm:h-[760px] lg:h-[620px]"
-            // Temporary: inverts TintWiz's light form to dark (the hue shift keeps
-            // its blues blue). Recolours only; clicks and typing pass through.
-            style={{ filter: 'invert(0.92) hue-rotate(180deg) saturate(1.2)' }}
+            className="block h-[1100px] w-full rounded-[10px] border-0 bg-ink-700 sm:h-[760px] lg:h-[620px]"
           />
         </div>
       </div>
