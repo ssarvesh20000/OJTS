@@ -39,6 +39,20 @@ function makeFloorShadow(width, length) {
   return mesh;
 }
 
+// Shown in place of the car when the browser can't run 3D. The rest of the
+// page keeps working.
+export function Unsupported() {
+  return (
+    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-ink-700 px-6 text-center">
+      <p className="m-0 text-base font-semibold text-white">The 3D preview can&rsquo;t run in this browser</p>
+      <p className="m-0 max-w-md text-sm leading-relaxed text-fg-muted">
+        This usually means hardware (graphics) acceleration is turned off. Turn it on in your browser&rsquo;s
+        settings and reload the page, or try another browser.
+      </p>
+    </div>
+  );
+}
+
 /**
  * Live 3D car in a studio. Drag to rotate, scroll or pinch to zoom. Every
  * window shows the film shade `vlt` (null = no tint).
@@ -50,16 +64,37 @@ function CarViewer({ vlt }) {
   const [progress, setProgress] = useState(0);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(false);
+  // True when the browser can't run 3D (e.g. hardware acceleration is off).
+  const [unsupported, setUnsupported] = useState(false);
 
   useEffect(() => {
     const mount = mountRef.current;
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        preserveDrawingBuffer: true,
+        // Refuse slow software rendering (what browsers fall back to when
+        // hardware acceleration is off) instead of freezing the page.
+        failIfMajorPerformanceCaveat: true,
+      });
+    } catch (e) {
+      setUnsupported(true);
+      return undefined;
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1;
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
     renderer.domElement.style.touchAction = 'none';
+    // The graphics driver can drop the 3D context at any time (e.g. GPU reset).
+    const onContextLost = (e) => {
+      e.preventDefault();
+      setUnsupported(true);
+    };
+    renderer.domElement.addEventListener('webglcontextlost', onContextLost);
 
     const scene = new THREE.Scene();
     const pmrem = new THREE.PMREMGenerator(renderer);
@@ -177,6 +212,7 @@ function CarViewer({ vlt }) {
           (Array.isArray(obj.material) ? obj.material : [obj.material]).forEach((m) => m.dispose());
         }
       });
+      renderer.domElement.removeEventListener('webglcontextlost', onContextLost);
       renderer.dispose();
       mount.removeChild(renderer.domElement);
     };
@@ -192,7 +228,9 @@ function CarViewer({ vlt }) {
   return (
     <div className="relative h-full w-full">
       <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" />
-      {!ready && (
+      {unsupported ? (
+        <Unsupported />
+      ) : !ready && (
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 text-sm text-fg-muted">
           {error ? (
             'The 3D car could not be loaded. Please refresh the page.'

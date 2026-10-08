@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHand } from '@fortawesome/free-solid-svg-icons';
 import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/layout/Section';
-import CarViewer from '../components/simulator/CarViewer';
+import ErrorBoundary from '../components/layout/ErrorBoundary';
+import CarViewer, { Unsupported } from '../components/simulator/CarViewer';
 import { SHADES, swatchColor } from '../components/simulator/tint';
 import { usePageTitle } from '../components/layout/RouteEffects';
 
@@ -27,7 +28,9 @@ function SimulatorPage() {
       <Section spacing="compact">
         <div className="overflow-hidden rounded-card border border-white/10 bg-ink-700 shadow-card">
           <div className="relative h-[340px] sm:h-[460px] lg:h-[520px]" style={STUDIO_BG}>
-            <CarViewer vlt={vlt} />
+            <ErrorBoundary fallback={<Unsupported />}>
+              <CarViewer vlt={vlt} />
+            </ErrorBoundary>
             <p className="pointer-events-none absolute bottom-3 left-1/2 m-0 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-black/40 px-3 py-1.5 text-xs text-white/70">
               <FontAwesomeIcon icon={faHand} /> Drag to rotate
             </p>
