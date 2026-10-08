@@ -72,6 +72,18 @@ function SimulatorPage() {
               Shades are approximate and vary with screen and lighting. VLT is the share of light the film lets
               through, so a lower number is darker.
             </p>
+            {/* Required credit for the CC BY 4.0 car model */}
+            <p className="m-0 mt-2 text-[11px] text-fg-subtle">
+              3D car model by{' '}
+              <a href="https://sketchfab.com/RBLXSupercars" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+                RBLXSupercars
+              </a>
+              , licensed under{' '}
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+                CC BY 4.0
+              </a>
+              . Modified: badges removed, paint and glass restyled.
+            </p>
           </div>
         </div>
       </Section>

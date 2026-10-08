@@ -1,21 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { interiorVisibility } from './tint';
 
-// Stand-in car until the licensed Model Y file arrives (CC BY 4.0, Eric
-// Chadwick / Darmstadt Graphics Group, via the Khronos glTF sample assets).
-const MODEL_URL = `${process.env.PUBLIC_URL}/simulator/standin-car.glb`;
+// Car model: "2024 Tesla Model 3" by RBLXSupercars (CC BY 4.0), with the
+// brand emblems and lettering removed and the file compressed for the web.
+const MODEL_URL = `${process.env.PUBLIC_URL}/simulator/car.glb`;
 
-// Neutral pearl paint so the windows read clearly against the body.
+// Material and part names in the model file. One glass material is shared
+// with the headlight and taillight lenses, so windows are picked by part:
+// the door windows and the glazing (windshield, roof and rear window).
+const PAINT_MATERIAL = 'Geohoodsub00021Mtl';
+const GLASS_MATERIALS = new Set(['Geoextwindow0021Mtl', 'Geodoorl2sub31Mtl', 'Geodoorr2sub31Mtl']);
+const WINDOW_PARTS = /^(door-|glazing)/;
+
+// Pearl white paint.
 const PAINT = new THREE.MeshPhysicalMaterial({
-  color: 0xe9eaec,
-  metalness: 0.15,
-  roughness: 0.35,
+  color: 0xf4f5f7,
+  metalness: 0.05,
+  roughness: 0.3,
   clearcoat: 1,
-  clearcoatRoughness: 0.04,
+  clearcoatRoughness: 0.03,
 });
 
 // Soft dark blob under the car, so it sits on the studio floor.
@@ -150,35 +158,39 @@ function CarViewer({ vlt }) {
     };
     loop();
 
-    new GLTFLoader().load(
+    // One shared glass material for every window, so a shade change is a
+    // single update. It is a dark see-through layer: its opacity is how much
+    // of the cabin the film hides. Cheaper than true refraction, which
+    // matters on phones.
+    const glass = new THREE.MeshPhysicalMaterial({
+      color: 0x07090c,
+      transparent: true,
+      roughness: 0.05,
+      metalness: 0,
+      // The glass needs its own copy of the studio reflections: three.js
+      // ignores envMapIntensity for materials that only use the scene's.
+      // Kept low so the studio lights don't glare off the windows.
+      envMap,
+      envMapIntensity: 0.35,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+    });
+    glass.opacity = 1 - interiorVisibility(vltRef.current);
+    glassRef.current = [glass];
+
+    const loader = new GLTFLoader();
+    loader.setMeshoptDecoder(MeshoptDecoder);
+    loader.load(
       MODEL_URL,
       (gltf) => {
         if (disposed) return;
         const car = gltf.scene;
-        const glass = [];
         car.traverse((obj) => {
           if (!obj.isMesh) return;
-          if (/license/i.test(obj.name)) obj.visible = false;
-          const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
-          mats.forEach((m, i) => {
-            const name = m.name || '';
-            if (/^paint/i.test(name)) {
-              if (Array.isArray(obj.material)) obj.material[i] = PAINT;
-              else obj.material = PAINT;
-            } else if (/glass/i.test(name)) {
-              // One shared tinted-glass material for every window.
-              m.transmission = 1;
-              m.roughness = 0.02;
-              m.metalness = 0;
-              m.ior = 1.5;
-              m.thickness = 0;
-              m.envMapIntensity = 1.2;
-              glass.push(m);
-            }
-          });
+          const name = obj.material.name;
+          if (name === PAINT_MATERIAL) obj.material = PAINT;
+          else if (GLASS_MATERIALS.has(name) && WINDOW_PARTS.test(obj.name)) obj.material = glass;
         });
-        glassRef.current = [...new Set(glass)];
-        glassRef.current.forEach((m) => m.color.setScalar(interiorVisibility(vltRef.current)));
 
         // Centre the car on the floor and frame it.
         const box = new THREE.Box3().setFromObject(car);
@@ -222,7 +234,9 @@ function CarViewer({ vlt }) {
 
   useEffect(() => {
     vltRef.current = vlt;
-    glassRef.current.forEach((m) => m.color.setScalar(interiorVisibility(vlt)));
+    glassRef.current.forEach((m) => {
+      m.opacity = 1 - interiorVisibility(vlt);
+    });
   }, [vlt]);
 
   return (
