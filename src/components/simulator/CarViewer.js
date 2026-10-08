@@ -4,18 +4,25 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { interiorVisibility } from './tint';
+import { WINDOW_ZONES, interiorVisibility } from './tint';
 
 // Car model: "2024 Tesla Model 3" by RBLXSupercars (CC BY 4.0), with the
 // brand emblems and lettering removed and the file compressed for the web.
 const MODEL_URL = `${process.env.PUBLIC_URL}/simulator/car.glb`;
 
 // Material and part names in the model file. One glass material is shared
-// with the headlight and taillight lenses, so windows are picked by part:
-// the door windows and the glazing (windshield, roof and rear window).
+// with the headlight and taillight lenses, so windows are picked by part.
+// The windshield, sunroof and rear window were split into separate parts
+// when the model was prepared, so each zone can take its own shade.
 const PAINT_MATERIAL = 'Geohoodsub00021Mtl';
 const GLASS_MATERIALS = new Set(['Geoextwindow0021Mtl', 'Geodoorl2sub31Mtl', 'Geodoorr2sub31Mtl']);
-const WINDOW_PARTS = /^(door-|glazing)/;
+const ZONE_PARTS = {
+  front: /^door-f[lr]-/,
+  rear: /^door-r[lr]-/,
+  back: /^glazing-rear$/,
+  windshield: /^glazing-windshield$/,
+  roof: /^glazing-roof$/,
+};
 
 // Pearl white paint.
 const PAINT = new THREE.MeshPhysicalMaterial({
@@ -147,13 +154,14 @@ export function Unsupported() {
 }
 
 /**
- * Live 3D car in a studio. Drag to rotate, scroll or pinch to zoom. Every
- * window shows the film shade `vlt` (null = no tint).
+ * Live 3D car in a studio. Drag to rotate, scroll or pinch to zoom. `shades`
+ * maps each window zone (see WINDOW_ZONES) to its film shade's VLT, or null
+ * for no tint.
  */
-function CarViewer({ vlt }) {
+function CarViewer({ shades }) {
   const mountRef = useRef(null);
-  const glassRef = useRef([]);
-  const vltRef = useRef(vlt);
+  const glassRef = useRef({});
+  const shadesRef = useRef(shades);
   const [progress, setProgress] = useState(0);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(false);
@@ -243,11 +251,10 @@ function CarViewer({ vlt }) {
     };
     loop();
 
-    // One shared glass material for every window, so a shade change is a
-    // single update. It is a dark see-through layer: its opacity is how much
-    // of the cabin the film hides. Cheaper than true refraction, which
-    // matters on phones.
-    const glass = new THREE.MeshPhysicalMaterial({
+    // One glass material per window zone. It is a dark see-through layer:
+    // its opacity is how much of the cabin the film hides. Cheaper than true
+    // refraction, which matters on phones.
+    const glassBase = new THREE.MeshPhysicalMaterial({
       color: 0x07090c,
       transparent: true,
       roughness: 0.05,
@@ -260,8 +267,13 @@ function CarViewer({ vlt }) {
       depthWrite: false,
       side: THREE.DoubleSide,
     });
-    glass.opacity = 1 - interiorVisibility(vltRef.current);
-    glassRef.current = [glass];
+    const glass = {};
+    WINDOW_ZONES.forEach(({ id }) => {
+      glass[id] = glassBase.clone();
+      glass[id].opacity = 1 - interiorVisibility(shadesRef.current[id]);
+    });
+    glassBase.dispose();
+    glassRef.current = glass;
 
     const loader = new GLTFLoader();
     loader.setMeshoptDecoder(MeshoptDecoder);
@@ -274,7 +286,10 @@ function CarViewer({ vlt }) {
           if (!obj.isMesh) return;
           const name = obj.material.name;
           if (name === PAINT_MATERIAL) obj.material = PAINT;
-          else if (GLASS_MATERIALS.has(name) && WINDOW_PARTS.test(obj.name)) obj.material = glass;
+          else if (GLASS_MATERIALS.has(name)) {
+            const zone = Object.keys(ZONE_PARTS).find((id) => ZONE_PARTS[id].test(obj.name));
+            if (zone) obj.material = glass[zone];
+          }
         });
         car.add(makePlate(), ...makeCaps());
 
@@ -319,11 +334,11 @@ function CarViewer({ vlt }) {
   }, []);
 
   useEffect(() => {
-    vltRef.current = vlt;
-    glassRef.current.forEach((m) => {
-      m.opacity = 1 - interiorVisibility(vlt);
+    shadesRef.current = shades;
+    Object.entries(glassRef.current).forEach(([id, m]) => {
+      m.opacity = 1 - interiorVisibility(shades[id]);
     });
-  }, [vlt]);
+  }, [shades]);
 
   return (
     <div className="relative h-full w-full">

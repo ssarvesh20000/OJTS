@@ -10,6 +10,15 @@ export const SHADES = [
   { vlt: 5, label: '5%', note: 'Limo tint. Nearly blacked out from the outside.' },
 ];
 
+// Window zones the customer can tint separately, in the order shown.
+export const WINDOW_ZONES = [
+  { id: 'front', label: 'Front side windows', short: 'Front sides' },
+  { id: 'rear', label: 'Rear side windows', short: 'Rear sides' },
+  { id: 'back', label: 'Rear window', short: 'Rear window' },
+  { id: 'windshield', label: 'Windshield', short: 'Windshield' },
+  { id: 'roof', label: 'Sunroof', short: 'Sunroof' },
+];
+
 // Bare automotive glass already blocks a little light.
 const CLEAR_GLASS = 0.9;
 
