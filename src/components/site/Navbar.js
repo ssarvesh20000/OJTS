@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: 'Services', to: '/services' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Our Story', to: '/our-story' },
+  { label: 'BetaSim', to: '/betasim' },
 ];
 
 function NavItem({ link, className, activeClassName, onClick }) {

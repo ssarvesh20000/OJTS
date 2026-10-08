@@ -27,9 +27,9 @@ function App() {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/our-story" element={<OurStoryPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          {/* Beta: not linked from the nav yet */}
+          {/* Beta tint simulator */}
           <Route
-            path="/simulator"
+            path="/betasim"
             element={
               <Suspense fallback={<div className="min-h-[60vh]" />}>
                 <SimulatorPage />

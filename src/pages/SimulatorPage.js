@@ -14,13 +14,13 @@ const STUDIO_BG = {
 };
 
 function SimulatorPage() {
-  usePageTitle('Tint Simulator');
+  usePageTitle('BetaSim');
   const [vlt, setVlt] = useState(35);
   const shade = SHADES.find((s) => s.vlt === vlt);
 
   return (
     <>
-      <PageHeader compact eyebrow="Tint Simulator" title="See your shade before you tint">
+      <PageHeader compact eyebrow="Tint Simulator (Beta)" title="BetaSim">
         Pick a shade to see how dark it looks. Drag the car to turn it, and scroll or pinch to zoom.
       </PageHeader>
 
