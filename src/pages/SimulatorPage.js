@@ -21,7 +21,7 @@ const DEFAULT_SHADES = { front: 35, rear: 35, back: 35, windshield: null, roof: 
 const shadeFor = (vlt) => SHADES.find((s) => s.vlt === vlt);
 
 function SimulatorPage() {
-  usePageTitle('BetaSim');
+  usePageTitle('Simulator');
   const [shades, setShades] = useState(DEFAULT_SHADES);
   const [zoneId, setZoneId] = useState('front');
   const zone = WINDOW_ZONES.find((z) => z.id === zoneId);
@@ -34,7 +34,7 @@ function SimulatorPage() {
 
   return (
     <>
-      <PageHeader compact eyebrow="Tint Simulator (Beta)" title="BetaSim">
+      <PageHeader compact eyebrow="See Before You Tint" title="Simulator">
         Choose a window, then pick its shade. Drag the car to turn it, and scroll or pinch to zoom.
       </PageHeader>
 

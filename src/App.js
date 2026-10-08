@@ -50,9 +50,9 @@ function App() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/our-story" element={<OurStoryPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            {/* Beta tint simulator */}
+            {/* Tint simulator */}
             <Route
-              path="/betasim"
+              path="/simulator"
               element={
                 <Suspense fallback={<div className="min-h-[60vh]" />}>
                   <SimulatorPage />
@@ -60,6 +60,7 @@ function App() {
               }
             />
             {/* Earlier page addresses, kept working for existing links */}
+            <Route path="/betasim" element={<Navigate to="/simulator" replace />} />
             <Route path="/films" element={<Navigate to="/services" replace />} />
             <Route path="/work" element={<Navigate to="/gallery" replace />} />
             <Route path="/about" element={<Navigate to="/our-story" replace />} />
