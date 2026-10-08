@@ -15,8 +15,8 @@ const STUDIO_BG = {
 };
 
 // Starting setup: a common install (35% on the sides and rear), with the
-// windshield and sunroof left as they come.
-const DEFAULT_SHADES = { front: 35, rear: 35, back: 35, windshield: null, roof: null };
+// windshield left as it comes.
+const DEFAULT_SHADES = { front: 35, rear: 35, windshield: null };
 
 const shadeFor = (vlt) => SHADES.find((s) => s.vlt === vlt);
 
@@ -53,7 +53,7 @@ function SimulatorPage() {
             <h2 className="m-0 text-sm font-bold uppercase tracking-[0.18em] text-brand">Window Tint</h2>
 
             {/* Window zones, each showing its current shade */}
-            <div role="tablist" aria-label="Window" className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+            <div role="tablist" aria-label="Window" className="mt-4 grid gap-2 sm:grid-cols-3">
               {WINDOW_ZONES.map((z) => {
                 const active = z.id === zoneId;
                 const current = shadeFor(shades[z.id]);

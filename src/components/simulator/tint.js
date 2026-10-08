@@ -3,21 +3,24 @@
 export const SHADES = [
   { vlt: null, label: 'No tint', note: 'Factory glass, fully see-through.' },
   { vlt: 70, label: '70%', note: 'Barely there. Cuts heat and UV with almost no change in look.' },
+  { vlt: 55, label: '55%', note: 'A light, clean tint. Interior still clearly visible.' },
   { vlt: 50, label: '50%', note: 'A light, clean tint. Interior still clearly visible.' },
   { vlt: 35, label: '35%', note: 'Our most popular. Noticeably darker with a classy look.' },
+  { vlt: 30, label: '30%', note: 'A step darker than 35%. More privacy, still easy to see out.' },
   { vlt: 20, label: '20%', note: 'Dark and private. Hard to see in during the day.' },
   { vlt: 15, label: '15%', note: 'Very dark. Strong privacy from the outside.' },
   { vlt: 5, label: '5%', note: 'Limo tint. Nearly blacked out from the outside.' },
 ];
 
-// Window zones the customer can tint separately, in the order shown.
+// Window zones the customer can tint separately, in the order shown. The
+// sunroof isn't offered: it always shows the darkest shade (SUNROOF_VLT).
 export const WINDOW_ZONES = [
   { id: 'front', label: 'Front side windows', short: 'Front sides' },
-  { id: 'rear', label: 'Rear side windows', short: 'Rear sides' },
-  { id: 'back', label: 'Rear window', short: 'Rear window' },
+  { id: 'rear', label: 'Rear side windows & rear window', short: 'Rear sides & rear window' },
   { id: 'windshield', label: 'Windshield', short: 'Windshield' },
-  { id: 'roof', label: 'Sunroof', short: 'Sunroof' },
 ];
+
+export const SUNROOF_VLT = 5;
 
 // Bare automotive glass already blocks a little light.
 const CLEAR_GLASS = 0.9;

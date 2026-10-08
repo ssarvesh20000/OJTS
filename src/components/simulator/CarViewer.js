@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { WINDOW_ZONES, interiorVisibility } from './tint';
+import { SUNROOF_VLT, WINDOW_ZONES, interiorVisibility } from './tint';
 
 // Car model: "2024 Tesla Model 3" by RBLXSupercars (CC BY 4.0), with the
 // brand emblems and lettering removed and the file compressed for the web.
@@ -18,11 +18,19 @@ const PAINT_MATERIAL = 'Geohoodsub00021Mtl';
 const GLASS_MATERIALS = new Set(['Geoextwindow0021Mtl', 'Geodoorl2sub31Mtl', 'Geodoorr2sub31Mtl']);
 const ZONE_PARTS = {
   front: /^door-f[lr]-/,
-  rear: /^door-r[lr]-/,
-  back: /^glazing-rear$/,
+  rear: /^(door-r[lr]-|glazing-rear$)/,
   windshield: /^glazing-windshield$/,
   roof: /^glazing-roof$/,
 };
+
+// Black interior. The model's cabin is white (seats, rear door cards) with
+// blue trim; these replace those surfaces. Its glossy dark trim finish is
+// shared with the wheels and reads as chrome under the studio lights, so
+// everywhere but the wheels it becomes satin black.
+const SEAT_MATERIAL = 'Ln7Mtl'; // shared with a headlight part, so matched by part too
+const DOOR_CARD_MATERIAL = 'Geodoorl2intsub651Mtl';
+const DASH_TRIM_MATERIALS = new Set(['Geodoorlintsub400251Mtl', 'Geohoodsub00031Mtl']);
+const GLOSS_TRIM_MATERIAL = 'Georimblurlfsub01Mtl';
 
 // Pearl white paint.
 const PAINT = new THREE.MeshPhysicalMaterial({
@@ -272,8 +280,16 @@ function CarViewer({ shades }) {
       glass[id] = glassBase.clone();
       glass[id].opacity = 1 - interiorVisibility(shadesRef.current[id]);
     });
+    glass.roof = glassBase.clone();
+    glass.roof.opacity = 1 - interiorVisibility(SUNROOF_VLT);
     glassBase.dispose();
     glassRef.current = glass;
+
+    // Interior surfaces get their own (dimmer) reflections so black reads as
+    // black rather than grey under the bright studio.
+    const leather = new THREE.MeshStandardMaterial({ color: 0x16171a, roughness: 0.55, metalness: 0, envMap, envMapIntensity: 0.6 });
+    const dashTrim = new THREE.MeshStandardMaterial({ color: 0x222429, roughness: 0.4, metalness: 0.2, envMap, envMapIntensity: 0.6 });
+    const satinBlack = new THREE.MeshStandardMaterial({ color: 0x0e0f11, roughness: 0.45, metalness: 0.3, envMap, envMapIntensity: 0.6 });
 
     const loader = new GLTFLoader();
     loader.setMeshoptDecoder(MeshoptDecoder);
@@ -286,6 +302,9 @@ function CarViewer({ shades }) {
           if (!obj.isMesh) return;
           const name = obj.material.name;
           if (name === PAINT_MATERIAL) obj.material = PAINT;
+          else if ((name === SEAT_MATERIAL && /^seat-/.test(obj.name)) || name === DOOR_CARD_MATERIAL) obj.material = leather;
+          else if (DASH_TRIM_MATERIALS.has(name) && /^(door-|dashboard-)/.test(obj.name)) obj.material = dashTrim;
+          else if (name === GLOSS_TRIM_MATERIAL && !/^wheel-/.test(obj.name)) obj.material = satinBlack;
           else if (GLASS_MATERIALS.has(name)) {
             const zone = Object.keys(ZONE_PARTS).find((id) => ZONE_PARTS[id].test(obj.name));
             if (zone) obj.material = glass[zone];
@@ -335,8 +354,8 @@ function CarViewer({ shades }) {
 
   useEffect(() => {
     shadesRef.current = shades;
-    Object.entries(glassRef.current).forEach(([id, m]) => {
-      m.opacity = 1 - interiorVisibility(shades[id]);
+    WINDOW_ZONES.forEach(({ id }) => {
+      if (glassRef.current[id]) glassRef.current[id].opacity = 1 - interiorVisibility(shades[id]);
     });
   }, [shades]);
 
