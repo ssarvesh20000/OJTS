@@ -26,6 +26,91 @@ const PAINT = new THREE.MeshPhysicalMaterial({
   clearcoatRoughness: 0.03,
 });
 
+// Shop licence plate on the trunk face, between the taillights. Position is
+// in the model's own coordinates; the trunk face leans back about 16°.
+const PLATE_URL = `${process.env.PUBLIC_URL}/simulator/plate.webp`;
+const PLATE_POSITION = [-2.352, 0.737, 0];
+const PLATE_NORMAL = [-0.96, 0.278, 0];
+
+function makePlate() {
+  const texture = new THREE.TextureLoader().load(PLATE_URL);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 8;
+  const plate = new THREE.Mesh(
+    // US plate: 12 x 6 inches.
+    new THREE.PlaneGeometry(0.305, 0.1525),
+    new THREE.MeshPhysicalMaterial({
+      map: texture,
+      alphaTest: 0.5, // rounded corners
+      roughness: 0.35,
+      metalness: 0.1,
+      clearcoat: 0.6,
+    }),
+  );
+  const [x, y, z] = PLATE_POSITION;
+  plate.position.set(x, y, z);
+  plate.lookAt(x + PLATE_NORMAL[0], y + PLATE_NORMAL[1], z + PLATE_NORMAL[2]);
+  return plate;
+}
+
+// Plain black centre caps. The model's caps carried the brand emblem as their
+// face, so removing it left an empty hub; these replace the face. Centre of
+// each cap face, in model coordinates.
+const CAP_CENTRES = [
+  [1.4348, 0.3425, -0.9072],
+  [1.4381, 0.3422, 0.908],
+  [-1.4384, 0.3422, -0.9158],
+  [-1.4352, 0.3422, 0.9154],
+];
+
+function makeCapTexture() {
+  const size = 256;
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  const g = ctx.createRadialGradient(size * 0.42, size * 0.38, size * 0.05, size / 2, size / 2, size / 2);
+  g.addColorStop(0, '#2a2d33');
+  g.addColorStop(0.7, '#111317');
+  g.addColorStop(1, '#050608');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, size, size);
+  // Thin silver rim
+  ctx.lineWidth = size * 0.035;
+  ctx.strokeStyle = '#8a9099';
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, size / 2 - size * 0.03, 0, Math.PI * 2);
+  ctx.stroke();
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
+function makeCaps() {
+  const face = new THREE.MeshPhysicalMaterial({
+    map: makeCapTexture(),
+    roughness: 0.25,
+    metalness: 0.3,
+    clearcoat: 1,
+    clearcoatRoughness: 0.05,
+  });
+  const side = new THREE.MeshStandardMaterial({ color: 0x0b0c0e, roughness: 0.4, metalness: 0.4 });
+  const radius = 0.031;
+  const depth = 0.02;
+  return CAP_CENTRES.map(([x, y, z]) => {
+    const cap = new THREE.Group();
+    const rim = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, depth, 48, 1, true), side);
+    rim.rotation.x = Math.PI / 2;
+    rim.position.z = -depth / 2;
+    const disc = new THREE.Mesh(new THREE.CircleGeometry(radius, 64), face);
+    disc.position.z = 0.0005;
+    cap.add(rim, disc);
+    cap.position.set(x, y, z);
+    // Face outwards on the car's left side too.
+    if (z < 0) cap.rotation.y = Math.PI;
+    return cap;
+  });
+}
+
 // Soft dark blob under the car, so it sits on the studio floor.
 function makeFloorShadow(width, length) {
   const size = 256;
@@ -191,6 +276,7 @@ function CarViewer({ vlt }) {
           if (name === PAINT_MATERIAL) obj.material = PAINT;
           else if (GLASS_MATERIALS.has(name) && WINDOW_PARTS.test(obj.name)) obj.material = glass;
         });
+        car.add(makePlate(), ...makeCaps());
 
         // Centre the car on the floor and frame it.
         const box = new THREE.Box3().setFromObject(car);
