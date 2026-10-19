@@ -20,10 +20,11 @@ const desktopFade = {
   WebkitMaskComposite: 'source-in',
 };
 
-// Phones/tablets: the photo sits below the buttons, fading in at top and bottom.
-const mobileFade = {
-  maskImage: 'linear-gradient(180deg, transparent 0%, #000 15%, #000 80%, transparent 100%)',
-  WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 15%, #000 80%, transparent 100%)',
+// Phones/tablets: the photo runs behind the headline. Dark behind the text so
+// it stays readable, clear around the installer, fading out at the bottom.
+const mobileShade = {
+  background:
+    'linear-gradient(180deg, rgba(5,7,10,0.95) 0%, rgba(5,7,10,0.85) 36%, rgba(5,7,10,0.3) 47%, rgba(5,7,10,0.2) 80%, #05070A 100%)',
 };
 
 function Hero() {
@@ -47,7 +48,7 @@ function Hero() {
             <p className="m-0 mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand">
               Silicon Valley
             </p>
-            <h1 className="m-0 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-5xl lg:whitespace-nowrap lg:text-[3.5rem] xl:text-[4.25rem]">
+            <h1 className="m-0 font-display text-[min(2.25rem,9.2vw)] font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-5xl lg:whitespace-nowrap lg:text-[3.5rem] xl:text-[4.25rem]">
               Premium
               <br />
               Window Tinting.
@@ -70,12 +71,20 @@ function Hero() {
             </div>
           </div>
 
-          <img
-            src={heroPhoto}
-            alt={HERO_ALT}
-            className={`-mx-5 block aspect-[4/5] w-[calc(100%+2.5rem)] max-w-none object-cover sm:-mx-6 sm:aspect-[4/3] sm:w-[calc(100%+3rem)] lg:hidden ${PHOTO_FOCUS}`}
-            style={mobileFade}
-          />
+          {/* Phones/tablets: the photo is pulled up behind the text so the
+              installer's head (half way down the photo) lands just below the
+              buttons. Sizes are in vw because the photo's height follows the
+              screen width. Phones zoom in 1.5x, centred on the installer. */}
+          <div
+            className="pointer-events-none relative -mx-5 -mt-[102vw] h-[225vw] w-[calc(100%+2.5rem)] overflow-hidden sm:-mx-6 sm:-mt-[69vw] sm:h-[150vw] sm:w-[calc(100%+3rem)] lg:hidden"
+          >
+            <img
+              src={heroPhoto}
+              alt={HERO_ALT}
+              className="absolute left-[-35.5vw] top-0 w-[150vw] max-w-none sm:left-0 sm:w-full"
+            />
+            <div aria-hidden className="absolute inset-0" style={mobileShade} />
+          </div>
         </div>
       </Container>
     </section>
