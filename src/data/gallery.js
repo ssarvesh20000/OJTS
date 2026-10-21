@@ -1,6 +1,5 @@
 // Completed installs shown on the Our Work page. `front`/`rear` are the tint
 // shades used; add or reorder entries here to change the gallery.
-import lambo from '../assets/carGal/lambo.png';
 import ferrari488 from '../assets/carGal/ferrari488.png';
 import honda from '../assets/carGal/hondaR.png';
 import mustang from '../assets/carGal/mustang.png';
@@ -23,7 +22,6 @@ import g37 from '../assets/carGal/g37.png';
 import truck from '../assets/carGal/Truck.png';
 
 export const GALLERY = [
-  { src: lambo, make: 'Lamborghini', model: 'Huracán', front: '5%', rear: '5%' },
   { src: ferrari488, make: 'Ferrari', model: '488', front: '5%', rear: '5%' },
   { src: honda, make: 'Honda', model: 'Civic Type R', front: '35%', rear: '35%' },
   { src: mustang, make: 'Ford', model: 'Mustang', front: '35%', rear: '5%' },
